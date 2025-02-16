@@ -24,7 +24,7 @@ const mat3 NOISE_MATRIX = mat3(
 // Helper function to generate snowflake pattern
 vec3 generate_snowflake(vec2 coord, float layer_index, float time, float wind_strength) {
     // Scale coordinates based on layer depth
-    float layer_scale = 1.0 + layer_index * 0.5 / (max(size, 0.01) * 2.0);
+    float layer_scale = 0.1 + layer_index * 0.5 / (max(size, 0.01) * 2.0);
     vec2 scaled_coord = coord * layer_scale;
 
     // Apply movement (falling + wind)
@@ -45,14 +45,15 @@ vec3 generate_snowflake(vec2 coord, float layer_index, float time, float wind_st
     shape += 0.01 * abs(2.0 * fract(10.0 * final_coord.yx) - 1.0);
 
     // Calculate edge softness
-    float depth_offset = 5.0 * sin(time * 0.1);
-    float edge_softness = 0.005 + 0.05 * min(0.5 * abs(layer_index - 5.0 - depth_offset), 1.0);
+    float depth_offset = 1.0 * sin(time * 0.1);
+    //float edge_softness = 0.005 + 0.05 * min(0.5 * abs(layer_index - 5.0 - depth_offset), 1.0);
+	float edge_softness = 0.001;
 
     // Calculate final shape
     float shape_value = 0.6 * max(shape.x - shape.y, shape.x + shape.y) + max(shape.x, shape.y) - 0.01;
 
     return vec3(smoothstep(edge_softness, -edge_softness, shape_value) *
-                (random.x / (1.0 + 0.02 * layer_index * 0.5)));
+                (random.x / (1.0 + 0.02 * 2.0 * 0.5))); //(random.x / (1.0 + 0.02 * layer_index * 0.5)));
 }
 
 void fragment() {
