@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsh8lu3xwvk31"]
+[gd_scene load_steps=6 format=3 uid="uid://bsh8lu3xwvk31"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0dwuo"]
+[ext_resource type="AudioStream" uid="uid://okiy571q8qdd" path="res://assets/music/contemplative.ogg" id="2_dm1aw"]
 [ext_resource type="Shader" path="res://game/shaders/pixel_snowfall.gdshader" id="2_dxdu8"]
 [ext_resource type="PackedScene" uid="uid://s158exwbtkoy" path="res://game/player/player.tscn" id="3_o5cm0"]
 
@@ -21,6 +22,10 @@ shader_parameter/time = 10000.0
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0dwuo")
+
+[node name="Bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dm1aw")
+volume_db = -12.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ug820")

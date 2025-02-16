@@ -7,11 +7,13 @@ var shader_time: float
 
 @onready var color_rect: ColorRect = $ColorRect
 @onready var snowfall_shader: ShaderMaterial = color_rect.material
+@onready var bgm: AudioStreamPlayer = $Bgm
 
 
 func _ready() -> void:
 	shader_time = snowfall_shader.get_shader_parameter("time")
 	last_shader_update = shader_time
+	bgm.play()
 
 
 func _physics_process(delta: float) -> void:

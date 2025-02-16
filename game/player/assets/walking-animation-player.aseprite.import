@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://e56ajb5fipo4"
+path="res://.godot/imported/walking-animation-player.aseprite-b687a26c6c129dcbc4ede2ffbb8341ca.res"
+
+[deps]
+
+source_file="res://game/player/assets/walking-animation-player.aseprite"
+dest_files=["res://.godot/imported/walking-animation-player.aseprite-b687a26c6c129dcbc4ede2ffbb8341ca.res"]
+
+[params]
+

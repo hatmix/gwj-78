@@ -20,6 +20,7 @@ reports/*
 # Personal tooling
 .justfile
 .build_success.json
+addons/AsepriteWizard
 
 # Godot export directories based on export_presets.cfg
 exports/*

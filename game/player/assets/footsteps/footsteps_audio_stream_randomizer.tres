@@ -1,0 +1,21 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=9 format=3 uid="uid://c5qtjpbprbkmh"]
+
+[ext_resource type="AudioStream" uid="uid://oevygbdffflg" path="res://game/player/assets/footsteps/footstep_1.ogg" id="1_obbgu"]
+[ext_resource type="AudioStream" uid="uid://tje5rvnhgpm4" path="res://game/player/assets/footsteps/footstep_2.ogg" id="2_wggaw"]
+[ext_resource type="AudioStream" uid="uid://draml6i10i3dn" path="res://game/player/assets/footsteps/footstep_3.ogg" id="3_d073k"]
+[ext_resource type="AudioStream" uid="uid://r7vl50bddt8v" path="res://game/player/assets/footsteps/footstep_4.ogg" id="4_84bty"]
+[ext_resource type="AudioStream" uid="uid://bowckjux7juam" path="res://game/player/assets/footsteps/footstep_5.ogg" id="5_ku0kx"]
+[ext_resource type="AudioStream" uid="uid://chppcw20vavn6" path="res://game/player/assets/footsteps/footstep_6.ogg" id="6_40f31"]
+[ext_resource type="AudioStream" uid="uid://cu2xrbdsw1i6q" path="res://game/player/assets/footsteps/footstep_7.ogg" id="7_bdsie"]
+[ext_resource type="AudioStream" uid="uid://pa3v1df4k8b4" path="res://game/player/assets/footsteps/footstep_8.ogg" id="8_dklkr"]
+
+[resource]
+streams_count = 8
+stream_0/stream = ExtResource("1_obbgu")
+stream_1/stream = ExtResource("2_wggaw")
+stream_2/stream = ExtResource("3_d073k")
+stream_3/stream = ExtResource("4_84bty")
+stream_4/stream = ExtResource("5_ku0kx")
+stream_5/stream = ExtResource("6_40f31")
+stream_6/stream = ExtResource("7_bdsie")
+stream_7/stream = ExtResource("8_dklkr")
