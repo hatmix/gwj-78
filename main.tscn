@@ -17,6 +17,7 @@ shader_parameter/rain_color = Color(1, 1, 1, 1)
 shader_parameter/base_rain_speed = 0.156
 shader_parameter/additional_rain_speed = 0.348
 shader_parameter/slant = 0.125
+shader_parameter/time = 10000.0
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0dwuo")
