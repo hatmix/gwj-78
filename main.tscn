@@ -12,10 +12,10 @@ shader_parameter/far_rain_length = 0.01
 shader_parameter/near_rain_width = 1.0
 shader_parameter/far_rain_width = 0.5
 shader_parameter/near_rain_transparency = 1.0
-shader_parameter/far_rain_transparency = 0.575
-shader_parameter/rain_color = Color(0.8, 0.8, 0.8, 1)
-shader_parameter/base_rain_speed = 0.5
-shader_parameter/additional_rain_speed = 0.5
+shader_parameter/far_rain_transparency = 1.0
+shader_parameter/rain_color = Color(1, 1, 1, 1)
+shader_parameter/base_rain_speed = 0.156
+shader_parameter/additional_rain_speed = 0.348
 shader_parameter/slant = 0.125
 
 [node name="Main" type="Node"]
