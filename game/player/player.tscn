@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://s158exwbtkoy"]
+
+[ext_resource type="Texture2D" uid="uid://ctc16lup6tij0" path="res://game/player/capsule-guy-16x16.png" id="1_1r04t"]
+[ext_resource type="Script" path="res://game/player/player.gd" id="1_yokwv"]
+[ext_resource type="Script" path="res://game/player/trail.gd" id="3_c211i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kp4p2"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="Curve" id="Curve_8a2qv"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 2
+motion_mode = 1
+script = ExtResource("1_yokwv")
+speed = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kp4p2")
+
+[node name="Visual" type="Sprite2D" parent="."]
+self_modulate = Color(0.141176, 0.141176, 0.188235, 1)
+texture = ExtResource("1_1r04t")
+
+[node name="StateLabel" type="Label" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.141176, 0.141176, 0.188235, 1)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.5
+offset_top = -24.0
+offset_right = 30.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "Anim_Facing"
+horizontal_alignment = 1
+
+[node name="Trail" type="Line2D" parent="." node_paths=PackedStringArray("node_tracked")]
+unique_name_in_owner = true
+show_behind_parent = true
+top_level = true
+z_index = -2
+position = Vector2(0, 6)
+width = 4.0
+width_curve = SubResource("Curve_8a2qv")
+default_color = Color(0.396078, 0.403922, 0.470588, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 6.0
+antialiased = true
+script = ExtResource("3_c211i")
+node_tracked = NodePath("..")
