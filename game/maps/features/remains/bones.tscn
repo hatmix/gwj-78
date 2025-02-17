@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://3w5qnv4m08vy"]
+
+[ext_resource type="Texture2D" uid="uid://hkvsw67ql40e" path="res://game/maps/features/remains/static-bones.png" id="1_jyol7"]
+
+[node name="Bones" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, -14, 4, -14, 4, -11, 8, -11, 8, -7, -1, -1, -2, -1, -10, -5, -12, -5, -5, -9)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(5, 0, 11, -5, 13, -2, 12, 1, 8, 1, 7, 2, 5, 1)
+
+[node name="Visual" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_jyol7")
+offset = Vector2(0, -8)

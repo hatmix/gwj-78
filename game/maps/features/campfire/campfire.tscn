@@ -42,7 +42,6 @@ texture = SubResource("PortableCompressedTexture2D_b6hfn")
 offset = Vector2(-2, -5)
 hframes = 4
 vframes = 4
-frame = 1
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -65,3 +64,4 @@ metadata/_aseprite_wizard_source_file_hash_ = "772de7872b6eb358d6b133967d048c22"
 libraries = {
 "": SubResource("AnimationLibrary_n1e8b")
 }
+autoplay = "default"
