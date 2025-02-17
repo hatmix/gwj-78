@@ -1,24 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsh8lu3xwvk31"]
+[gd_scene load_steps=5 format=3 uid="uid://bsh8lu3xwvk31"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0dwuo"]
 [ext_resource type="AudioStream" uid="uid://okiy571q8qdd" path="res://assets/music/contemplative.ogg" id="2_dm1aw"]
-[ext_resource type="Shader" path="res://game/shaders/pixel_snowfall.gdshader" id="2_dxdu8"]
-[ext_resource type="PackedScene" uid="uid://de5gr0w8nmik3" path="res://game/maps/map_1.tscn" id="4_avpuk"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ug820"]
-shader = ExtResource("2_dxdu8")
-shader_parameter/rain_amount = 200.0
-shader_parameter/near_rain_length = 0.01
-shader_parameter/far_rain_length = 0.01
-shader_parameter/near_rain_width = 1.0
-shader_parameter/far_rain_width = 0.5
-shader_parameter/near_rain_transparency = 1.0
-shader_parameter/far_rain_transparency = 1.0
-shader_parameter/rain_color = Color(1, 1, 1, 1)
-shader_parameter/base_rain_speed = 0.156
-shader_parameter/additional_rain_speed = 0.348
-shader_parameter/slant = 0.125
-shader_parameter/time = 10000.0
+[ext_resource type="PackedScene" path="res://game/maps/map_1.tscn" id="4_avpuk"]
+[ext_resource type="PackedScene" uid="uid://c45lhaiu1a1rd" path="res://game/weather/weather.tscn" id="4_ktfyp"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0dwuo")
@@ -27,12 +12,6 @@ script = ExtResource("1_0dwuo")
 stream = ExtResource("2_dm1aw")
 volume_db = -18.0
 
-[node name="Snowfall" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_ug820")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Map_1" parent="." instance=ExtResource("4_avpuk")]
+
+[node name="Weather" parent="." instance=ExtResource("4_ktfyp")]
