@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://buishihngx7o3"]
+
+[ext_resource type="FontFile" uid="uid://dyqe506lgtkhx" path="res://assets/fonts/pixelFont-4-7x7-sproutLands.ttf" id="1_17hm1"]
+
+[resource]
+default_font = ExtResource("1_17hm1")
+default_font_size = 18

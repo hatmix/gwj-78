@@ -21,7 +21,8 @@ window/size/viewport_width=320
 window/size/viewport_height=180
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
@@ -30,6 +31,12 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 [gdunit4]
 
 ui/toolbar/run_overall=true
+
+[gui]
+
+theme/custom="res://default_theme.tres"
+theme/default_font_antialiasing=0
+theme/default_font_subpixel_positioning=0
 
 [input]
 
@@ -58,6 +65,14 @@ ui/toolbar/run_overall=true
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Ground obstacles"
+2d_physics/layer_2="Air obstacles"
+2d_physics/layer_3="Trails"
+2d_physics/layer_4="Player"
+2d_physics/layer_5="Drones"
+
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 0)
@@ -70,3 +85,5 @@ textures/vram_compression/import_etc2_astc=true
 textures/decals/filter=0
 textures/light_projectors/filter=0
 environment/defaults/default_clear_color=Color(0.921569, 0.921569, 0.921569, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

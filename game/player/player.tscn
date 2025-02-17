@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://s158exwbtkoy"]
+[gd_scene load_steps=13 format=4 uid="uid://s158exwbtkoy"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_yokwv"]
 [ext_resource type="PackedScene" uid="uid://6neh0sw1afwi" path="res://game/snow_trail/trail.tscn" id="2_7erlm"]
+[ext_resource type="FontFile" uid="uid://cslcrejpjhg8f" path="res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf" id="2_edady"]
 [ext_resource type="AudioStream" uid="uid://c5qtjpbprbkmh" path="res://game/player/assets/footsteps/footsteps_audio_stream_randomizer.tres" id="3_yiwyq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvibx"]
@@ -183,7 +184,6 @@ texture = SubResource("PortableCompressedTexture2D_ylnll")
 offset = Vector2(0, -6)
 hframes = 6
 vframes = 6
-frame = 33
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
 "layer_section": true,
@@ -225,7 +225,8 @@ offset_right = 30.5
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = ExtResource("2_edady")
+theme_override_font_sizes/font_size = 8
 text = "Anim_Facing"
 horizontal_alignment = 1
 
