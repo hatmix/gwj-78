@@ -25,3 +25,6 @@ texture = ExtResource("2_idocb")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-3.27826e-07, -3)
 scale = Vector2(0.9, 0.3)
+
+[node name="PatrolDirectionChangeTimer" type="Timer" parent="."]
+wait_time = 5.0
