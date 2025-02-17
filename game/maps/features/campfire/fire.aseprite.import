@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://c7t7lelc0i5rq"
+path="res://.godot/imported/fire.aseprite-dba9c92948bc675097430bc034234b70.res"
+
+[deps]
+
+source_file="res://game/maps/features/campfire/fire.aseprite"
+dest_files=["res://.godot/imported/fire.aseprite-dba9c92948bc675097430bc034234b70.res"]
+
+[params]
+
