@@ -5,9 +5,11 @@ extends Node
 var last_shader_update: float
 var shader_time: float
 
-@onready var color_rect: ColorRect = $ColorRect
-@onready var snowfall_shader: ShaderMaterial = color_rect.material
+@onready var snowfall: ColorRect = $Snowfall
+@onready var snowfall_shader: ShaderMaterial = snowfall.material
 @onready var bgm: AudioStreamPlayer = $Bgm
+
+# FIXME: collision layers for ground vs flyers, etc.
 
 
 func _ready() -> void:

@@ -1,12 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://s158exwbtkoy"]
+[gd_scene load_steps=12 format=4 uid="uid://s158exwbtkoy"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_yokwv"]
-[ext_resource type="Script" path="res://game/player/trail.gd" id="3_c211i"]
+[ext_resource type="PackedScene" uid="uid://6neh0sw1afwi" path="res://game/snow_trail/trail.tscn" id="2_7erlm"]
 [ext_resource type="AudioStream" uid="uid://c5qtjpbprbkmh" path="res://game/player/assets/footsteps/footsteps_audio_stream_randomizer.tres" id="3_yiwyq"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kp4p2"]
-radius = 4.0
-height = 16.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_wvibx"]
+radius = 2.0
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ylnll"]
 _data = PackedByteArray("AAADAAUAAAABAAAASAAAAEgAAAC0AQAAUklGRqwBAABXRUJQVlA4TJ8BAAAvR8AREC+gkJEkNngC970QPNQrZCMJTq3BL3FWRxZgGpzCrrKIovkPAHcbK1L/tw1AbsBGVhUUuFPCiAoiPAUgTQN/7b8XcJw81mtE/yG4bSNJypy7W8ymEL/CXu2BezgAd3D2b3dwgXu4Oe/h1uq5YAeaJIDKBZQzSKvnuacL5T5dTkI6c3KmXHASnBx4hkZOOAkpD+yq5Kht1i6KXd+xTLuy13M9wnnl216A842ZSqcm/jrIXFUdxJHwfkTEBJfl3LrpwP3mnmPRcSIJgOdwhDUiMmeS9cqly9b1v1Rz5soj2Cb6fCnBtrNRtLDK8VmVEj5dunQ2nIPRcbLmnuPQcrTfHKXb7juOO4lVz+k8rFd5squV0FU3F26I0t2rOU8Ac3C4WnRc654hYNd/pV+zI9r1X4e0R6YdzyVdfevj7ubm1K64NVVn8fouamagcqO40Vql5aJ5hraD5hly4yc5Sch5zuw0VXkYZzln1DTwtDnpU9ogu5STdmnXufXmnFB1clLchaqXkxA32lZrsRMVNA87sMuTyE/0nfjUFc0yAA==")
@@ -39,8 +38,8 @@ tracks/1/keys = {
 "values": []
 }
 
-[sub_resource type="Animation" id="Animation_5s44k"]
-length = 0.6
+[sub_resource type="Animation" id="Animation_q4scp"]
+length = 0.7
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -49,10 +48,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 12, 13, 14, 15, 16]
+"values": [23, 24, 25, 26, 27, 28, 23]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -61,7 +60,7 @@ tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -99,8 +98,8 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_q4scp"]
-length = 0.7
+[sub_resource type="Animation" id="Animation_5s44k"]
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -109,10 +108,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [23, 24, 25, 26, 27, 28, 23]
+"values": [0, 12, 13, 14, 15, 16]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -121,7 +120,7 @@ tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -168,22 +167,20 @@ _data = {
 "walk-up": SubResource("Animation_dbnhb")
 }
 
-[sub_resource type="Curve" id="Curve_8a2qv"]
-_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
 [node name="Player" type="CharacterBody2D"]
-z_index = 2
+y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_yokwv")
-speed = 15.0
+speed = 12.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_kp4p2")
+position = Vector2(0, -1.5)
+shape = SubResource("CircleShape2D_wvibx")
 
 [node name="Visual" type="Sprite2D" parent="."]
-texture_filter = 1
+y_sort_enabled = true
 texture = SubResource("PortableCompressedTexture2D_ylnll")
+offset = Vector2(0, -6)
 hframes = 6
 vframes = 6
 frame = 33
@@ -232,21 +229,8 @@ theme_override_font_sizes/font_size = 10
 text = "Anim_Facing"
 horizontal_alignment = 1
 
-[node name="Trail" type="Line2D" parent="." node_paths=PackedStringArray("node_tracked")]
+[node name="Trail" parent="." node_paths=PackedStringArray("node_tracked") instance=ExtResource("2_7erlm")]
 unique_name_in_owner = true
-show_behind_parent = true
-top_level = true
-z_index = -2
-position = Vector2(0, 6)
-width = 4.0
-width_curve = SubResource("Curve_8a2qv")
-default_color = Color(0.396078, 0.403922, 0.470588, 1)
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-sharp_limit = 6.0
-antialiased = true
-script = ExtResource("3_c211i")
 node_tracked = NodePath("..")
 
 [node name="FootstepsSfx" type="AudioStreamPlayer" parent="."]

@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsh8lu3xwvk31"]
+[gd_scene load_steps=12 format=3 uid="uid://bsh8lu3xwvk31"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0dwuo"]
 [ext_resource type="AudioStream" uid="uid://okiy571q8qdd" path="res://assets/music/contemplative.ogg" id="2_dm1aw"]
 [ext_resource type="Shader" path="res://game/shaders/pixel_snowfall.gdshader" id="2_dxdu8"]
 [ext_resource type="PackedScene" uid="uid://s158exwbtkoy" path="res://game/player/player.tscn" id="3_o5cm0"]
+[ext_resource type="Texture2D" uid="uid://c0m8c5v0y0ej3" path="res://game/maps/map_placeholder.png" id="4_tf8u3"]
+[ext_resource type="PackedScene" uid="uid://yr64eji3a244" path="res://game/enemies/antlers/antlers.tscn" id="5_ficg4"]
+[ext_resource type="PackedScene" uid="uid://bycr21mgk8bn3" path="res://game/enemies/drone/drone.tscn" id="5_yn58w"]
+[ext_resource type="PackedScene" uid="uid://dgyiyonxpxadi" path="res://game/enemies/blue_eyes/blue_eyes.tscn" id="6_3vyn2"]
+[ext_resource type="PackedScene" uid="uid://buhu6jlsosli8" path="res://game/maps/features/rocks/rock.tscn" id="7_eb5iv"]
+[ext_resource type="PackedScene" uid="uid://dihbu6hike2d3" path="res://game/maps/features/trees/tree.tscn" id="10_6ehon"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ug820"]
 shader = ExtResource("2_dxdu8")
@@ -20,14 +26,14 @@ shader_parameter/additional_rain_speed = 0.348
 shader_parameter/slant = 0.125
 shader_parameter/time = 10000.0
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_0dwuo")
 
 [node name="Bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_dm1aw")
-volume_db = -12.0
+volume_db = -18.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Snowfall" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ug820")
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,5 +41,75 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player" parent="." instance=ExtResource("3_o5cm0")]
-position = Vector2(160, 100)
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(160, 90)
+
+[node name="placeholder_map" type="Sprite2D" parent="Node2D"]
+z_index = -99
+z_as_relative = false
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_tf8u3")
+
+[node name="Antlers" parent="Node2D" instance=ExtResource("5_ficg4")]
+position = Vector2(-22, -16)
+
+[node name="Drone" parent="Node2D" instance=ExtResource("5_yn58w")]
+position = Vector2(132, 71)
+
+[node name="Drone2" parent="Node2D" instance=ExtResource("5_yn58w")]
+position = Vector2(145, -75)
+
+[node name="Drone3" parent="Node2D" instance=ExtResource("5_yn58w")]
+position = Vector2(81, -13)
+
+[node name="BlueEyes" parent="Node2D" instance=ExtResource("6_3vyn2")]
+position = Vector2(-66, 24)
+
+[node name="BlueEyes2" parent="Node2D" instance=ExtResource("6_3vyn2")]
+position = Vector2(102, -57)
+
+[node name="Player" parent="Node2D" instance=ExtResource("3_o5cm0")]
+position = Vector2(-64, 72)
+
+[node name="Rock" parent="Node2D" instance=ExtResource("7_eb5iv")]
+position = Vector2(-26, 52)
+
+[node name="Rock2" parent="Node2D" instance=ExtResource("7_eb5iv")]
+position = Vector2(6, 54)
+
+[node name="tree" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(-45, -5)
+
+[node name="tree2" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(41, 57)
+
+[node name="tree3" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(-53, 54)
+
+[node name="tree4" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(-99, -17)
+
+[node name="tree8" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(18, -41)
+
+[node name="tree9" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(40, -16)
+
+[node name="tree10" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(102, 27)
+
+[node name="tree11" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(95, -52)
+
+[node name="tree12" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(109, -54)
+
+[node name="tree7" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(-36, 24)
+
+[node name="tree5" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(-70, -39)
+
+[node name="tree6" parent="Node2D" instance=ExtResource("10_6ehon")]
+position = Vector2(-70, -39)

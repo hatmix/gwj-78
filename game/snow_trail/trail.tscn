@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://6neh0sw1afwi"]
+
+[ext_resource type="Script" path="res://game/snow_trail/trail.gd" id="1_j5sb6"]
+
+[sub_resource type="Curve" id="Curve_8a2qv"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Trail" type="Line2D" node_paths=PackedStringArray("node_tracked")]
+show_behind_parent = true
+top_level = true
+z_index = -10
+position = Vector2(0, -1)
+width = 4.0
+width_curve = SubResource("Curve_8a2qv")
+default_color = Color(0.396078, 0.403922, 0.470588, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 6.0
+antialiased = true
+script = ExtResource("1_j5sb6")
+node_tracked = NodePath("")

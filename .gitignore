@@ -21,6 +21,7 @@ reports/*
 .justfile
 .build_success.json
 addons/AsepriteWizard
+addons/Todo_Manager
 
 # Godot export directories based on export_presets.cfg
 exports/*

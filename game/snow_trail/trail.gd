@@ -4,6 +4,7 @@ extends Line2D
 @export var min_distance_between_points: float = 4
 
 
+# TODO: how to handle collision/detection of trails by enemies?
 # TODO: fading of tracks based on weather conditions & time elapsed
 # TODO: how to use gradient across width of line? (line2d's built-in gradients
 # seem to work over the length)
