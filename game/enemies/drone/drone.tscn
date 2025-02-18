@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bycr21mgk8bn3"]
+[gd_scene load_steps=23 format=4 uid="uid://bycr21mgk8bn3"]
 
 [ext_resource type="Script" path="res://game/enemies/drone/drone.gd" id="1_ry1n7"]
 [ext_resource type="Texture2D" uid="uid://obaqax6kif5y" path="res://game/enemies/drone/assets/shadow.png" id="2_1dl6r"]
@@ -7,8 +7,11 @@
 [ext_resource type="FontFile" uid="uid://cslcrejpjhg8f" path="res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf" id="3_dyvb2"]
 [ext_resource type="Texture2D" uid="uid://boxqycewo5c3j" path="res://game/enemies/drone/assets/top_down_45_cone_front_32x32.png" id="4_0166a"]
 [ext_resource type="Script" path="res://game/enemies/drone/states/patrol.gd" id="4_y21gw"]
+[ext_resource type="AudioStream" uid="uid://dmduauj4kxhbc" path="res://game/enemies/drone/assets/collect1.wav" id="5_fymge"]
 [ext_resource type="Script" path="res://game/enemies/drone/states/track.gd" id="5_vmfby"]
+[ext_resource type="AudioStream" uid="uid://bjwd0t7ib22nn" path="res://game/enemies/drone/assets/scanning.ogg" id="6_ah7xn"]
 [ext_resource type="Script" path="res://game/enemies/drone/states/search.gd" id="6_eotgj"]
+[ext_resource type="AudioStream" uid="uid://xbv3i1t2x02s" path="res://game/enemies/drone/assets/whimper.wav" id="7_j2hoy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vm57"]
 size = Vector2(10, 10)
@@ -36,9 +39,174 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
 
+[sub_resource type="Animation" id="Animation_erdqq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimPlayerSfx2D:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pr557"]
+resource_name = "searching"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimPlayerSfx2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_ah7xn")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimPlayerSfx2D:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-18.0]
+}
+
+[sub_resource type="Animation" id="Animation_cnijn"]
+resource_name = "search_exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.766667, 0.833333, 0.9, 0.933333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, -17), Vector2(0, -16), Vector2(0, -21), Vector2(0, -16), Vector2(0, -21), Vector2(0, -20)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimPlayerSfx2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_j2hoy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimPlayerSfx2D:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_e2ito"]
+resource_name = "start_search"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1, 0.166667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, -22), Vector2(0, -20), Vector2(0, -22), Vector2(0, -20)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimPlayerSfx2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_fymge")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimPlayerSfx2D:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.0]
+}
+
+[sub_resource type="Animation" id="Animation_1v5nm"]
+resource_name = "patrolling"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.766667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, -19), Vector2(0, -20), Vector2(0, -21), Vector2(0, -20)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e5d8y"]
 _data = {
-"default": SubResource("Animation_4bqfh")
+"RESET": SubResource("Animation_erdqq"),
+"default": SubResource("Animation_4bqfh"),
+"patrolling": SubResource("Animation_1v5nm"),
+"search_enter": SubResource("Animation_e2ito"),
+"search_exit": SubResource("Animation_cnijn"),
+"searching": SubResource("Animation_pr557")
 }
 
 [node name="Drone" type="CharacterBody2D"]
@@ -105,13 +273,16 @@ libraries = {
 "": SubResource("AnimationLibrary_e5d8y")
 }
 
+[node name="AnimPlayerSfx2D" type="AudioStreamPlayer2D" parent="."]
+max_distance = 200.0
+attenuation = 2.0
+
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -18)
 scale = Vector2(0.6, 0.8)
 
 [node name="StateLabel" type="Label" parent="."]
 unique_name_in_owner = true
-self_modulate = Color(0.141176, 0.141176, 0.188235, 1)
 z_index = 99
 z_as_relative = false
 anchors_preset = 7
@@ -120,11 +291,14 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -30.5
-offset_top = -42.0
+offset_top = -50.0
 offset_right = 30.5
-offset_bottom = -19.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_dyvb2")
 theme_override_font_sizes/font_size = 8
 text = "State"

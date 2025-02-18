@@ -3,10 +3,14 @@ extends FsmState
 var point_of_interest: Vector2
 var path: Array[Vector2]
 
+var _is_animating: bool = false
+
 @onready var patrol_pattern: Line2D = $PatrolPattern
 
 
 func enter_state():
+	_is_animating = true
+	_state.target.anim_player.play("search_enter")
 	# Rotate the search pattern by drone's travel direction
 	# consider whether it's better for player if it's never rotated...
 	var theta: float = Vector2.RIGHT.angle_to(_state.target.direction)
@@ -17,13 +21,21 @@ func enter_state():
 		rotated_point.x = (point.x * cos(theta) - point.y * sin(theta) + point_of_interest.x)
 		rotated_point.y = (point.x * sin(theta) + point.y * cos(theta) + point_of_interest.y)
 		path.append(rotated_point)
+
+	await _state.target.anim_player.animation_finished
+	_is_animating = false
 	_state.target.scan(true)
+	_state.target.anim_player.play("searching")
 
 
 func exit_state():
+	_is_animating = true
 	_state.target.scan(false)
 	point_of_interest = Vector2.ZERO
 	path = []
+	_state.target.anim_player.play("search_exit")
+	await _state.target.anim_player.animation_finished
+	_is_animating = false
 
 
 func process(_delta: float) -> void:
@@ -31,6 +43,8 @@ func process(_delta: float) -> void:
 
 
 func physics_process(_delta: float) -> void:
+	if _is_animating:
+		return
 	if _state.target.global_position.distance_to(path[0]) < 10:
 		path.pop_front()
 

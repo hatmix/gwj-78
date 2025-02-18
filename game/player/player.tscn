@@ -213,9 +213,13 @@ libraries = {
 "": SubResource("AnimationLibrary_jseqf")
 }
 
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
 [node name="StateLabel" type="Label" parent="."]
 unique_name_in_owner = true
-self_modulate = Color(0.141176, 0.141176, 0.188235, 1)
+z_index = 99
+z_as_relative = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -227,6 +231,9 @@ offset_right = 30.5
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_edady")
 theme_override_font_sizes/font_size = 8
 text = "Anim_Facing"

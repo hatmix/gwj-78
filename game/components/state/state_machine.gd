@@ -16,8 +16,8 @@ func change_to(_state: Variant) -> void:
 		return
 	if current_state:
 		current_state.active = false
-		current_state.exit_state()
-	new_state.enter_state()
+		await current_state.exit_state()
+	await new_state.enter_state()
 	new_state.active = true
 	if not is_inside_tree():
 		await ready

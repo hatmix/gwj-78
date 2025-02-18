@@ -37,8 +37,6 @@ func _ready() -> void:
 	)
 	detect_area_2d.body_entered.connect(_on_body_entered_detect_area)
 	detect_area_2d.area_entered.connect(_on_area_entered_detect_area)
-	_state.state_changed.connect(_update_state_label)
-	%StateLabel.text = _state.current_state.name
 	scan(false)
 	# set initial direction toward center of screen
 	direction = global_position.direction_to(Vector2(160, 90))
@@ -52,7 +50,7 @@ func _input(_event: InputEvent) -> void:
 
 # Override base Enemy _physics_process behavior
 func _physics_process(_delta: float) -> void:
-	pass
+	%StateLabel.text = "%s\n%s" % [_state.current_state.name, anim_player.current_animation]
 
 
 func _update_state_label(new_state: FsmState, _old_state: FsmState) -> void:

@@ -8,9 +8,14 @@ extends FsmState
 
 func enter_state() -> void:
 	direction_change_timer.start()
+	if not is_instance_valid(_state.target.anim_player):
+		await _state.target.ready
+	_state.target.anim_player.play("patrolling")
 
 
 func exit_state() -> void:
+	if _state.target.anim_player.current_animation == "patrolling":
+		_state.target.anim_player.stop()
 	direction_change_timer.stop()
 
 
