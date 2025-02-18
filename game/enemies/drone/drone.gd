@@ -12,6 +12,8 @@ extends Enemy  # Maybe not useful now...
 
 @export var search_speed: float = 15.0
 
+var scanned: Array[Node2D] = []
+
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var detect_area_2d: Area2D = $DetectArea2D
 @onready var scanner_back: Sprite2D = $ScannerBack
@@ -66,7 +68,12 @@ func _on_body_entered_detect_area(body: Node2D) -> void:
 
 
 func _on_area_entered_detect_area(area: Area2D) -> void:
-	print(name, " detected ", area.name, " belonging to ", area.get_parent().name)
+	var node: Node2D = area.get_parent()
+	print(name, " detected ", area.name, " belonging to ", node.name)
+	if node.is_in_group("Remains") and node not in scanned:
+		scanned.append(node)
+		_search.point_of_interest = node.global_position
+		_state.change_to(_search)
 
 
 # TODO: figure out a good way to avoid this entanglement

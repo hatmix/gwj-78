@@ -32,6 +32,10 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 
 ui/toolbar/run_overall=true
 
+[global_group]
+
+Remains=""
+
 [gui]
 
 theme/custom="res://default_theme.tres"

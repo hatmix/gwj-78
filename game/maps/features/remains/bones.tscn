@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://hkvsw67ql40e" path="res://game/maps/features/remains/static-bones.png" id="1_jyol7"]
 
-[node name="Bones" type="StaticBody2D"]
+[node name="Bones" type="StaticBody2D" groups=["Remains"]]
 y_sort_enabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -10,6 +10,15 @@ polygon = PackedVector2Array(-5, -14, 4, -14, 4, -11, 8, -11, 8, -7, -1, -1, -2,
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(5, 0, 11, -5, 13, -2, 12, 1, 8, 1, 7, 2, 5, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(3, -7)
+collision_layer = 24
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(0, -9, 12, 0, 9, 8, 1, 9, -12, -2, -12, -4, -8, -7)
 
 [node name="Visual" type="Sprite2D" parent="."]
 y_sort_enabled = true
