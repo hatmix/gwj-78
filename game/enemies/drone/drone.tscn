@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://bycr21mgk8bn3"]
+[gd_scene load_steps=15 format=4 uid="uid://bycr21mgk8bn3"]
 
 [ext_resource type="Script" path="res://game/enemies/drone/drone.gd" id="1_ry1n7"]
 [ext_resource type="Texture2D" uid="uid://obaqax6kif5y" path="res://game/enemies/drone/assets/shadow.png" id="2_1dl6r"]
+[ext_resource type="Texture2D" uid="uid://bmcbxghs4viyy" path="res://game/enemies/drone/assets/top_down_45_cone_back_32x32.png" id="2_k8n0g"]
 [ext_resource type="Script" path="res://game/components/state/state_machine.gd" id="3_b1gwg"]
 [ext_resource type="FontFile" uid="uid://cslcrejpjhg8f" path="res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf" id="3_dyvb2"]
+[ext_resource type="Texture2D" uid="uid://boxqycewo5c3j" path="res://game/enemies/drone/assets/top_down_45_cone_front_32x32.png" id="4_0166a"]
 [ext_resource type="Script" path="res://game/enemies/drone/states/patrol.gd" id="4_y21gw"]
 [ext_resource type="Script" path="res://game/enemies/drone/states/track.gd" id="5_vmfby"]
 [ext_resource type="Script" path="res://game/enemies/drone/states/search.gd" id="6_eotgj"]
@@ -40,7 +42,7 @@ _data = {
 }
 
 [node name="Drone" type="CharacterBody2D"]
-collision_layer = 16
+collision_layer = 18
 collision_mask = 18
 motion_mode = 1
 script = ExtResource("1_ry1n7")
@@ -57,6 +59,11 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea2D"]
 shape = SubResource("CircleShape2D_72dqh")
+
+[node name="ScannerBack" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.498039, 0.498039, 0.501961)
+z_index = -1
+texture = ExtResource("2_k8n0g")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 texture = ExtResource("2_1dl6r")
@@ -88,6 +95,11 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "db0b9cb342b79f7ebf43795c8dec38c6"
 
+[node name="ScannerFront" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.498039, 0.498039, 0.501961)
+z_index = 1
+texture = ExtResource("4_0166a")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_e5d8y")
@@ -97,14 +109,11 @@ libraries = {
 position = Vector2(0, -18)
 scale = Vector2(0.6, 0.8)
 
-[node name="PatrolPattern" type="Line2D" parent="."]
-visible = false
-points = PackedVector2Array(0, 0, 18, 0, 9, 15, -9, -15, 9, -15, -9, 15, -18, 0, 0, 0)
-width = 2.0
-
 [node name="StateLabel" type="Label" parent="."]
 unique_name_in_owner = true
 self_modulate = Color(0.141176, 0.141176, 0.188235, 1)
+z_index = 99
+z_as_relative = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -137,3 +146,8 @@ script = ExtResource("5_vmfby")
 
 [node name="Search" type="Node" parent="StateMachine"]
 script = ExtResource("6_eotgj")
+
+[node name="PatrolPattern" type="Line2D" parent="StateMachine/Search"]
+visible = false
+points = PackedVector2Array(0, 0, 36, 0, 18, 30, -18, -30, 18, -30, -18, 30, -36, 0, 0, 0)
+width = 2.0
