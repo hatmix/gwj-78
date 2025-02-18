@@ -1,36 +1,50 @@
-extends Enemy
+extends Enemy  # Maybe not useful now...
 
-enum State {PATROL, TRACK}
-
-var state: State = State.PATROL
+## Overview of states
+## PATROL
+##   somewhat random movement with turns every min-max seconds,
+##   head toward center of screen if moved off screen
+## TRACK
+##   spotted tracks and following them
+## SEARCH
+##   trail ended, so enter search pattern from last point
+##   (see https://owaysonline.com/iamsar-search-patterns/)
 
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
-@onready var patrol_direction_change_timer: Timer = $PatrolDirectionChangeTimer
+@onready var _state: StateMachine = $StateMachine
 
 
 func _ready() -> void:
-	visible_on_screen_notifier_2d.screen_exited.connect(_on_visible_on_screen_notifier_2d_screen_exited)
-	patrol_direction_change_timer.timeout.connect(_change_direction)
-	patrol_direction_change_timer.wait_time = randf_range(2.0, 6.0)
-	patrol_direction_change_timer.start()
+	visible_on_screen_notifier_2d.screen_exited.connect(
+		_on_visible_on_screen_notifier_2d_screen_exited
+	)
+	_state.state_changed.connect(_update_state_label)
+	%StateLabel.text = _state.current_state.name
+
+	# set initial direction toward center of screen
 	direction = global_position.direction_to(Vector2(160, 90))
-	
 
 
 # Override base Enemy _input behavior
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	pass
 
 
-func _change_direction() -> void:
-	var angle: float = [-PI/2, PI/2, PI].pick_random()
-	direction = direction.rotated(angle)
+# Override base Enemy _physics_process behavior
+func _physics_process(_delta: float) -> void:
+	pass
 
 
+func _update_state_label(new_state: FsmState, _old_state: FsmState) -> void:
+	%StateLabel.text = new_state.name
+
+
+# TODO: try to figure out a good way to avoid this entanglement
+# notifier2D loses global_position if under FsmState nodes
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	match state:
-		State.PATROL:
+	match _state.current_state.name:
+		"Patrol":
 			direction = global_position.direction_to(Vector2(160, 90))
-		State.TRACK:
+		"Track":
 			# Following something off the map...
 			queue_free()

@@ -1,14 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://bycr21mgk8bn3"]
+[gd_scene load_steps=10 format=3 uid="uid://bycr21mgk8bn3"]
 
 [ext_resource type="Script" path="res://game/enemies/drone/drone.gd" id="1_ry1n7"]
 [ext_resource type="Texture2D" uid="uid://hmvn0lj35pxd" path="res://game/enemies/drone/static-dron.png" id="2_idocb"]
+[ext_resource type="Script" path="res://components/state/state_machine.gd" id="3_b1gwg"]
+[ext_resource type="FontFile" uid="uid://cslcrejpjhg8f" path="res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf" id="3_dyvb2"]
+[ext_resource type="Script" path="res://game/enemies/drone/states/patrol.gd" id="4_y21gw"]
+[ext_resource type="Script" path="res://game/enemies/drone/states/track.gd" id="5_vmfby"]
+[ext_resource type="Script" path="res://game/enemies/drone/states/search.gd" id="6_eotgj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vm57"]
 size = Vector2(16, 5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_72dqh"]
+radius = 16.0
+
 [node name="Drone" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 16
+collision_mask = 18
 motion_mode = 1
 script = ExtResource("1_ry1n7")
 speed = 30.0
@@ -16,6 +24,12 @@ speed = 30.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_0vm57")
+
+[node name="DetectArea2D" type="Area2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea2D"]
+shape = SubResource("CircleShape2D_72dqh")
 
 [node name="Visual" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -26,5 +40,43 @@ texture = ExtResource("2_idocb")
 position = Vector2(-3.27826e-07, -3)
 scale = Vector2(0.9, 0.3)
 
-[node name="PatrolDirectionChangeTimer" type="Timer" parent="."]
+[node name="PatrolPattern" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(0, 0, 18, 0, 9, 15, -9, -15, 9, -15, -9, 15, -18, 0, 0, 0)
+width = 2.0
+
+[node name="StateLabel" type="Label" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.141176, 0.141176, 0.188235, 1)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.5
+offset_top = -12.0
+offset_right = 30.5
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_dyvb2")
+theme_override_font_sizes/font_size = 8
+text = "State"
+horizontal_alignment = 1
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("target", "initial_state")]
+script = ExtResource("3_b1gwg")
+target = NodePath("..")
+initial_state = NodePath("Patrol")
+
+[node name="Patrol" type="Node" parent="StateMachine"]
+script = ExtResource("4_y21gw")
+
+[node name="DirectionChangeTimer" type="Timer" parent="StateMachine/Patrol"]
 wait_time = 5.0
+
+[node name="Track" type="Node" parent="StateMachine"]
+script = ExtResource("5_vmfby")
+
+[node name="Search" type="Node" parent="StateMachine"]
+script = ExtResource("6_eotgj")
