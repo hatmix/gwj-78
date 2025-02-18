@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bycr21mgk8bn3"]
+[gd_scene load_steps=13 format=4 uid="uid://bycr21mgk8bn3"]
 
 [ext_resource type="Script" path="res://game/enemies/drone/drone.gd" id="1_ry1n7"]
-[ext_resource type="Texture2D" uid="uid://hmvn0lj35pxd" path="res://game/enemies/drone/static-dron.png" id="2_idocb"]
+[ext_resource type="Texture2D" uid="uid://obaqax6kif5y" path="res://game/enemies/drone/assets/shadow.png" id="2_1dl6r"]
 [ext_resource type="Script" path="res://components/state/state_machine.gd" id="3_b1gwg"]
 [ext_resource type="FontFile" uid="uid://cslcrejpjhg8f" path="res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf" id="3_dyvb2"]
 [ext_resource type="Script" path="res://game/enemies/drone/states/patrol.gd" id="4_y21gw"]
@@ -9,36 +9,93 @@
 [ext_resource type="Script" path="res://game/enemies/drone/states/search.gd" id="6_eotgj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vm57"]
-size = Vector2(16, 5)
+size = Vector2(10, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_72dqh"]
 radius = 16.0
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_byr4w"]
+_data = PackedByteArray("AAADAAUAAAABAAAAoAAAAIAAAAAoAwAAUklGRiADAABXRUJQVlA4TBMDAAAvn8AfEG+gJpKkWNDVKfjfmBAFxHggRG0kqW38MwgZIh8hV4XURJIUC7q6+FXwE6KAGA+EzH8AwHR1FSSGxOBHl68hR0PWW759B8fDs7FBkrTtbdvAjUNpxu0GHMhpWrlcoIFpSw3ddIzUK5BZMVWDXXoBeQJSJ3DVBXAZF376fyBuq4j+O3LbyJHk02zkhFeIK3r5PwwxGJIx9w6XjnFitPPSbdS6EnTIT9qJZiEqmhTskPxvc2pa8I94naRwXzTp+XOpfXPos/nnaPnkyM/TfjkeyBdeOZbfbm+rQbNDKeSIk3EcJHdiTBw2psiOhOz4XpV95CiQ4wA7SqrjcNgNiI4aO6jOgwI6SuygOivgiDrGxM4dqrk12XPu2GxOLJ5NuHdcaRtZO0t3ELNW0Oed2/150h3kGzXr/EbPirvW5Zl3pb61/tO3yxS1UX95+4rPOtfQ8ew51aVRqUbpswHHow/IoZHUpMC5rrTWuBbNYVLgyFLgijaRMz9P0xzZU+BQ6EJEH7DzgXxBdKgl4JASuCLoXH67va0GNIfELqojMSYOvXJ8Pyj7wFFhR9FHzoLqrIfdgOY4xI6a6qpK1AG/o2gu2jImbnZ0nDvWlnoKOKRjh1g8m3DvuFI3snYWZK0L1xV7OEt1WMvguktdrtsQ8g+GYZgJy0JYOgaM2F/UuprGECIs/0dlRlJAyCQRlqdUppgUzFtXuUZ33rUjmtRaA4kfjpZPjvw87ZfjgXzhlWP5rVJq0OyIE6pje5voUMbEIcmRsDu+V0UfOA6wo+R2HA67AXDU4zhozho6Dkqyo0BV2AGcUceYmN2hmh1b0LUme4rbsYkcS8AlFs8m3Duu1lnr2DGydvaKPRjNunZYK+4Wp9t0B3dZSHdwp6bpDu4kg+N/X67pDvavnY3u4K9Fd7Aen6fpDt4eyBea7GBt+e32thrQHawlxsQh3cHa96rsh8BRIMdB0WeuHnaD5g6xo+4GvB2U3YDq4C3qGBMHZAdva7KnAgYH5xbPxuC4VjaydhZkrcCOK3/U6ziaHcNxQ54AAA==")
+size_override = Vector2(160, 128)
+
+[sub_resource type="Animation" id="Animation_4bqfh"]
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e5d8y"]
+_data = {
+"default": SubResource("Animation_4bqfh")
+}
 
 [node name="Drone" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 18
 motion_mode = 1
 script = ExtResource("1_ry1n7")
-speed = 30.0
+speed = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2.5)
+position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_0vm57")
 
 [node name="DetectArea2D" type="Area2D" parent="."]
-position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 12
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea2D"]
 shape = SubResource("CircleShape2D_72dqh")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_1dl6r")
+
 [node name="Visual" type="Sprite2D" parent="."]
 y_sort_enabled = true
+texture_filter = 1
 position = Vector2(0, -4)
-texture = ExtResource("2_idocb")
+texture = SubResource("PortableCompressedTexture2D_byr4w")
+offset = Vector2(0, -20)
+hframes = 5
+vframes = 4
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://game/enemies/drone/assets/enemy-patrol.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "db0b9cb342b79f7ebf43795c8dec38c6"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e5d8y")
+}
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-3.27826e-07, -3)
-scale = Vector2(0.9, 0.3)
+position = Vector2(0, -18)
+scale = Vector2(0.6, 0.8)
 
 [node name="PatrolPattern" type="Line2D" parent="."]
 visible = false
@@ -54,9 +111,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -30.5
-offset_top = -12.0
+offset_top = -22.0
 offset_right = 30.5
-offset_bottom = 11.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_dyvb2")

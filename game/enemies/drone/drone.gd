@@ -12,6 +12,7 @@ extends Enemy  # Maybe not useful now...
 
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var _state: StateMachine = $StateMachine
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
@@ -23,6 +24,7 @@ func _ready() -> void:
 
 	# set initial direction toward center of screen
 	direction = global_position.direction_to(Vector2(160, 90))
+	anim_player.play("default")
 
 
 # Override base Enemy _input behavior

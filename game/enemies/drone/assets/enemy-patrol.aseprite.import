@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bk03edfeluc35"
+path="res://.godot/imported/enemy-patrol.aseprite-b2dbe44d3895dabe4b8bb3d0b6467853.res"
+
+[deps]
+
+source_file="res://game/enemies/drone/assets/enemy-patrol.aseprite"
+dest_files=["res://.godot/imported/enemy-patrol.aseprite-b2dbe44d3895dabe4b8bb3d0b6467853.res"]
+
+[params]
+

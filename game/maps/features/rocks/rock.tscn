@@ -1,20 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://buhu6jlsosli8"]
+[gd_scene load_steps=2 format=3 uid="uid://buhu6jlsosli8"]
 
-[ext_resource type="Texture2D" uid="uid://chn20bhkropct" path="res://icon.png" id="1_yxkf6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6ajw"]
-size = Vector2(6, 3)
+[ext_resource type="Texture2D" uid="uid://235q85egyhtn" path="res://game/maps/features/rocks/static-stone2.png" id="1_64tdj"]
 
 [node name="Rock" type="StaticBody2D"]
 y_sort_enabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_u6ajw")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-4, -2, -3, -7, 8, -10, 13, -5, 9, 0, 3, 0, 2, -2, 0, -2, -2, 0)
 
 [node name="Visual" type="Sprite2D" parent="."]
-modulate = Color(0.237539, 0.237539, 0.237539, 1)
 y_sort_enabled = true
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_yxkf6")
-offset = Vector2(0, -32)
+texture = ExtResource("1_64tdj")
+offset = Vector2(0, -1)

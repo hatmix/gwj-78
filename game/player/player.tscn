@@ -172,7 +172,7 @@ _data = {
 y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_yokwv")
-speed = 12.0
+speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.5)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hmvn0lj35pxd"
-path="res://.godot/imported/static-dron.png-cb88fcfd6b6bd9a97ec3ffd7848f4d66.ctex"
+uid="uid://obaqax6kif5y"
+path="res://.godot/imported/shadow.png-dcaf80474479e743f503259ca27e00cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/enemies/drone/static-dron.png"
-dest_files=["res://.godot/imported/static-dron.png-cb88fcfd6b6bd9a97ec3ffd7848f4d66.ctex"]
+source_file="res://game/enemies/drone/assets/shadow.png"
+dest_files=["res://.godot/imported/shadow.png-dcaf80474479e743f503259ca27e00cf.ctex"]
 
 [params]
 

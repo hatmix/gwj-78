@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwss3fivufcb2"]
+
+[ext_resource type="Texture2D" uid="uid://duhfjgq20321t" path="res://game/maps/features/cliffs/static-cliff.png" id="1_a82wm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6ajw"]
+size = Vector2(6, 3)
+
+[node name="Rock" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_u6ajw")
+
+[node name="Visual" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_a82wm")
+offset = Vector2(0, -32)

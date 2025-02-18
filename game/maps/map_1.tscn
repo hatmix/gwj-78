@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://de5gr0w8nmik3"]
+[gd_scene load_steps=9 format=3 uid="uid://de5gr0w8nmik3"]
 
 [ext_resource type="Texture2D" uid="uid://c0m8c5v0y0ej3" path="res://game/maps/map_placeholder.png" id="1_cgwmr"]
 [ext_resource type="PackedScene" uid="uid://bycr21mgk8bn3" path="res://game/enemies/drone/drone.tscn" id="3_4mfge"]
 [ext_resource type="PackedScene" uid="uid://s158exwbtkoy" path="res://game/player/player.tscn" id="5_j03r6"]
+[ext_resource type="PackedScene" uid="uid://buhu6jlsosli8" path="res://game/maps/features/rocks/rock.tscn" id="7_gioox"]
 [ext_resource type="PackedScene" uid="uid://dihbu6hike2d3" path="res://game/maps/features/trees/tree.tscn" id="7_wf6ec"]
 [ext_resource type="PackedScene" uid="uid://3w5qnv4m08vy" path="res://game/maps/features/remains/bones.tscn" id="8_qvf5l"]
 [ext_resource type="PackedScene" uid="uid://dexca6yerrarl" path="res://game/maps/features/remains/skull.tscn" id="9_es1sj"]
@@ -20,7 +21,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_cgwmr")
 
 [node name="Drone" parent="." instance=ExtResource("3_4mfge")]
-position = Vector2(132, 71)
+position = Vector2(147, 80)
 
 [node name="Drone2" parent="." instance=ExtResource("3_4mfge")]
 position = Vector2(145, -75)
@@ -31,49 +32,13 @@ position = Vector2(-148, -82)
 [node name="Player" parent="." instance=ExtResource("5_j03r6")]
 position = Vector2(-64, 72)
 
-[node name="tree" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(-45, -5)
-
-[node name="tree2" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(41, 57)
-
-[node name="tree3" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(-53, 54)
-
-[node name="tree4" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(-99, -17)
-
-[node name="tree8" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(18, -41)
-
-[node name="tree9" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(40, -16)
-
-[node name="tree10" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(102, 27)
-
-[node name="tree11" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(95, -52)
-
-[node name="tree12" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(109, -54)
-
-[node name="tree7" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(-36, 24)
-
-[node name="tree5" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(-70, -39)
-
-[node name="tree6" parent="." instance=ExtResource("7_wf6ec")]
-position = Vector2(-70, -39)
-
 [node name="Bones" parent="." instance=ExtResource("8_qvf5l")]
 position = Vector2(-82, 40)
 
 [node name="Skull" parent="." instance=ExtResource("9_es1sj")]
 position = Vector2(1, -18)
 
-[node name="Skull2" parent="." instance=ExtResource("9_es1sj")]
+[node name="Rock" parent="." instance=ExtResource("7_gioox")]
 position = Vector2(4, 53)
 
 [node name="Skull3" parent="." instance=ExtResource("9_es1sj")]
@@ -81,3 +46,42 @@ position = Vector2(-28, 51)
 
 [node name="Campfire" parent="." instance=ExtResource("10_g0cto")]
 position = Vector2(86, -35)
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="tree" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(-87, 10)
+
+[node name="tree2" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(60, 59)
+
+[node name="tree3" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(-53, 54)
+
+[node name="tree4" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(-114, -20)
+
+[node name="tree8" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(18, -41)
+
+[node name="tree9" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(40, -16)
+
+[node name="tree10" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(134, 55)
+
+[node name="tree11" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(95, -52)
+
+[node name="tree12" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(122, -38)
+
+[node name="tree7" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(-19, 25)
+
+[node name="tree5" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(-70, -39)
+
+[node name="tree6" parent="Trees" instance=ExtResource("7_wf6ec")]
+position = Vector2(-70, -39)
