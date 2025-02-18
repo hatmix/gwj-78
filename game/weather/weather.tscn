@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c45lhaiu1a1rd"]
+[gd_scene load_steps=4 format=3 uid="uid://c45lhaiu1a1rd"]
 
 [ext_resource type="Script" path="res://game/weather/weather.gd" id="1_bltdc"]
 [ext_resource type="Shader" path="res://game/shaders/pixel_snowfall.gdshader" id="1_w5edk"]
@@ -16,88 +16,7 @@ shader_parameter/rain_color = Color(1, 1, 1, 1)
 shader_parameter/base_rain_speed = 0.156
 shader_parameter/additional_rain_speed = 0.348
 shader_parameter/slant = 0.125
-shader_parameter/time = 6775.63
-
-[sub_resource type="Animation" id="Animation_wd8ba"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:snow_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_uvoqu"]
-resource_name = "fade_in"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:snow_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_f31uy"]
-resource_name = "fade_out"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:snow_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6xmb"]
-_data = {
-"RESET": SubResource("Animation_wd8ba"),
-"fade_in": SubResource("Animation_uvoqu"),
-"fade_out": SubResource("Animation_f31uy")
-}
-
-[sub_resource type="Animation" id="Animation_krmbt"]
-resource_name = "snow_loop"
-length = 10.0
-loop_mode = 1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"start_snowing"
-}, {
-"args": [],
-"method": &"stop_snowing"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b6rdi"]
-_data = {
-"snow_loop": SubResource("Animation_krmbt")
-}
+shader_parameter/time = 9882.13
 
 [node name="Weather" type="CanvasLayer"]
 script = ExtResource("1_bltdc")
@@ -114,14 +33,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_l6xmb")
-}
+[node name="WeatherChangeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
 
-[node name="DummyWeatherGenerator" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_b6rdi")
-}
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="WeatherChangeTimer" to="." method="_on_weather_change_timer_timeout"]
