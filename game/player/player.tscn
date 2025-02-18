@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=4 uid="uid://s158exwbtkoy"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_yokwv"]
-[ext_resource type="PackedScene" uid="uid://6neh0sw1afwi" path="res://game/snow_trail/trail.tscn" id="2_7erlm"]
+[ext_resource type="PackedScene" uid="uid://6neh0sw1afwi" path="res://game/components/snow_trail/trail.tscn" id="2_7erlm"]
 [ext_resource type="FontFile" uid="uid://cslcrejpjhg8f" path="res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf" id="2_edady"]
 [ext_resource type="AudioStream" uid="uid://c5qtjpbprbkmh" path="res://game/player/assets/footsteps/footsteps_audio_stream_randomizer.tres" id="3_yiwyq"]
 

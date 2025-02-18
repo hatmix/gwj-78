@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/enemies/blue_eyes/blue_eyes.gd" id="1_xdlgl"]
 [ext_resource type="Texture2D" uid="uid://chn20bhkropct" path="res://icon.png" id="2_aj5ig"]
-[ext_resource type="PackedScene" uid="uid://6neh0sw1afwi" path="res://game/snow_trail/trail.tscn" id="3_hyxhf"]
+[ext_resource type="PackedScene" uid="uid://6neh0sw1afwi" path="res://game/components/snow_trail/trail.tscn" id="3_hyxhf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vm57"]
 size = Vector2(5, 5)

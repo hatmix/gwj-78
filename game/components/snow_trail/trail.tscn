@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://6neh0sw1afwi"]
 
-[ext_resource type="Script" path="res://game/snow_trail/trail.gd" id="1_j5sb6"]
+[ext_resource type="Script" path="res://game/components/snow_trail/trail.gd" id="1_j5sb6"]
 
 [sub_resource type="Curve" id="Curve_8a2qv"]
 _data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
