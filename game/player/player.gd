@@ -28,13 +28,13 @@ func get_sprite_facing(radians):
 
 func footstep() -> void:
 	footsteps_sfx.play()
-	
 
-func _input(event: InputEvent) -> void:
+
+func _input(_event: InputEvent) -> void:
 	direction = Input.get_vector("Move Left", "Move Right", "Move Up", "Move Down")
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if direction.length() > 0:
 		state = State.WALK
 		var facing = get_sprite_facing(direction.angle())
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 
 	var animation: String = str(State.keys()[state]).to_lower()
-	
+
 	match state:
 		State.IDLE:
 			visual.flip_h = (last_facing == "left")
@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 		State.WALK:
 			visual.flip_h = false
 			anim_player.play("%s-%s" % [animation, last_facing])
-	
+
 	%StateLabel.text = "%s-%s" % [animation, last_facing]
-		
+
 	move_and_slide()

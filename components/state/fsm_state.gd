@@ -2,7 +2,9 @@ class_name FsmState
 extends Node
 
 # injected by state machine
+@warning_ignore("unused_variable")
 var active: bool = false
+@warning_ignore("unused_private_class_variable")
 var _state: StateMachine
 
 
