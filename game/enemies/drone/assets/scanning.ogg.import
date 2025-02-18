@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/scanning.ogg-19c7f48065660df41b0f1d1d366e790e
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

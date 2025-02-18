@@ -13,8 +13,10 @@ extends Enemy  # Maybe not useful now...
 @export var search_speed: float = 15.0
 
 var scanned: Array[Node2D] = []
+var scan_audio_stream: AudioStream = preload("res://game/enemies/drone/assets/scanning.ogg")
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var anim_player_sfx_2d: AudioStreamPlayer2D = $AnimPlayerSfx2D
 @onready var detect_area_2d: Area2D = $DetectArea2D
 @onready var scanner_back: Sprite2D = $ScannerBack
 @onready var scanner_front: Sprite2D = $ScannerFront
@@ -31,6 +33,12 @@ func scan(enable: bool = true) -> void:
 	scanner_back.visible = enable
 	scanner_front.visible = enable
 	shadow.visible = !enable
+	if enable:
+		# playing the audio here allows for smooth looping where doing it in
+		# the animation different ways caused chops or multiple plays
+		# overlapping for one scan
+		anim_player_sfx_2d.stream = scan_audio_stream
+		anim_player_sfx_2d.play()
 
 
 func _ready() -> void:
@@ -42,7 +50,6 @@ func _ready() -> void:
 	scan(false)
 	# set initial direction toward center of screen
 	direction = global_position.direction_to(Vector2(160, 90))
-	anim_player.play("default")
 
 
 # Override base Enemy _input behavior

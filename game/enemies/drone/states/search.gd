@@ -57,4 +57,5 @@ func physics_process(_delta: float) -> void:
 	_state.target.velocity = _state.target.direction * _state.target.search_speed
 	# FIXME: handle obstacle avoidance--what if path[0] is inside a collider?
 	if _state.target.move_and_slide():
-		print(_state.target.name, " search pattern collision :(")
+		print(_state.target.name, " search pattern collision, dropping current path point :(")
+		path.pop_front()
