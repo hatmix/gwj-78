@@ -18,6 +18,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://game/global.gd"
+GUIDE="*res://addons/guide/guide.gd"
+ProjectUISoundController="*res://addons/maaacks_ui_sound_controller/base/scenes/Autoloads/ProjectUISoundController.tscn"
 
 [display]
 
@@ -30,7 +32,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/gdUnit4/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/maaacks_ui_sound_controller/plugin.cfg", "res://addons/markdownlabel/plugin.cfg")
 
 [gdunit4]
 
