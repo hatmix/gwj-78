@@ -45,7 +45,7 @@ func process(_delta: float) -> void:
 func physics_process(_delta: float) -> void:
 	if _is_animating:
 		return
-	if _state.target.global_position.distance_to(path[0]) < 10:
+	if path.size() and _state.target.global_position.distance_to(path[0]) < 10:
 		path.pop_front()
 
 	# If we've completed the search path, go back to patrolling
@@ -58,4 +58,5 @@ func physics_process(_delta: float) -> void:
 	# FIXME: handle obstacle avoidance--what if path[0] is inside a collider?
 	if _state.target.move_and_slide():
 		print(_state.target.name, " search pattern collision, dropping current path point :(")
-		path.pop_front()
+		if path.size():
+			path.pop_front()
