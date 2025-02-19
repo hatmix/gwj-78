@@ -127,7 +127,8 @@ func _physics_process(delta):
 
 	if points.size() == 0:
 		add_line(pos)
-		add_area(pos)
+		# disabling this as it leads to drones never leaving you alone b/c they always see it
+		#add_area(pos)
 	elif points[-1].distance_to(pos) >= min_distance_between_points:
 		# Before adding points, update prior 2 lines with point
 		# Each line should end up with 3 points to ensure smooth curves
