@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0m8c5v0y0ej3"
-path="res://.godot/imported/map_placeholder.png-8552a28a273019fa70997a275151d9c4.ctex"
+uid="uid://bchyw8xvq7wea"
+path="res://.godot/imported/cliff-shadow.png-739809c1ae5c0a3bbfb9cae9cd49b913.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/maps/map_placeholder.png"
-dest_files=["res://.godot/imported/map_placeholder.png-8552a28a273019fa70997a275151d9c4.ctex"]
+source_file="res://game/maps/features/cliffs/cliff-shadow.png"
+dest_files=["res://.godot/imported/cliff-shadow.png-739809c1ae5c0a3bbfb9cae9cd49b913.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dssb8bsr02g60"
-path="res://.godot/imported/static-bigtree.png-e4a0bdfab246458d54b94bc59e69358a.ctex"
+uid="uid://crp21mbjwr25s"
+path="res://.godot/imported/smallstone-shadow.png-a032b02c4a3a620d126b5eb8f49c8a13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/maps/features/trees/static-bigtree.png"
-dest_files=["res://.godot/imported/static-bigtree.png-e4a0bdfab246458d54b94bc59e69358a.ctex"]
+source_file="res://game/maps/features/rocks/smallstone-shadow.png"
+dest_files=["res://.godot/imported/smallstone-shadow.png-a032b02c4a3a620d126b5eb8f49c8a13.ctex"]
 
 [params]
 

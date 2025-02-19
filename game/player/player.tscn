@@ -171,6 +171,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 8
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_yokwv")
 speed = 10.0

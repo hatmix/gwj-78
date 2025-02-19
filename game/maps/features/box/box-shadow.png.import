@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duhfjgq20321t"
-path="res://.godot/imported/static-cliff.png-99b22af595a735a181b1f45a72e6e07a.ctex"
+uid="uid://codmcfab4hgok"
+path="res://.godot/imported/box-shadow.png-cdd930fdd728683cdf2c22066b634e75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/maps/features/cliffs/static-cliff.png"
-dest_files=["res://.godot/imported/static-cliff.png-99b22af595a735a181b1f45a72e6e07a.ctex"]
+source_file="res://game/maps/features/box/box-shadow.png"
+dest_files=["res://.godot/imported/box-shadow.png-cdd930fdd728683cdf2c22066b634e75.ctex"]
 
 [params]
 

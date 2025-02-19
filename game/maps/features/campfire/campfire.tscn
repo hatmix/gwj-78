@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" path="res://game/maps/features/campfire/campfire.gd" id="1_4u44f"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_34k06"]
-radius = 8.0
-
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_b6hfn"]
 _data = PackedByteArray("AAADAAUAAAABAAAA4AAAAOAAAACcBQAAUklGRpQFAABXRUJQVlA4TIgFAAAv38A3EDdAEAgSxeTrrTELWTDIJPJXyCqFToJAkCAWWWjesciEIdbDrX8FzQTsfzco8nZJgHZr23UjiQAjKGcgQgEQcxUBdSuDcgrOP4bSfZxDsuer0YjovwS3jSRJUmSiUJN7yK6t2j+Uv0tHRCrlRNBFuCyErRnciSnBOnG+8LYLdWKEvdN0X/FUyonsZ7KvSLQoJ2aLgFlUFXPqIUI5VSpLhXz1GdhJbtULw2UBYbOoHQS37apYde6BEFkQJ5vEhUmrs9sv6HEE5VFZKlJBdMGzKACVpYRZ5mKucJinAqIDyslEiW53Ic4yG41LJ3wno3EW8GS48qCTc4Cdq3GC+ums0x1x5WiAorTBMCjORtEWcbZlNI5GMRjawfCieDHoV2N4cRwUB53lAt+1n/fHAGSJnJA/yDph7z3nZMN83t9Yd3fgdOUETmwW2ec7E/iyWQTxvedkof+fALO4k11gs4i/Qr7CZYkrgEsQwOkXcUqY701liStACxLEqbslsNNtN0KQBYLM4gb0tevispgK0DCgU0hhpCriFOoyq+zk24MKmDB1vm93G3TyusSqK3wLpVRcA3iawvn+O3FEhHPaji7PVM5pST9slMeKc1rTD9yC+OGc5vfD+Eo0nNOyfirYgKoaKczpVr0wYXHCVD94Fn0Gw+7fhXXghTEnXxBSgrMFC7LbLbwfVfh5gL7dRvHlYVHQ8iQWzu/DgpAsGmaBOsB9Q2HAKSkIuYdvJUFmkgjn3AEX1YFiHeBZMuofgBE+g9Khk9MfQCcn2I8VHjYLhnIMCvXkJ0SWVHg252BoFOdgOBtFoxgUjeIYKNYJxTpRDObm1VCsE/pj6wT/2Dg5sCyHMUKzHGAHcgdOF+yEUCw/7w/63lsn+L0PnC7kDwqcFHx/P+9vVYG+Jd7pQhDvpIQTgaoSqCpEIkx/R6GD4AQ6eE4Qp1A4d8rAswiYBe8gvIBOYefoAxF5lNAHckFOgTDsG3WOlOB2TelO+MKc/MJ844JAXxHDRk5BQQAlpGzpVAGpUHcjJ2qXHijt6CQFk3K6mzm5jY4x2tGpln96jogscuqsL2H7TF3gVGb4wkpWarpTWeYrfqY79VW+Es1kp77Kt4dUzgnL8t8U3wXcqheMrCCMIgI7GSuiA9hXVBXJ0uMoUkEna1WJDkBfMbpIljAKiJ7WKifuAPS1ujlOyZeARfFhiCwK+2L/AJIoc8mciO6UhPLVTehOaUAPuTsaduCcTu+EVHCe/h8VhA6U+2FYYZABY7JAWKXhnFAaROqEdXdaJwDrtIxjGQfFsYr2xdAoXhQvHOPE8HJAWX7eH0v2B1FOD5GTpE63dWLe38/7G3zvb+uEEvoyTnO/M6kT8Izhb1Ck64AO/AkjnDn1BNTJncwkc2I6Fxbi9rdyRjh1SkCc4nvkElwZ4cp0cGFOwRXAr0sAsg7wWyRLFAXK4tb1VE4II07iF+QbRHmcwCVGCV12g8vu6VkcFaJQTn2SEybllbBFOfUpTkSYgk+nnIR2+nfiiMgfRZdnKtfBKidi28V1sJWT+OE62MlJouE62Meph1Sug2VOJHs5qSrmJKGTLMmCo888gLpeeGYHgS/qpOqlsAqCErgO5vrejit3ksRJwCyDzgKhfgASJ+E6IHyXOJ2872zugCujp04V4+SzLGE4MKe2wEmDLIo4Bb6KM5gsbUEW85xOyvd8Dcap4U50loNzWscgeB26yKl9MbRjR15fs52K5ef9sZRdnG7rxLyjn/c35qSBk3K+053sLHWa+s3riVPNnBIq4/s/4BQUdOWUxKlkTgllrq/E93BBpoL8Nrqf6+uXkE5bZbFSAlFCpwI5BY9jsm80hZEqoJPbuO8Kp+6omzphUk5pTyd0TOFbOv1NOgU=")
 size_override = Vector2(224, 224)
@@ -30,17 +27,11 @@ _data = {
 "default": SubResource("Animation_8ufvs")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_34k06"]
+radius = 8.0
+
 [node name="Campfire" type="Node2D"]
 script = ExtResource("1_4u44f")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -3)
-shape = SubResource("CircleShape2D_34k06")
 
 [node name="Visual" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -71,3 +62,12 @@ libraries = {
 "": SubResource("AnimationLibrary_n1e8b")
 }
 autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_34k06")

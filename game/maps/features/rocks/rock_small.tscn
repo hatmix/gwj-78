@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://povhohul3eoq"]
+
+[ext_resource type="Texture2D" uid="uid://decncofiktohq" path="res://game/maps/features/rocks/smallstone.png" id="1_805ns"]
+[ext_resource type="Texture2D" uid="uid://crp21mbjwr25s" path="res://game/maps/features/rocks/smallstone-shadow.png" id="2_cr3nf"]
+
+[node name="RockSmall" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Visual" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_805ns")
+offset = Vector2(0, -1)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+y_sort_enabled = true
+texture = ExtResource("2_cr3nf")
+offset = Vector2(0, -1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, -7, 5, -9, 13, -5, 9, 0, -3, 0)

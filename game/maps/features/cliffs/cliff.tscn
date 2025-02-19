@@ -1,18 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwss3fivufcb2"]
 
-[ext_resource type="Texture2D" uid="uid://duhfjgq20321t" path="res://game/maps/features/cliffs/static-cliff.png" id="1_a82wm"]
+[ext_resource type="Texture2D" uid="uid://bw268jbs3ck7g" path="res://game/maps/features/cliffs/cliff.png" id="1_tfr7f"]
+[ext_resource type="Texture2D" uid="uid://bchyw8xvq7wea" path="res://game/maps/features/cliffs/cliff-shadow.png" id="2_baljy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6ajw"]
-size = Vector2(6, 3)
-
-[node name="Rock" type="StaticBody2D"]
+[node name="Cliff" type="StaticBody2D"]
 y_sort_enabled = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_u6ajw")
 
 [node name="Visual" type="Sprite2D" parent="."]
 y_sort_enabled = true
-texture = ExtResource("1_a82wm")
-offset = Vector2(0, -32)
+texture = ExtResource("1_tfr7f")
+offset = Vector2(0, -18)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("2_baljy")
+offset = Vector2(0, -18)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-18, -20, -12, -23, -6, -35, 14, -13, 9, -1, -1, 1, -6, 0, -14, -8)

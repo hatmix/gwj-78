@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://buhu6jlsosli8"]
+
+[ext_resource type="Texture2D" uid="uid://dulygjk7381js" path="res://game/maps/features/rocks/bigstone.png" id="1_u7bpc"]
+[ext_resource type="Texture2D" uid="uid://b482dgmydjxc7" path="res://game/maps/features/rocks/bigstone-shadow.png" id="2_k8dbq"]
+
+[node name="RockBig" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Visual" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("1_u7bpc")
+offset = Vector2(0, -16)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+y_sort_enabled = true
+texture = ExtResource("2_k8dbq")
+offset = Vector2(0, -16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -16)
+polygon = PackedVector2Array(-7, 8, 0, 6, 8, 8, 8, 13, 6, 15, 0, 16, -3, 16, -6, 15, -7, 14)

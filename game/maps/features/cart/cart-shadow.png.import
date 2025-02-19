@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://235q85egyhtn"
-path="res://.godot/imported/static-stone2.png-6ee8b2753bdb2bce63fb8d6f0d714802.ctex"
+uid="uid://dqxo2lsqdini3"
+path="res://.godot/imported/cart-shadow.png-8883aba4ea56185468f45c2aa958459c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/maps/features/rocks/static-stone2.png"
-dest_files=["res://.godot/imported/static-stone2.png-6ee8b2753bdb2bce63fb8d6f0d714802.ctex"]
+source_file="res://game/maps/features/cart/cart-shadow.png"
+dest_files=["res://.godot/imported/cart-shadow.png-8883aba4ea56185468f45c2aa958459c.ctex"]
 
 [params]
 

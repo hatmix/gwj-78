@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eciunf3fxdbe"
-path="res://.godot/imported/static-tree2.png-aded54dbc92545789a446b2adb33676c.ctex"
+uid="uid://dulygjk7381js"
+path="res://.godot/imported/bigstone.png-aa49ec85024bb51df57859dd43203525.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/maps/features/trees/static-tree2.png"
-dest_files=["res://.godot/imported/static-tree2.png-aded54dbc92545789a446b2adb33676c.ctex"]
+source_file="res://game/maps/features/rocks/bigstone.png"
+dest_files=["res://.godot/imported/bigstone.png-aa49ec85024bb51df57859dd43203525.ctex"]
 
 [params]
 
