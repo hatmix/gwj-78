@@ -20,6 +20,8 @@ func get_next_point() -> void:
 	var _next_point: Variant = trail.get_next_path_point(self)
 	if not _next_point:
 		print(_state.target.name, " looking for next point and got none...")
+		# next point is the last point on trail
+		_state._search.point_of_interest = next_point
 		_state.change_to("Search")
 		return
 	next_point = _next_point
