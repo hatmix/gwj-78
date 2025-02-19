@@ -84,7 +84,9 @@ func _update_snow_cover() -> void:
 			if point in areas:
 				areas[point].queue_free()
 				areas.erase(point)
-			snow_time.erase(point)
+			get_tree().create_timer(snow_time_to_cover / 2.0).timeout.connect(func():
+				snow_time.erase(point)
+			)
 			_cover_point(point)
 	_cleanup.call_deferred()
 
@@ -125,7 +127,7 @@ func _cleanup() -> void:
 			cover[point].queue_free()
 			cover.erase(point)
 	# eyeball testing rather than figuring out how to gdUnit in
-	#print("snow times count: %d\nareas count: %d\ncover count: %d" % [snow_time.keys().size(), areas.keys().size(), cover.keys().size()])
+	print("snow times count: %d\nareas count: %d\ncover count: %d" % [snow_time.keys().size(), areas.keys().size(), cover.keys().size()])
 
 
 func _ready() -> void:
