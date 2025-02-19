@@ -9,7 +9,6 @@ const TRAIL_LINE_SCENE: PackedScene = preload("res://game/components/snow_trail/
 @export var min_distance_between_points: float = 4
 @export var points_between_areas: float = 3
 
-
 var points: Array[Vector2] = []
 
 # how many seconds it has snowed since last snow cover update
@@ -121,7 +120,7 @@ func _ready() -> void:
 # seem to work over the length)
 func _physics_process(delta):
 	if is_instance_valid(Global.get_weather()) and Global.get_weather().is_snowing():
-		accumulation += delta
+		accumulation += delta * Global.get_weather().get_snow_intensity()
 	if not is_instance_valid(node_tracked):
 		return
 	var pos: Vector2 = node_tracked.global_position
