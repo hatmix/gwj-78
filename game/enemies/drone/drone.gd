@@ -16,7 +16,11 @@ var scan_audio_stream: AudioStream = preload("res://game/enemies/drone/assets/sc
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var anim_player_sfx_2d: AudioStreamPlayer2D = $AnimPlayerSfx2D
+# Detect trails and interesting objects
 @onready var detect_area_2d: Area2D = $DetectArea2D
+# Detect player in smaller area for better feel
+@onready var player_detect_area_2d: Area2D = $PlayerDetectArea2D
+
 @onready var scanner_back: Sprite2D = $ScannerBack
 @onready var scanner_front: Sprite2D = $ScannerFront
 @onready var shadow: Sprite2D = $Shadow
@@ -41,7 +45,7 @@ func _ready() -> void:
 	visible_on_screen_notifier_2d.screen_exited.connect(
 		_state.on_visible_on_screen_notifier_2d_screen_exited
 	)
-	detect_area_2d.body_entered.connect(_on_body_entered_detect_area)
+	player_detect_area_2d.body_entered.connect(_on_body_entered_player_detect_area)
 	detect_area_2d.area_entered.connect(_state.on_detect_area_entered)
 	scan(false)
 	# set initial direction toward center of screen
@@ -63,7 +67,7 @@ func _update_state_label(new_state: FsmState, _old_state: FsmState) -> void:
 	%StateLabel.text = new_state.name
 
 
-func _on_body_entered_detect_area(body: Node2D) -> void:
+func _on_body_entered_player_detect_area(body: Node2D) -> void:
 	#print(name, " detected ", body.name)
 	if body.name == "Player":
 		Global.player_lost.emit()

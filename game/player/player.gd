@@ -32,6 +32,13 @@ func footstep() -> void:
 
 func _input(_event: InputEvent) -> void:
 	direction = Input.get_vector("Move Left", "Move Right", "Move Up", "Move Down")
+	if Input.is_action_just_pressed("DebugHide"):
+		var toggle: bool = !get_collision_layer_value(4)
+		set_collision_layer_value(4, toggle)
+		if toggle:
+			visual.self_modulate = Color("#FFFFFFFF")
+		else:
+			visual.self_modulate = Color("#FFFFFF88")
 
 
 func _physics_process(_delta: float) -> void:

@@ -32,6 +32,6 @@ func on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	match current_state:
 		_patrol:
 			target.direction = target.global_position.direction_to(Vector2(160, 90))
-		_track:
-			# Following something off the map...
-			queue_free()
+		#_track:
+		# Following something off the map...
+		#queue_free()
