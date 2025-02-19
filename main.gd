@@ -1,8 +1,8 @@
 extends Node
 
 @onready var bgm: AudioStreamPlayer = $Bgm
-@onready var game_over: Label = $GameOver
-@onready var victory: Label = $Victory
+@onready var game_over: Label = $UI/GameOver
+@onready var victory: Label = $UI/Victory
 
 # FIXME: collision layers for ground vs flyers, etc.
 

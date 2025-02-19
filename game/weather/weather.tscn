@@ -22,6 +22,14 @@ shader_parameter/time = 9882.13
 script = ExtResource("1_bltdc")
 snowfall_fps_limit = 30
 
+[node name="Darkener" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.2)
+
 [node name="Snowfall" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_bwkpa")
 anchors_preset = 15
