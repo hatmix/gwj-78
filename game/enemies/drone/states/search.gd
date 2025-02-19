@@ -9,6 +9,7 @@ var _is_animating: bool = false
 
 
 func enter_state():
+	print("enter state search")
 	_is_animating = true
 	_state.target.anim_player.play("search_enter")
 	# Rotate the search pattern by drone's travel direction
@@ -57,6 +58,6 @@ func physics_process(_delta: float) -> void:
 	_state.target.velocity = _state.target.direction * _state.target.search_speed
 	# FIXME: handle obstacle avoidance--what if path[0] is inside a collider?
 	if _state.target.move_and_slide():
-		print(_state.target.name, " search pattern collision, dropping current path point :(")
+		#print(_state.target.name, " search pattern collision, dropping current path point :(")
 		if path.size():
 			path.pop_front()

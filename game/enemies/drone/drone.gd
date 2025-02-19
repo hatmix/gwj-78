@@ -12,7 +12,6 @@ extends Enemy  # Maybe not useful now...
 
 @export var search_speed: float = 15.0
 
-var scanned: Array[Node2D] = []
 var scan_audio_stream: AudioStream = preload("res://game/enemies/drone/assets/scanning.ogg")
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
@@ -24,9 +23,6 @@ var scan_audio_stream: AudioStream = preload("res://game/enemies/drone/assets/sc
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 @onready var _state: StateMachine = $StateMachine
-@onready var _patrol: Node = $StateMachine/Patrol
-@onready var _track: Node = $StateMachine/Track
-@onready var _search: Node = $StateMachine/Search
 
 
 func scan(enable: bool = true) -> void:
@@ -43,10 +39,10 @@ func scan(enable: bool = true) -> void:
 
 func _ready() -> void:
 	visible_on_screen_notifier_2d.screen_exited.connect(
-		_on_visible_on_screen_notifier_2d_screen_exited
+		_state.on_visible_on_screen_notifier_2d_screen_exited
 	)
 	detect_area_2d.body_entered.connect(_on_body_entered_detect_area)
-	detect_area_2d.area_entered.connect(_on_area_entered_detect_area)
+	detect_area_2d.area_entered.connect(_state.on_detect_area_entered)
 	scan(false)
 	# set initial direction toward center of screen
 	direction = global_position.direction_to(Vector2(160, 90))
@@ -59,7 +55,8 @@ func _input(_event: InputEvent) -> void:
 
 # Override base Enemy _physics_process behavior
 func _physics_process(_delta: float) -> void:
-	%StateLabel.text = "%s\n%s" % [_state.current_state.name, anim_player.current_animation]
+	if _state.current_state:
+		%StateLabel.text = "%s\n%s" % [_state.current_state.name, anim_player.current_animation]
 
 
 func _update_state_label(new_state: FsmState, _old_state: FsmState) -> void:
@@ -67,28 +64,6 @@ func _update_state_label(new_state: FsmState, _old_state: FsmState) -> void:
 
 
 func _on_body_entered_detect_area(body: Node2D) -> void:
-	print(name, " detected ", body.name)
+	#print(name, " detected ", body.name)
 	if body.name == "Player":
-		# For now, just change to search state until more tracking is worked out
-		_search.point_of_interest = body.global_position
-		_state.change_to(_search)
-
-
-func _on_area_entered_detect_area(area: Area2D) -> void:
-	var node: Node2D = area.get_parent()
-	print(name, " detected ", area.name, " belonging to ", node.name)
-	if node.is_in_group("Remains") and node not in scanned:
-		scanned.append(node)
-		_search.point_of_interest = node.global_position
-		_state.change_to(_search)
-
-
-# TODO: figure out a good way to avoid this entanglement
-# notifier2D loses global_position if under FsmState nodes
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	match _state.current_state:
-		_patrol:
-			direction = global_position.direction_to(Vector2(160, 90))
-		_track:
-			# Following something off the map...
-			queue_free()
+		Global.player_lost.emit()

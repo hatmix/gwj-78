@@ -242,6 +242,7 @@ horizontal_alignment = 1
 [node name="Trail" parent="." node_paths=PackedStringArray("node_tracked") instance=ExtResource("2_7erlm")]
 unique_name_in_owner = true
 node_tracked = NodePath("..")
+points_between_areas = 1.0
 
 [node name="FootstepsSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yiwyq")

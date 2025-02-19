@@ -16,13 +16,17 @@ enum State {
 		value = clamp(value, 0.0, 1.0)
 		_snow_intensity = value
 		snow_color = Color(snow_color, value)
-@export var snow_color := Color.WHITE: 
+@export var snow_color := Color.WHITE:
 	set(value):
 		snow_color = value
 		if snowfall_shader:
 			snowfall_shader.set_shader_parameter("rain_color", value)
 
-var _state := State.SNOWING if _snow_intensity == 1.0 else State.CLEAR
+var _state := State.SNOWING if _snow_intensity == 1.0 else State.CLEAR:
+	set(new_state):
+		if _state != new_state:
+			_state = new_state
+			Global.weather_changed.emit(_state)
 var last_shader_update: float
 var shader_time: float
 
@@ -90,5 +94,13 @@ func _on_weather_change_timer_timeout():
 		stop_snowing()
 	else:
 		start_snowing()
-	weather_change_timer.wait_time = weather_change_frequency_seconds + (weather_change_frequency_seconds * randf() - weather_change_frequency_seconds/2.0)
-	print("Weather: transitioning to %s, then keeping weather state for %fs" % [State.keys()[_state], weather_change_timer.wait_time])
+	weather_change_timer.wait_time = (
+		weather_change_frequency_seconds
+		+ (weather_change_frequency_seconds * randf() - weather_change_frequency_seconds / 2.0)
+	)
+	print(
+		(
+			"Weather: transitioning to %s, then keeping weather state for %fs"
+			% [State.keys()[_state], weather_change_timer.wait_time]
+		)
+	)

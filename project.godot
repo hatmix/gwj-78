@@ -39,6 +39,7 @@ ui/toolbar/run_overall=true
 [global_group]
 
 Remains=""
+Trails=""
 
 [gui]
 

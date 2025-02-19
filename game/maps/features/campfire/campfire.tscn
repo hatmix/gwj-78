@@ -71,22 +71,3 @@ libraries = {
 "": SubResource("AnimationLibrary_n1e8b")
 }
 autoplay = "default"
-
-[node name="Label" type="Label" parent="."]
-z_index = 99
-z_as_relative = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -30.0
-offset_right = 20.0
-offset_bottom = -14.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.921569, 0.921569, 0.921569, 1)
-theme_override_constants/outline_size = 4
-text = "You made it!"
