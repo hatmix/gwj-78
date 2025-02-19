@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://s0pnlsip1hka"]
+
+[sub_resource type="Curve" id="Curve_8rfu1"]
+_data = [Vector2(0, 0.516347), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Trail_Line" type="Line2D" groups=["Trails"]]
+show_behind_parent = true
+top_level = true
+z_index = -2
+z_as_relative = false
+width = 4.0
+width_curve = SubResource("Curve_8rfu1")
+default_color = Color(0.611765, 0.686275, 0.701961, 1)
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 6.0
+antialiased = true

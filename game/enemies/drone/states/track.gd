@@ -3,7 +3,7 @@ extends FsmState
 var trail: Trail
 var next_point: Vector2
 var _slow_down_dude: bool = false
-
+var scanned_points: Array[Vector2] = []
 
 func enter_state():
 	print("enter state track")
@@ -12,19 +12,21 @@ func enter_state():
 
 func exit_state():
 	_state.target.scan(false)
+	_slow_down_dude = false
 	trail.unregister_tracker(self)
 
 
 func get_next_point() -> void:
 	_slow_down_dude = true
 	var _next_point: Variant = trail.get_next_path_point(self)
-	if not _next_point:
-		print(_state.target.name, " looking for next point and got none...")
+	if not _next_point or _next_point in scanned_points:
+		print(_state.target.name, " looking for next point and got no new point...")
 		# next point is the last point on trail
 		_state._search.point_of_interest = next_point
 		_state.change_to("Search")
 		return
 	next_point = _next_point
+	scanned_points.append(next_point)
 	_slow_down_dude = false
 
 

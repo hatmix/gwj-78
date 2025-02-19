@@ -1,12 +1,16 @@
 class_name Trail
-extends Line2D
+extends Node2D
 
-const COVER_POINT_SCENE: PackedScene = preload("res://game/components/snow_trail/cover_point.tscn")
+#const COVER_POINT_SCENE: PackedScene = preload("res://game/components/snow_trail/cover_point.tscn")
+const TRAIL_LINE_SCENE: PackedScene = preload("res://game/components/snow_trail/trail_line.tscn")
 
 @export var node_tracked: Node2D
 @export var snow_time_to_cover: float = 6.0
 @export var min_distance_between_points: float = 4
 @export var points_between_areas: float = 3
+
+
+var points: Array[Vector2] = []
 
 # how many seconds it has snowed since last snow cover update
 var accumulation: float = 0
@@ -21,8 +25,9 @@ var areas: Dictionary = {}
 # lookup points index by node tracking
 var trackers: Dictionary = {}
 
-# cover -- this might be getting out of hand
-var cover: Dictionary = {}
+# lookup which line starts at point
+var lines: Dictionary = {}
+#var cover: Dictionary = {}
 
 @onready var snow_cover_timer: Timer = $SnowCoverTimer
 
@@ -64,6 +69,7 @@ func add_area(global_pos: Vector2) -> void:
 	collision.shape = shape
 
 	var area: Area2D = Area2D.new()
+	area.top_level = true
 	area.set_collision_layer_value(3, true)
 	area.monitoring = false
 	area.monitorable = true
@@ -74,60 +80,36 @@ func add_area(global_pos: Vector2) -> void:
 	areas[global_pos] = area
 
 
+func add_line(global_pos: Vector2) -> void:
+	points.append(global_pos)
+	var line: Line2D = TRAIL_LINE_SCENE.instantiate()
+	line.add_point(global_pos)
+	add_child(line)
+	lines[global_pos] = line
+	snow_time[global_pos] = 0
+
+
 func _update_snow_cover() -> void:
 	var amount: float = accumulation
 	accumulation = 0
 	for point: Vector2 in snow_time.keys():
 		snow_time[point] += amount
 		# First half of disappearing...
-		if snow_time[point] >= snow_time_to_cover / 2.0:
+		if snow_time[point] >= snow_time_to_cover:
+			snow_time.erase(point)
 			if point in areas:
 				areas[point].queue_free()
 				areas.erase(point)
-			get_tree().create_timer(snow_time_to_cover / 2.0).timeout.connect(func():
-				snow_time.erase(point)
-			)
-			_cover_point(point)
-	_cleanup.call_deferred()
-
-
-func _cover_point(point: Vector2) -> void:
-	var idx: int = points.find(point)
-	if idx == -1:
-		# How could this happen?!
-		return
-	var mask: Line2D = COVER_POINT_SCENE.instantiate()
-	# second half of disappearing
-	mask.time_to_cover = snow_time_to_cover / 2.0
-	if idx > 0:
-		mask.add_point(points[idx - 1])
-	mask.add_point(point)
-	if idx < points.size() - 2:
-		mask.add_point(points[idx + 1])
-	add_child(mask)
-	cover[point] = mask
-
-
-func _cleanup() -> void:
-	if points.size() < 2:
-		return
-
-	var point: Vector2 = points[0]
-	# no cleanup if first point is still accumulating snow
-	if point in snow_time:
-		return
-	if point in cover:
-		var mask: Line2D = cover[point]
-		# mask texture is cleared when the trail is totally covered
-		if mask.texture == null:
-			remove_point(0)
+			var line: Line2D = lines[point]
+			var tween: Tween = line.create_tween()
+			tween.tween_property(line, "modulate", Color.TRANSPARENT, 2.0)
+			tween.tween_callback(line.queue_free)
+			lines.erase(point)
+			points.pop_front()
 			# decrement index for trackers' next points
 			for tracker in trackers:
 				trackers[tracker] = max(0, trackers[tracker] - 1)
-			cover[point].queue_free()
-			cover.erase(point)
-	# eyeball testing rather than figuring out how to gdUnit in
-	print("snow times count: %d\nareas count: %d\ncover count: %d" % [snow_time.keys().size(), areas.keys().size(), cover.keys().size()])
+	#print("snow times count: %d\nareas count: %d\nlines count: %d" % [snow_time.keys().size(), areas.keys().size(), lines.keys().size()])
 
 
 func _ready() -> void:
@@ -143,14 +125,20 @@ func _physics_process(delta):
 	if not is_instance_valid(node_tracked):
 		return
 	var pos: Vector2 = node_tracked.global_position
+
 	if points.size() == 0:
-		add_point(pos)
+		add_line(pos)
 		add_area(pos)
-		snow_time[pos] = 0
 	elif points[-1].distance_to(pos) >= min_distance_between_points:
-		add_point(pos)
-		snow_time[pos] = 0
+		# Before adding points, update prior 2 lines with point
+		# Each line should end up with 3 points to ensure smooth curves
+		lines[points[-1]].add_point(pos)
+		if points.size() > 2:
+			lines[points[-2]].add_point(pos)
+		# Now add the new line
+		add_line(pos)
 		points_since_area_count += 1
+
 	if points_since_area_count >= points_between_areas:
 		#print("adding area to trail at %.1v" % pos)
 		points_since_area_count = 0
