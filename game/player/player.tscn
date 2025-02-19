@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://s158exwbtkoy"]
+[gd_scene load_steps=14 format=4 uid="uid://s158exwbtkoy"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_yokwv"]
 [ext_resource type="PackedScene" uid="uid://6neh0sw1afwi" path="res://game/components/snow_trail/trail.tscn" id="2_7erlm"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvibx"]
 radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bo614"]
+radius = 4.0
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_vc0bc"]
 _data = PackedByteArray("AAADAAUAAAABAAAASAAAAEgAAACiAQAAUklGRpoBAABXRUJQVlA4TI4BAAAvR8AREC+gkJEkNngC970QPNQrZCMJTq3BL3FWRxZgGpzCrrKIovkPAHcbK1L/tw1AbiRJctNEg3+aMJAFDRY9oAM6/fdlt7pqZnR9I/rvwG0bR/L1opznolfEb7tgBwdgAxdfsYEr7OAejx3c8znHFXOgJgU4rqC4gGR1n51cKe6/86QkF0lcKK7YhCQOskNIjk1oPjDnzFHb9FyZXW9MaM7N+pkOLMzTB7Y90ebJXbuexMp5DfXcV5undl3wHNJuOZwbuo/a6dmkptriHIuVjaf+3yznU71Chj5LH8ef/YhL0XOssdUxRjWnfuT1qgUxHLMiXzHDceQGc4bTJuzgAO6Z3DaVS8xqDqmmZecGZYgw53q+HGGO9ZpCB2XcgZ0mrLJq15Vr7Ou1dZA31eR28T5UNo7ZFrWv1lnyMybos3gW6Nw4HFhiOdRnzLCnCWLjsklJ7s6cRrUUMz1VCsz9HE8imicb0NulebIY5rQnOgueyGhPzFlk3K5LeLKUA2fOpcptk5tMPMJz06mlBA==")
@@ -179,6 +182,14 @@ speed = 10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.5)
 shape = SubResource("CircleShape2D_wvibx")
+
+[node name="InteractionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea2D"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_bo614")
 
 [node name="Visual" type="Sprite2D" parent="."]
 y_sort_enabled = true

@@ -35,7 +35,7 @@ func register_tracker(tracker: Node, area: Area2D) -> bool:
 	if idx == -1:
 		return false
 	trackers[tracker] = idx
-	print(trackers)
+	#print(trackers)
 	return true
 
 

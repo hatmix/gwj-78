@@ -11,6 +11,7 @@ var direction: Vector2 = Vector2.ZERO
 @onready var visual: Sprite2D = $Visual
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var footsteps_sfx: AudioStreamPlayer = $FootstepsSfx
+@onready var interaction_area_2d: Area2D = $InteractionArea2D
 
 
 func get_sprite_facing(radians):
@@ -30,15 +31,35 @@ func footstep() -> void:
 	footsteps_sfx.play()
 
 
+func _hide(enabled: bool = true) -> void:
+		set_collision_layer_value(4, !enabled)
+		if enabled:
+			visual.self_modulate = Color("#FFFFFF88")
+		else:
+			visual.self_modulate = Color("#FFFFFFFF")
+
+
+func _ready() -> void:
+	interaction_area_2d.area_entered.connect(_on_area_entered)
+	interaction_area_2d.area_exited.connect(_on_area_exited)
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.get_parent().is_in_group("Trees"):
+		_hide()
+
+
+func _on_area_exited(area: Area2D) -> void:
+	if area.get_parent().is_in_group("Trees"):
+		_hide(false)
+
+
+
 func _input(_event: InputEvent) -> void:
 	direction = Input.get_vector("Move Left", "Move Right", "Move Up", "Move Down")
 	if Input.is_action_just_pressed("DebugHide"):
 		var toggle: bool = !get_collision_layer_value(4)
-		set_collision_layer_value(4, toggle)
-		if toggle:
-			visual.self_modulate = Color("#FFFFFFFF")
-		else:
-			visual.self_modulate = Color("#FFFFFF88")
+		_hide(toggle)
 
 
 func _physics_process(_delta: float) -> void:
