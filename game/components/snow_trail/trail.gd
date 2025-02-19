@@ -136,8 +136,10 @@ func _ready() -> void:
 # TODO: how to use gradient across width of line? (line2d's built-in gradients
 # seem to work over the length)
 func _physics_process(delta):
-	if Global.get_weather().is_snowing():
+	if is_instance_valid(Global.get_weather()) and Global.get_weather().is_snowing():
 		accumulation += delta
+	if not is_instance_valid(node_tracked):
+		return
 	var pos: Vector2 = node_tracked.global_position
 	if points.size() == 0:
 		add_point(pos)
