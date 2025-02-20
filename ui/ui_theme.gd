@@ -86,3 +86,15 @@ func define_theme() -> void:
 	# Empty style to prevent other style changes from affecting controls UI... but does it?
 	define_variant_style("RemapRichTextLabel", "RichTextLabel", {})
 #endregion
+
+#region BuildInfo label style
+	define_variant_style("BuildInfoLabel", "Label", 
+		{
+			font = ResourceLoader.load("res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf"),
+			font_size = 8,
+			font_color = DARK,
+			outline_size = 0
+		}
+	)
+
+#endregion
