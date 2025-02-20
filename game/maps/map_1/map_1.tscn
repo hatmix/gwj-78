@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://de5gr0w8nmik3"]
 
 [ext_resource type="Script" path="res://game/maps/map.gd" id="1_2grk6"]
-[ext_resource type="PackedScene" uid="uid://nwm3kg78jexn" path="res://game/maps/map_2/map_2.tscn" id="2_0a08y"]
 [ext_resource type="PackedScene" uid="uid://cra7xo2obmyky" path="res://game/maps/map_borders/map_borders.tscn" id="2_o5824"]
+[ext_resource type="PackedScene" uid="uid://nwm3kg78jexn" path="res://game/maps/map_2/map_2.tscn" id="2_x6pvf"]
 [ext_resource type="PackedScene" uid="uid://bycr21mgk8bn3" path="res://game/enemies/drone/drone.tscn" id="3_hdf28"]
 [ext_resource type="PackedScene" uid="uid://s158exwbtkoy" path="res://game/player/player.tscn" id="4_xxbsh"]
 [ext_resource type="PackedScene" uid="uid://dihbu6hike2d3" path="res://game/maps/features/trees/tree.tscn" id="5_3v3bc"]
@@ -21,7 +21,7 @@
 y_sort_enabled = true
 position = Vector2(160, 90)
 script = ExtResource("1_2grk6")
-next_level = ExtResource("2_0a08y")
+next_level = ExtResource("2_x6pvf")
 
 [node name="MapBorders" parent="." instance=ExtResource("2_o5824")]
 
