@@ -2,7 +2,7 @@ extends UiPage
 
 
 func _ready() -> void:
-	%MarkdownLabel.display_file("res://ATTRIBUTION.md")
+	%MarkdownLabel.display_file("res://CREDITS.md")
 	call_deferred("_connect_buttons")
 
 
