@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/notifications/message_board.gd" id="1_y2nll"]
 
-[node name="MessageQueue" type="Control"]
+[node name="MessageBoard" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

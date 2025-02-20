@@ -5,6 +5,7 @@ const BRIGHT := Color("#ebebeb")
 const MID := Color("#9cafb3")
 const DARK := Color("#242430")
 
+
 # The project's default theme is set to res://ui/ui_theme.tres
 func setup() -> void:
 	set_save_path("res://ui/ui_theme.tres")
@@ -15,22 +16,31 @@ func define_theme() -> void:
 	define_default_font(ResourceLoader.load("res://assets/fonts/pixelFont-4-7x7-sproutLands.ttf"))
 	define_default_font_size(9)
 
-	var sb_flat = stylebox_flat({
-		bg_color = MID,
-		shadow_color = DARK,
-		shadow_size = 2,
-		shadow_offset = Vector2(-2,2),
-	})
+	var sb_flat = stylebox_flat(
+		{
+			bg_color = MID,
+			shadow_color = DARK,
+			shadow_size = 1,
+			shadow_offset = Vector2(-1, 1),
+		}
+	)
 
-	define_style("Panel", { panel = sb_flat })
-	define_style("PanelContainer", { panel = sb_flat })
-	define_style("Button", { font_color = BRIGHT })
+	define_style("Panel", {panel = sb_flat})
+	define_style("PanelContainer", {panel = sb_flat})
+	define_style(
+		"Button",
+		{
+			font_color = BRIGHT,
+			font_outline_color = DARK,
+			outline_size = 2,
+		}
+	)
 
 	define_style(
 		"Label",
 		{
 			font_color = BRIGHT,
-			font_outline_color = MID,
+			font_outline_color = DARK,
 			outline_size = 2,
 		}
 	)
@@ -47,10 +57,9 @@ func define_theme() -> void:
 		}
 	)
 
-
 #region Message (notifications) controls styling
-	define_variant_style("MessagePanelContainer", "PanelContainer", {})
-	define_variant_style("MessageLabel", "Label", {})
+	define_variant_style("MessagePanelContainer", "PanelContainer", {panel = stylebox_empty({})})
+	define_variant_style("MessageLabel", "Label", {outline_size = 6})
 #endregion
 
 #region Remapping controls styling

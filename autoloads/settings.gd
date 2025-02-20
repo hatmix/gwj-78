@@ -24,7 +24,7 @@ func load_controls() -> GUIDERemappingConfig:
 
 	var data: GUIDERemappingConfig = ResourceLoader.load(CONTROLS_FILE)
 	if not is_instance_valid(data):
-		printerr("Failed to load controls!")
+		push_error("Failed to load controls!")
 		reset_controls()
 		return GUIDERemappingConfig.new()
 	print(data)
@@ -64,6 +64,7 @@ func load_settings() -> void:
 func _init_timer() -> void:
 	_timer = Timer.new()
 	_timer.one_shot = true
+	_timer.process_mode = Node.PROCESS_MODE_ALWAYS
 	_timer.timeout.connect(save_settings)
 	add_child(_timer)
 
@@ -71,10 +72,10 @@ func _init_timer() -> void:
 func save_settings() -> void:
 	var err: int = _settings.save(SETTINGS_FILE)
 	if err:
-		print("post failure message")
+		#print("post failure message")
 		Global.post_ui_message.emit("Error saving settings '%s'" % str(err))
 	else:
-		print("post success message")
+		#print("post success message")
 		Global.post_ui_message.emit("Settings saved")
 
 

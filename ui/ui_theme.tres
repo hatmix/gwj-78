@@ -1,21 +1,23 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://douptobb2vwx8"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://douptobb2vwx8"]
 
 [ext_resource type="FontFile" uid="uid://dfjqj2dggb8fk" path="res://assets/fonts/pixelFont-3-7x5-sproutLands.ttf" id="1_1bdrk"]
 [ext_resource type="FontFile" uid="uid://dyqe506lgtkhx" path="res://assets/fonts/pixelFont-4-7x7-sproutLands.ttf" id="1_n8bdp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g53s8"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4i0tv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a622o"]
 bg_color = Color(0.611765, 0.686275, 0.701961, 1)
 shadow_color = Color(0.141176, 0.141176, 0.188235, 1)
-shadow_size = 2
-shadow_offset = Vector2(-2, 2)
+shadow_size = 1
+shadow_offset = Vector2(-1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyaga"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u2hk"]
 bg_color = Color(0.611765, 0.686275, 0.701961, 1)
 shadow_color = Color(0.141176, 0.141176, 0.188235, 1)
-shadow_size = 2
-shadow_offset = Vector2(-2, 2)
+shadow_size = 1
+shadow_offset = Vector2(-1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvk4e"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4351"]
 bg_color = Color(1, 1, 1, 0)
 border_width_left = 2
 border_width_top = 2
@@ -27,7 +29,7 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a36qi"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abp5g"]
 bg_color = Color(1, 1, 1, 0)
 border_width_left = 2
 border_width_top = 2
@@ -39,9 +41,9 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5uy88"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m7vtd"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2s63"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6x5ic"]
 bg_color = Color(1, 1, 1, 0)
 border_width_left = 2
 border_width_top = 2
@@ -57,6 +59,8 @@ corner_radius_bottom_left = 2
 default_font = ExtResource("1_n8bdp")
 default_font_size = 9
 Button/colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+Button/colors/font_outline_color = Color(0.141176, 0.141176, 0.188235, 1)
+Button/constants/outline_size = 2
 GameOver/base_type = &"Label"
 GameOver/colors/font_color = Color(0.141176, 0.141176, 0.188235, 1)
 GameOver/colors/font_outline_color = Color(0.611765, 0.686275, 0.701961, 1)
@@ -64,15 +68,17 @@ GameOver/constants/outline_size = 6
 GameOver/font_sizes/font_size = 32
 GameOver/fonts/font = ExtResource("1_1bdrk")
 Label/colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
-Label/colors/font_outline_color = Color(0.611765, 0.686275, 0.701961, 1)
+Label/colors/font_outline_color = Color(0.141176, 0.141176, 0.188235, 1)
 Label/constants/outline_size = 2
 MessageLabel/base_type = &"Label"
+MessageLabel/constants/outline_size = 6
 MessagePanelContainer/base_type = &"PanelContainer"
-Panel/styles/panel = SubResource("StyleBoxFlat_g53s8")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_lyaga")
+MessagePanelContainer/styles/panel = SubResource("StyleBoxEmpty_4i0tv")
+Panel/styles/panel = SubResource("StyleBoxFlat_a622o")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_6u2hk")
 RemapButton/base_type = &"Button"
-RemapButton/styles/focus = SubResource("StyleBoxFlat_vvk4e")
-RemapButton/styles/hover = SubResource("StyleBoxFlat_a36qi")
-RemapButton/styles/normal = SubResource("StyleBoxEmpty_5uy88")
-RemapButton/styles/pressed = SubResource("StyleBoxFlat_m2s63")
+RemapButton/styles/focus = SubResource("StyleBoxFlat_m4351")
+RemapButton/styles/hover = SubResource("StyleBoxFlat_abp5g")
+RemapButton/styles/normal = SubResource("StyleBoxEmpty_m7vtd")
+RemapButton/styles/pressed = SubResource("StyleBoxFlat_6x5ic")
 RemapRichTextLabel/base_type = &"RichTextLabel"

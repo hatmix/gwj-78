@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://u1vgfeia861q"]
+[gd_scene load_steps=14 format=3 uid="uid://u1vgfeia861q"]
 
 [ext_resource type="PackedScene" uid="uid://cc37235kj4384" path="res://addons/maaacks_ui_sound_controller/base/scenes/Autoloads/ProjectUISoundController.tscn" id="1_v2lrn"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_yeoin"]
 [ext_resource type="PackedScene" uid="uid://2vrf5v6tmuk7" path="res://ui/main_menu/main_menu.tscn" id="2_7jndn"]
-[ext_resource type="AudioStream" uid="uid://5kc55ftsdrvt" path="res://ui/assets/audio/rollover5.ogg" id="2_xhe7v"]
+[ext_resource type="AudioStream" uid="uid://d27xpehn4a43" path="res://ui/assets/audio/hop.wav" id="3_dvrwd"]
+[ext_resource type="AudioStream" uid="uid://c2vdk20ygcayt" path="res://ui/assets/audio/plop.wav" id="4_cf1um"]
 [ext_resource type="PackedScene" uid="uid://dekllill0y50r" path="res://ui/credits/credits.tscn" id="5_hqkqk"]
 [ext_resource type="Script" path="res://ui/overlay.gd" id="5_n6lj8"]
 [ext_resource type="PackedScene" uid="uid://3s7lo7jd53un" path="res://ui/pause_menu/pause_menu.tscn" id="6_2pasj"]
@@ -18,9 +19,14 @@ process_mode = 3
 script = ExtResource("1_yeoin")
 
 [node name="ProjectUISoundController" parent="." instance=ExtResource("1_v2lrn")]
-button_hovered = ExtResource("2_xhe7v")
-button_focused = ExtResource("2_xhe7v")
-button_pressed = ExtResource("2_xhe7v")
+button_hovered = ExtResource("3_dvrwd")
+button_focused = ExtResource("3_dvrwd")
+button_pressed = ExtResource("4_cf1um")
+tab_hovered = ExtResource("3_dvrwd")
+tab_changed = ExtResource("4_cf1um")
+tab_selected = ExtResource("4_cf1um")
+slider_hovered = ExtResource("3_dvrwd")
+slider_focused = ExtResource("3_dvrwd")
 
 [node name="InGameMenuOverlay" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -38,7 +44,6 @@ script = ExtResource("5_n6lj8")
 [node name="Settings" parent="." instance=ExtResource("9_jqbk6")]
 
 [node name="Controls" parent="." instance=ExtResource("11_w3b35")]
-icon_size = 24
 
 [node name="MainMenu" parent="." instance=ExtResource("2_7jndn")]
 

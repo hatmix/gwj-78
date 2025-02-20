@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://udxerxnmw35e"]
+[gd_scene load_steps=3 format=3 uid="uid://udxerxnmw35e"]
 
 [ext_resource type="Script" path="res://ui/notifications/message.gd" id="1_pe0jv"]
+[ext_resource type="AudioStream" uid="uid://d27xpehn4a43" path="res://ui/assets/audio/hop.wav" id="2_h7d4m"]
 
 [node name="Message" type="PanelContainer"]
 anchors_preset = 5
@@ -16,9 +17,21 @@ size_flags_vertical = 4
 theme_type_variation = &"MessagePanelContainer"
 script = ExtResource("1_pe0jv")
 
-[node name="Text" type="Label" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_h7d4m")
+volume_db = -12.0
+bus = &"SFX"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Text" type="Label" parent="MarginContainer"]
 unique_name_in_owner = true
-modulate = Color(0.980392, 0.380392, 0.286275, 1)
 layout_mode = 2
 theme_type_variation = &"MessageLabel"
+text = "Message Text"
 horizontal_alignment = 1

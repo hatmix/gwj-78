@@ -16,7 +16,6 @@ signal post_ui_message(text: String)
 @warning_ignore("unused_signal")
 signal controls_changed(config: GUIDERemappingConfig)
 
-
 var _weather: Weather
 
 
@@ -32,3 +31,4 @@ func get_weather():
 func _ready() -> void:
 	pass
 	#weather_changed.connect(func(v): print("signal weather_changed emitted with value ", v))
+	#post_ui_message.connect(func(v): print("signal post_ui_message emitted with value ", v))

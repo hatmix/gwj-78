@@ -1,38 +1,24 @@
 class_name Message
 extends PanelContainer
 
-const MAX_WIDTH: int = 400
-const MAX_HEIGHT: int = 90
+const MAX_WIDTH: int = 300
 
-@export_color_no_alpha var message_color: Color = Color("DFDFDF")
-@export_color_no_alpha var border_color: Color = Color("FA6149")
 # Panel container color controlled by the ui theme
-
 @onready var text_node: Label = %Text
+@onready var sfx: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func display(text: String) -> void:
 	text_node.text = text
-	text_node.modulate = message_color
-
 	scale = Vector2.ZERO
 	visible = true
 
-	var tween: Tween = get_tree().create_tween().set_trans(Tween.TRANS_EXPO).set_ease(
-		Tween.EASE_IN_OUT
-	)
-	tween.tween_property(self, "scale", Vector2.ONE, 0.4)
-	await get_tree().create_timer(2.0).timeout
-	tween = (
-		get_tree()
-		. create_tween()
-		. set_trans(Tween.TRANS_EXPO)
-		. set_ease(Tween.EASE_IN_OUT)
-		. set_parallel(true)
-	)
+	var tween: Tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ONE, 1.0)
+	tween.tween_interval(1.0)
 	tween.tween_property(self, "modulate", Color(Color.WHITE, 0.0), 1.0)
-	await tween.finished
-	queue_free()
+	tween.tween_callback(queue_free)
+	sfx.play()
 
 
 func _ready() -> void:
