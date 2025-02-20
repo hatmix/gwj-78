@@ -110,15 +110,15 @@ func _update_snow_cover() -> void:
 			if point in areas:
 				areas[point].queue_free()
 				areas.erase(point)
-			var line: Line2D = lines[point]
-			var tween: Tween = line.create_tween()
-			tween.tween_property(line, "modulate", Color.TRANSPARENT, 2.0)
-			tween.tween_callback(line.queue_free)
-			lines.erase(point)
 			points.pop_front()
 			# decrement index for trackers' next points
 			for tracker in trackers:
 				trackers[tracker].decrement_idx()
+			var line: Line2D = lines[point]
+			lines.erase(point)
+			var tween: Tween = line.create_tween()
+			tween.tween_property(line, "modulate", Color.TRANSPARENT, 0.5)
+			tween.tween_callback(line.queue_free)
 	#print("snow times count: %d\nareas count: %d\nlines count: %d" % [snow_time.keys().size(), areas.keys().size(), lines.keys().size()])
 
 
