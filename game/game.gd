@@ -107,5 +107,6 @@ func _win() -> void:
 		
 		get_tree().set_deferred("paused", false)
 	else:
+		transition_in.bind(start_point).call_deferred()
 		get_tree().set_deferred("paused", false)
 		get_tree().reload_current_scene()
