@@ -1,25 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsh8lu3xwvk31"]
+[gd_scene load_steps=7 format=3 uid="uid://bsh8lu3xwvk31"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_0dwuo"]
 [ext_resource type="AudioStream" uid="uid://okiy571q8qdd" path="res://assets/music/contemplative.ogg" id="2_dm1aw"]
+[ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_yrvkc"]
 [ext_resource type="PackedScene" uid="uid://de5gr0w8nmik3" path="res://game/maps/map_1.tscn" id="4_avpuk"]
-[ext_resource type="FontFile" uid="uid://dfjqj2dggb8fk" path="res://assets/fonts/pixelFont-3-7x5-sproutLands.ttf" id="4_d5x6b"]
 [ext_resource type="PackedScene" uid="uid://c45lhaiu1a1rd" path="res://game/weather/weather.tscn" id="4_ktfyp"]
+[ext_resource type="PackedScene" uid="uid://u1vgfeia861q" path="res://ui/ui.tscn" id="5_mq8ia"]
 
-[node name="Main" type="Node2D"]
+[node name="Game" type="Node2D"]
 script = ExtResource("1_0dwuo")
+default_mapping_context = ExtResource("2_yrvkc")
 
 [node name="Bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_dm1aw")
 volume_db = -18.0
+bus = &"Music"
 
 [node name="Map_1" parent="." instance=ExtResource("4_avpuk")]
 
 [node name="Weather" parent="." instance=ExtResource("4_ktfyp")]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" parent="." instance=ExtResource("5_mq8ia")]
+visible = false
 
 [node name="GameOver" type="Label" parent="UI"]
+visible = false
 z_index = 100
 z_as_relative = false
 anchors_preset = 8
@@ -27,22 +32,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -145.0
-offset_top = -14.0
-offset_right = 143.0
-offset_bottom = 10.0
+offset_left = -144.0
+offset_top = -12.0
+offset_right = 144.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.921569, 0.921569, 0.921569, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("4_d5x6b")
-theme_override_font_sizes/font_size = 32
+theme_type_variation = &"GameOver"
 text = "DRONE GOT YOU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Victory" type="Label" parent="UI"]
+visible = false
 z_index = 100
 z_as_relative = false
 anchors_preset = 8
@@ -50,17 +52,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -127.0
-offset_top = -14.0
-offset_right = 125.0
-offset_bottom = 10.0
+offset_left = -126.0
+offset_top = -12.0
+offset_right = 126.0
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.921569, 0.921569, 0.921569, 1)
-theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("4_d5x6b")
-theme_override_font_sizes/font_size = 32
+theme_type_variation = &"GameOver"
 text = "YOU MADE IT!"
 horizontal_alignment = 1
 vertical_alignment = 1

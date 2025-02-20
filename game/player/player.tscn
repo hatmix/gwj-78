@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://s158exwbtkoy"]
+[gd_scene load_steps=15 format=4 uid="uid://s158exwbtkoy"]
 
 [ext_resource type="Script" path="res://game/player/player.gd" id="1_yokwv"]
 [ext_resource type="PackedScene" uid="uid://6neh0sw1afwi" path="res://game/components/snow_trail/trail.tscn" id="2_7erlm"]
 [ext_resource type="FontFile" uid="uid://cslcrejpjhg8f" path="res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf" id="2_edady"]
+[ext_resource type="Resource" uid="uid://c6tovgnwacf3x" path="res://input/move.tres" id="2_unicu"]
 [ext_resource type="AudioStream" uid="uid://c5qtjpbprbkmh" path="res://game/player/assets/footsteps/footsteps_audio_stream_randomizer.tres" id="3_yiwyq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvibx"]
@@ -177,6 +178,7 @@ collision_layer = 8
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_yokwv")
+move_action = ExtResource("2_unicu")
 speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -258,3 +260,4 @@ points_between_areas = 1.0
 
 [node name="FootstepsSfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yiwyq")
+bus = &"SFX"

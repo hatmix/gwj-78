@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 enum State { IDLE, WALK }
 
+@export var move_action: GUIDEAction
 @export var speed: float = 30
 
 var state: State
@@ -40,6 +41,8 @@ func _hide(enabled: bool = true) -> void:
 
 
 func _ready() -> void:
+	move_action.triggered.connect(_on_move_action)
+	move_action.completed.connect(_on_move_action)
 	interaction_area_2d.area_entered.connect(_on_area_entered)
 	interaction_area_2d.area_exited.connect(_on_area_exited)
 
@@ -54,12 +57,14 @@ func _on_area_exited(area: Area2D) -> void:
 		_hide(false)
 
 
+func _on_move_action():
+	direction = move_action.value_axis_2d.normalized()
 
-func _input(_event: InputEvent) -> void:
-	direction = Input.get_vector("Move Left", "Move Right", "Move Up", "Move Down")
+
+func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("DebugHide"):
-		var toggle: bool = !get_collision_layer_value(4)
-		_hide(toggle)
+		# toggle on whether collision layer is on
+		_hide(get_collision_layer_value(4))
 
 
 func _physics_process(_delta: float) -> void:
