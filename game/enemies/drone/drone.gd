@@ -1,3 +1,4 @@
+class_name Drone
 extends Enemy  # Maybe not useful now...
 
 ## Overview of states
@@ -42,6 +43,9 @@ func scan(enable: bool = true) -> void:
 
 
 func _ready() -> void:
+	%StateLabel.text = name
+	%TargetLabel.text = "%s\npatrol\ntarget" % name
+	_state._patrol.patrol_target_changed.connect(_update_target_label)
 	visible_on_screen_notifier_2d.screen_exited.connect(
 		_state.on_visible_on_screen_notifier_2d_screen_exited
 	)
@@ -52,6 +56,11 @@ func _ready() -> void:
 	direction = global_position.direction_to(Vector2(160, 90))
 
 
+func _update_target_label(pos: Vector2) -> void:
+	%TargetLabel.visible = true
+	%TargetLabel.global_position = pos
+
+
 # Override base Enemy _input behavior
 func _input(_event: InputEvent) -> void:
 	pass
@@ -59,12 +68,14 @@ func _input(_event: InputEvent) -> void:
 
 # Override base Enemy _physics_process behavior
 func _physics_process(_delta: float) -> void:
-	if _state.current_state:
-		%StateLabel.text = "%s\n%s" % [_state.current_state.name, anim_player.current_animation]
+	pass
+	#if _state.current_state:
+	#	%StateLabel.text = "%s\n%s" % [_state.current_state.name, anim_player.current_animation]
 
 
 func _update_state_label(new_state: FsmState, _old_state: FsmState) -> void:
-	%StateLabel.text = new_state.name
+	pass
+	#%StateLabel.text = new_state.name
 
 
 func _on_body_entered_player_detect_area(body: Node2D) -> void:

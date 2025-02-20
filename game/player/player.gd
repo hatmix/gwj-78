@@ -61,7 +61,7 @@ func _on_move_action():
 	direction = move_action.value_axis_2d.normalized()
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("DebugHide"):
 		# toggle on whether collision layer is on
 		_hide(get_collision_layer_value(4))
