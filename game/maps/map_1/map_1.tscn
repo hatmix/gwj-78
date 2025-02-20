@@ -35,7 +35,7 @@ position = Vector2(145, -75)
 position = Vector2(-148, -82)
 
 [node name="Player" parent="." instance=ExtResource("4_xxbsh")]
-position = Vector2(-123, 55)
+position = Vector2(107, -76)
 
 [node name="Trees" type="Node2D" parent="."]
 y_sort_enabled = true

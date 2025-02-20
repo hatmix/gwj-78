@@ -172,7 +172,7 @@ _data = {
 "walk-up": SubResource("Animation_dbnhb")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 8
 collision_mask = 9
