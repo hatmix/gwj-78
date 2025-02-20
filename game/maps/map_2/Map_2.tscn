@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://nwm3kg78jexn"]
+
+[ext_resource type="Script" path="res://game/maps/map.gd" id="1_jakva"]
+[ext_resource type="PackedScene" uid="uid://de5gr0w8nmik3" path="res://game/maps/map_1/map_1.tscn" id="2_aju15"]
+[ext_resource type="PackedScene" uid="uid://cra7xo2obmyky" path="res://game/maps/map_borders/map_borders.tscn" id="2_wey4s"]
+[ext_resource type="Texture2D" uid="uid://bcmobfdjx564e" path="res://game/maps/map_2/map_2_blockout.png" id="3_vyogy"]
+[ext_resource type="PackedScene" uid="uid://s158exwbtkoy" path="res://game/player/player.tscn" id="4_ex1md"]
+[ext_resource type="PackedScene" uid="uid://ctnbcpnjg1cg6" path="res://game/maps/features/campfire/campfire.tscn" id="5_u3ba8"]
+[ext_resource type="PackedScene" uid="uid://dluyrtqjcb4sq" path="res://game/maps/features/cart/cart.tscn" id="7_dthe0"]
+[ext_resource type="PackedScene" uid="uid://dihbu6hike2d3" path="res://game/maps/features/trees/tree.tscn" id="8_evmde"]
+[ext_resource type="PackedScene" uid="uid://bycr21mgk8bn3" path="res://game/enemies/drone/drone.tscn" id="9_1l8i7"]
+
+[node name="Map_2" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(160, 90)
+script = ExtResource("1_jakva")
+next_level = ExtResource("2_aju15")
+
+[node name="MapBorders" parent="." instance=ExtResource("2_wey4s")]
+
+[node name="Terrain" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.75)
+texture = ExtResource("3_vyogy")
+
+[node name="Impassable" type="StaticBody2D" parent="."]
+collision_layer = 19
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Impassable"]
+polygon = PackedVector2Array(-160, -50, 80, 1, -159, 43)
+
+[node name="Player" parent="." instance=ExtResource("4_ex1md")]
+position = Vector2(-141, 79)
+
+[node name="Campfire" parent="." instance=ExtResource("5_u3ba8")]
+position = Vector2(-112, -56)
+
+[node name="Cart" parent="." instance=ExtResource("7_dthe0")]
+position = Vector2(130, 77)
+
+[node name="Tree" parent="." instance=ExtResource("8_evmde")]
+position = Vector2(59, 76)
+
+[node name="Tree2" parent="." instance=ExtResource("8_evmde")]
+position = Vector2(-35, 46)
+
+[node name="Tree3" parent="." instance=ExtResource("8_evmde")]
+position = Vector2(127, 6)
+
+[node name="Tree4" parent="." instance=ExtResource("8_evmde")]
+position = Vector2(29, -50)
+
+[node name="Drone" parent="." instance=ExtResource("9_1l8i7")]
+position = Vector2(90, -54)
+
+[node name="Drone2" parent="." instance=ExtResource("9_1l8i7")]
+position = Vector2(131, 64)

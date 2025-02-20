@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game/game.gd" id="1_0dwuo"]
 [ext_resource type="AudioStream" uid="uid://okiy571q8qdd" path="res://assets/music/contemplative.ogg" id="2_dm1aw"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_yrvkc"]
-[ext_resource type="PackedScene" uid="uid://de5gr0w8nmik3" path="res://game/maps/map_1.tscn" id="4_avpuk"]
+[ext_resource type="PackedScene" uid="uid://de5gr0w8nmik3" path="res://game/maps/map_1/map_1.tscn" id="4_avpuk"]
 [ext_resource type="PackedScene" uid="uid://c45lhaiu1a1rd" path="res://game/weather/weather.tscn" id="4_ktfyp"]
 [ext_resource type="PackedScene" uid="uid://u1vgfeia861q" path="res://ui/ui.tscn" id="5_mq8ia"]
 
@@ -16,7 +16,9 @@ stream = ExtResource("2_dm1aw")
 volume_db = -18.0
 bus = &"Music"
 
-[node name="Map_1" parent="." instance=ExtResource("4_avpuk")]
+[node name="MapPlaceholder" type="Node2D" parent="."]
+
+[node name="Map_1" parent="MapPlaceholder" instance=ExtResource("4_avpuk")]
 
 [node name="Weather" parent="." instance=ExtResource("4_ktfyp")]
 

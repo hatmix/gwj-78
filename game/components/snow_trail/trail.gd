@@ -126,9 +126,6 @@ func _ready() -> void:
 	snow_cover_timer.timeout.connect(_update_snow_cover)
 
 
-# TODO: fading of tracks based on weather conditions & time elapsed
-# TODO: how to use gradient across width of line? (line2d's built-in gradients
-# seem to work over the length)
 func _physics_process(delta):
 	if is_instance_valid(Global.get_weather()) and Global.get_weather().is_snowing():
 		accumulation += delta * Global.get_weather().get_snow_intensity()

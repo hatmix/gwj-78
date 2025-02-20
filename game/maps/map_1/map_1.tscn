@@ -1,0 +1,110 @@
+[gd_scene load_steps=17 format=3 uid="uid://de5gr0w8nmik3"]
+
+[ext_resource type="Script" path="res://game/maps/map.gd" id="1_2grk6"]
+[ext_resource type="PackedScene" uid="uid://nwm3kg78jexn" path="res://game/maps/map_2/map_2.tscn" id="2_0a08y"]
+[ext_resource type="PackedScene" uid="uid://cra7xo2obmyky" path="res://game/maps/map_borders/map_borders.tscn" id="2_o5824"]
+[ext_resource type="PackedScene" uid="uid://bycr21mgk8bn3" path="res://game/enemies/drone/drone.tscn" id="3_hdf28"]
+[ext_resource type="PackedScene" uid="uid://s158exwbtkoy" path="res://game/player/player.tscn" id="4_xxbsh"]
+[ext_resource type="PackedScene" uid="uid://dihbu6hike2d3" path="res://game/maps/features/trees/tree.tscn" id="5_3v3bc"]
+[ext_resource type="PackedScene" uid="uid://bwbproqji3tyu" path="res://game/maps/features/box/box.tscn" id="6_yv48k"]
+[ext_resource type="PackedScene" uid="uid://cf07yba27ttru" path="res://game/maps/features/trees/crow_tree.tscn" id="7_ob0wg"]
+[ext_resource type="PackedScene" uid="uid://3w5qnv4m08vy" path="res://game/maps/features/remains/bones.tscn" id="8_2c28n"]
+[ext_resource type="PackedScene" uid="uid://dexca6yerrarl" path="res://game/maps/features/remains/skull.tscn" id="9_dhy0w"]
+[ext_resource type="PackedScene" uid="uid://buhu6jlsosli8" path="res://game/maps/features/rocks/rock_big.tscn" id="10_5divu"]
+[ext_resource type="PackedScene" uid="uid://dluyrtqjcb4sq" path="res://game/maps/features/cart/cart.tscn" id="11_yfwm0"]
+[ext_resource type="PackedScene" uid="uid://cwss3fivufcb2" path="res://game/maps/features/cliffs/cliff.tscn" id="12_fh5mb"]
+[ext_resource type="PackedScene" uid="uid://ctnbcpnjg1cg6" path="res://game/maps/features/campfire/campfire.tscn" id="13_q0f7d"]
+[ext_resource type="PackedScene" uid="uid://bfw0fmf8e6m2r" path="res://game/maps/features/diamond/diamond.tscn" id="14_01hhc"]
+[ext_resource type="PackedScene" uid="uid://povhohul3eoq" path="res://game/maps/features/rocks/rock_small.tscn" id="15_voip3"]
+
+[node name="Map_1" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(160, 90)
+script = ExtResource("1_2grk6")
+next_level = ExtResource("2_0a08y")
+
+[node name="MapBorders" parent="." instance=ExtResource("2_o5824")]
+
+[node name="Drone" parent="." instance=ExtResource("3_hdf28")]
+position = Vector2(147, 80)
+
+[node name="Drone2" parent="." instance=ExtResource("3_hdf28")]
+position = Vector2(145, -75)
+
+[node name="Drone3" parent="." instance=ExtResource("3_hdf28")]
+position = Vector2(-148, -82)
+
+[node name="Player" parent="." instance=ExtResource("4_xxbsh")]
+position = Vector2(-123, 55)
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="tree" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(-142, 26)
+
+[node name="tree2" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(47, 62)
+
+[node name="tree13" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(93, 104)
+
+[node name="tree3" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(-53, 54)
+
+[node name="tree4" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(-114, -20)
+
+[node name="tree8" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(20, -40)
+
+[node name="tree9" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(-81, 7)
+
+[node name="tree10" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(139, 42)
+
+[node name="tree11" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(80, -54)
+
+[node name="tree14" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(88, 4)
+
+[node name="tree5" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(-66, -34)
+
+[node name="tree6" parent="Trees" instance=ExtResource("5_3v3bc")]
+position = Vector2(-42, -70)
+
+[node name="Box" parent="Trees" instance=ExtResource("6_yv48k")]
+position = Vector2(110, -32)
+
+[node name="Tree" parent="Trees" instance=ExtResource("7_ob0wg")]
+position = Vector2(-8, 18)
+
+[node name="Bones" parent="." instance=ExtResource("8_2c28n")]
+position = Vector2(-104, 28)
+
+[node name="Skull" parent="." instance=ExtResource("9_dhy0w")]
+position = Vector2(14, -7)
+
+[node name="RockBig" parent="." instance=ExtResource("10_5divu")]
+position = Vector2(4, 53)
+
+[node name="Skull3" parent="." instance=ExtResource("9_dhy0w")]
+position = Vector2(-139, 69)
+
+[node name="Cart" parent="." instance=ExtResource("11_yfwm0")]
+position = Vector2(54, -57)
+
+[node name="Cliff" parent="." instance=ExtResource("12_fh5mb")]
+position = Vector2(-86, 79)
+
+[node name="Campfire" parent="." instance=ExtResource("13_q0f7d")]
+position = Vector2(131, -60)
+
+[node name="Diamond" parent="." instance=ExtResource("14_01hhc")]
+position = Vector2(127, 69)
+
+[node name="RockSmall" parent="." instance=ExtResource("15_voip3")]
+position = Vector2(66, 23)

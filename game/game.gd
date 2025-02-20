@@ -5,8 +5,8 @@ extends Node
 @onready var bgm: AudioStreamPlayer = $Bgm
 @onready var game_over: Label = $UI/GameOver
 @onready var victory: Label = $UI/Victory
-
-# FIXME: collision layers for ground vs flyers, etc.
+@onready var map_placeholder: Node2D = $MapPlaceholder
+@onready var map: Map = $MapPlaceholder/Map_1
 
 
 func _ready() -> void:
@@ -27,9 +27,18 @@ func _lose() -> void:
 	get_tree().reload_current_scene()
 
 
+# TODO: use Fade or make some kind of nice level transition
 func _win() -> void:
 	victory.visible = true
 	get_tree().paused = true
 	await get_tree().create_timer(2.0).timeout
-	get_tree().set_deferred("paused", false)
-	get_tree().reload_current_scene()
+	if map.next_level:
+		var next_level: Map = map.next_level.instantiate()
+		map.queue_free()
+		map_placeholder.add_child(next_level)
+		map = next_level
+		victory.visible = false
+		get_tree().set_deferred("paused", false)
+	else:
+		get_tree().set_deferred("paused", false)
+		get_tree().reload_current_scene()
