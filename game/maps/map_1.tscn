@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://de5gr0w8nmik3"]
+[gd_scene load_steps=15 format=3 uid="uid://de5gr0w8nmik3"]
 
 [ext_resource type="PackedScene" uid="uid://cra7xo2obmyky" path="res://game/maps/map_borders/map_borders.tscn" id="1_5u1q8"]
 [ext_resource type="PackedScene" uid="uid://bycr21mgk8bn3" path="res://game/enemies/drone/drone.tscn" id="3_4mfge"]
 [ext_resource type="PackedScene" uid="uid://bwbproqji3tyu" path="res://game/maps/features/box/box.tscn" id="5_1ygvj"]
 [ext_resource type="PackedScene" uid="uid://s158exwbtkoy" path="res://game/player/player.tscn" id="5_j03r6"]
+[ext_resource type="PackedScene" uid="uid://cf07yba27ttru" path="res://game/maps/features/trees/crow_tree.tscn" id="6_cm6fj"]
 [ext_resource type="PackedScene" uid="uid://buhu6jlsosli8" path="res://game/maps/features/rocks/rock_big.tscn" id="7_gioox"]
 [ext_resource type="PackedScene" uid="uid://dihbu6hike2d3" path="res://game/maps/features/trees/tree.tscn" id="7_wf6ec"]
 [ext_resource type="PackedScene" uid="uid://3w5qnv4m08vy" path="res://game/maps/features/remains/bones.tscn" id="8_qvf5l"]
@@ -54,7 +55,7 @@ position = Vector2(-114, -20)
 position = Vector2(20, -40)
 
 [node name="tree9" parent="Trees" instance=ExtResource("7_wf6ec")]
-position = Vector2(-89, 13)
+position = Vector2(-81, 7)
 
 [node name="tree10" parent="Trees" instance=ExtResource("7_wf6ec")]
 position = Vector2(139, 42)
@@ -65,9 +66,6 @@ position = Vector2(80, -54)
 [node name="tree14" parent="Trees" instance=ExtResource("7_wf6ec")]
 position = Vector2(88, 4)
 
-[node name="tree7" parent="Trees" instance=ExtResource("7_wf6ec")]
-position = Vector2(-19, 25)
-
 [node name="tree5" parent="Trees" instance=ExtResource("7_wf6ec")]
 position = Vector2(-66, -34)
 
@@ -77,11 +75,14 @@ position = Vector2(-42, -70)
 [node name="Box" parent="Trees" instance=ExtResource("5_1ygvj")]
 position = Vector2(110, -32)
 
+[node name="Tree" parent="Trees" instance=ExtResource("6_cm6fj")]
+position = Vector2(-8, 18)
+
 [node name="Bones" parent="." instance=ExtResource("8_qvf5l")]
-position = Vector2(-82, 40)
+position = Vector2(-104, 28)
 
 [node name="Skull" parent="." instance=ExtResource("9_es1sj")]
-position = Vector2(1, -18)
+position = Vector2(14, -7)
 
 [node name="RockBig" parent="." instance=ExtResource("7_gioox")]
 position = Vector2(4, 53)
@@ -93,7 +94,7 @@ position = Vector2(-139, 69)
 position = Vector2(54, -57)
 
 [node name="Cliff" parent="." instance=ExtResource("10_6chig")]
-position = Vector2(41, -9)
+position = Vector2(-86, 79)
 
 [node name="Campfire" parent="." instance=ExtResource("10_g0cto")]
 position = Vector2(131, -60)

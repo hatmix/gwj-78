@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwsl2fdruo7r8"
-path="res://.godot/imported/longtree.png-88c2c86e95fd382a649bc095d49eaee6.ctex"
+path="res://.godot/imported/longtree.png-f9b3526f1a15cc1c3252258e8a7ae7cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/maps/features/trees/longtree.png"
-dest_files=["res://.godot/imported/longtree.png-88c2c86e95fd382a649bc095d49eaee6.ctex"]
+source_file="res://game/maps/features/trees/assets/longtree.png"
+dest_files=["res://.godot/imported/longtree.png-f9b3526f1a15cc1c3252258e8a7ae7cd.ctex"]
 
 [params]
 

@@ -1,0 +1,174 @@
+[gd_scene load_steps=14 format=4 uid="uid://cf07yba27ttru"]
+
+[ext_resource type="Script" path="res://game/maps/features/trees/crow_tree.gd" id="1_r86w4"]
+[ext_resource type="AudioStream" uid="uid://p8e0qw6u1wvp" path="res://game/maps/features/trees/assets/audio/crow-angry.ogg" id="3_hsgpr"]
+[ext_resource type="Texture2D" uid="uid://uglpmg7gaor4" path="res://game/maps/features/trees/assets/longtree-shadow.png" id="4_fp17p"]
+[ext_resource type="AudioStream" uid="uid://dnuekebmdvkjw" path="res://game/maps/features/trees/assets/audio/crow.ogg" id="4_pgax8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4mkx"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cwo2j"]
+radius = 14.0
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_omony"]
+_data = PackedByteArray("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")
+size_override = Vector2(160, 600)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fmada"]
+radius = 3.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8raub"]
+radius = 12.0
+height = 92.0
+
+[sub_resource type="Animation" id="Animation_bfyks"]
+length = 2.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.45, 1.5, 1.6, 1.7, 1.8, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sfx")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 1.18959,
+"start_offset": 0.0606459,
+"stream": ExtResource("3_hsgpr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_b8ano"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wbwsv"]
+resource_name = "caws"
+length = 3.75
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sfx")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.900359,
+"start_offset": 0.0886364,
+"stream": ExtResource("4_pgax8")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_el1bp"]
+_data = {
+"caws": SubResource("Animation_wbwsv"),
+"circle": SubResource("Animation_bfyks"),
+"idle": SubResource("Animation_b8ano")
+}
+
+[node name="CrowTree" type="StaticBody2D" groups=["Trees"]]
+y_sort_enabled = true
+collision_mask = 0
+script = ExtResource("1_r86w4")
+
+[node name="Trunk2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c4mkx")
+
+[node name="Canopy" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="Canopy" type="CollisionShape2D" parent="Canopy"]
+position = Vector2(0, -60)
+shape = SubResource("CircleShape2D_cwo2j")
+
+[node name="Visual" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_omony")
+offset = Vector2(0, -44)
+hframes = 5
+vframes = 5
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://game/maps/features/trees/assets/animated-tree.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "609a9298e0ef124d2046797288902094"
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+y_sort_enabled = true
+texture = ExtResource("4_fp17p")
+offset = Vector2(0, -44)
+
+[node name="PlayerInteraction" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteraction"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_fmada")
+
+[node name="CrowInteraction" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 24
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrowInteraction"]
+position = Vector2(-1, -39)
+shape = SubResource("CapsuleShape2D_8raub")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_el1bp")
+}
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_pgax8")
+volume_db = -6.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true

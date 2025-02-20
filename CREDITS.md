@@ -13,6 +13,7 @@ https://clement-panchout.itch.io/yet-another-free-music-pack by [Clement Panchou
 
 Various sound effects by [OwlishMedia](https://opengameart.org/users/owlishmedia) under CC0
 
+[Crow sound effects](https://freesound.org/people/Mish7913/packs/41274/) by [Mish7913](https://freesound.org/people/Mish7913/) under CC0
 
 ## Godot Engine
 Authors: [AUTHORS.md](https://github.com/godotengine/godot/blob/master/AUTHORS.md)  

@@ -8,13 +8,15 @@ y_sort_enabled = true
 
 [node name="Visual" type="Sprite2D" parent="."]
 y_sort_enabled = true
+position = Vector2(0, -18)
 texture = ExtResource("1_tfr7f")
-offset = Vector2(0, -18)
 
 [node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
 y_sort_enabled = true
 texture = ExtResource("2_baljy")
 offset = Vector2(0, -18)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-18, -20, -12, -23, -6, -35, 14, -13, 9, -1, -1, 1, -6, 0, -14, -8)
+position = Vector2(0, -18)
+polygon = PackedVector2Array(-17, -1, -11, -14, -4, -20, 6, -18, 16, -8, 17, 9, 9, 16, -1, 19, -8, 16, -14, 10)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uglpmg7gaor4"
-path="res://.godot/imported/longtree-shadow.png-38e53b028ccd81556bf49508d2be53d1.ctex"
+uid="uid://dllgfmp4sy5ul"
+path="res://.godot/imported/treevariation2.png-961d63b79aa145ff52fe1a95c64dce70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/maps/features/trees/longtree-shadow.png"
-dest_files=["res://.godot/imported/longtree-shadow.png-38e53b028ccd81556bf49508d2be53d1.ctex"]
+source_file="res://game/maps/features/trees/assets/treevariation2.png"
+dest_files=["res://.godot/imported/treevariation2.png-961d63b79aa145ff52fe1a95c64dce70.ctex"]
 
 [params]
 

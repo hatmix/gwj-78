@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dihbu6hike2d3"]
+[gd_scene load_steps=8 format=3 uid="uid://dihbu6hike2d3"]
 
-[ext_resource type="Texture2D" uid="uid://bwsl2fdruo7r8" path="res://game/maps/features/trees/longtree.png" id="1_5evkb"]
-[ext_resource type="Texture2D" uid="uid://uglpmg7gaor4" path="res://game/maps/features/trees/longtree-shadow.png" id="2_yq3vk"]
+[ext_resource type="Script" path="res://game/maps/features/trees/tree.gd" id="1_3l3oj"]
+[ext_resource type="Texture2D" uid="uid://bwsl2fdruo7r8" path="res://game/maps/features/trees/assets/longtree.png" id="1_5evkb"]
+[ext_resource type="Texture2D" uid="uid://dllgfmp4sy5ul" path="res://game/maps/features/trees/assets/treevariation2.png" id="2_qyo6m"]
+[ext_resource type="Texture2D" uid="uid://uglpmg7gaor4" path="res://game/maps/features/trees/assets/longtree-shadow.png" id="2_yq3vk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4mkx"]
 radius = 3.0
@@ -15,6 +17,7 @@ radius = 3.0
 [node name="Tree" type="StaticBody2D" groups=["Trees"]]
 y_sort_enabled = true
 collision_mask = 0
+script = ExtResource("1_3l3oj")
 
 [node name="Trunk2" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_c4mkx")
@@ -27,6 +30,11 @@ monitoring = false
 [node name="Canopy" type="CollisionShape2D" parent="Canopy"]
 position = Vector2(0, -60)
 shape = SubResource("CircleShape2D_cwo2j")
+
+[node name="Visual2" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("2_qyo6m")
+offset = Vector2(0, -44)
 
 [node name="Visual" type="Sprite2D" parent="."]
 y_sort_enabled = true
