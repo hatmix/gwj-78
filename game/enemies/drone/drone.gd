@@ -47,7 +47,7 @@ func _ready() -> void:
 	%TargetLabel.text = "%s\npatrol\ntarget" % name
 	_state._patrol.patrol_target_changed.connect(_update_target_label)
 	visible_on_screen_notifier_2d.screen_exited.connect(
-		_state.on_visible_on_screen_notifier_2d_screen_exited
+		_state._patrol.on_visible_on_screen_notifier_2d_screen_exited
 	)
 	player_detect_area_2d.body_entered.connect(_on_body_entered_player_detect_area)
 	detect_area_2d.area_entered.connect(_state.on_detect_area_entered)

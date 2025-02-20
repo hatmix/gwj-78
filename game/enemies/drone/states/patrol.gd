@@ -15,6 +15,7 @@ const QUADS: Array[Rect2] = [
 @export var max_turn_time: float = 6.0
 
 static var target_quads: Dictionary = {}
+var target_point: Vector2
 
 @onready var direction_change_timer: Timer = $DirectionChangeTimer
 
@@ -79,6 +80,13 @@ func _change_direction() -> void:
 	else:	
 		print(_state.target.name, " moving to quad ", min_quad)
 		target_quads[_state.target] = min_quad
-		var target_point = QUADS[min_quad].get_center()
+		target_point = QUADS[min_quad].get_center()
 		patrol_target_changed.emit(target_point)
 		_state.target.direction = _state.target.global_position.direction_to(target_point)
+
+
+func on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	var point: Vector2 = target_point
+	if not point:
+		point = Vector2(160, 90)
+	_state.target.direction = _state.target.global_position.direction_to(point)

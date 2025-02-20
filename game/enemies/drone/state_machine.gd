@@ -29,12 +29,3 @@ func on_detect_area_entered(area: Area2D) -> void:
 		scanned.append(node)
 		_search.point_of_interest = node.global_position
 		change_to(_search)
-
-
-func on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	match current_state:
-		_patrol:
-			target.direction = target.global_position.direction_to(Vector2(160, 90))
-		#_track:
-		# Following something off the map...
-		#queue_free()
