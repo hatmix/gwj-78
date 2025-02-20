@@ -23,6 +23,7 @@ var areas: Dictionary = {}
 
 # lookup points index by node tracking
 var trackers: Dictionary = {}
+var last_track_step: int = -1
 
 # lookup which line starts at point
 var lines: Dictionary = {}
@@ -32,28 +33,38 @@ var lines: Dictionary = {}
 
 
 # TODO: think about possible memory leaks with all these refs stored
-func register_tracker(tracker: Node, area: Area2D) -> bool:
+func register_tracker(tracker_node: Node, area: Area2D) -> bool:
 	if area not in areas.values():
 		return false
 	var idx: int = points.find(area.global_position)
 	if idx == -1:
 		return false
-	trackers[tracker] = idx
+	var tracker: Tracker = Tracker.new()
+	tracker.idx = idx
+	last_track_step = -last_track_step
+	tracker.step = last_track_step
+	trackers[tracker_node] = tracker
 	#print(trackers)
 	return true
 
 
-func unregister_tracker(tracker: Node) -> void:
-	trackers.erase(tracker)
+func unregister_tracker(tracker_node: Node) -> void:
+	trackers.erase(tracker_node)
 
 
-func get_next_path_point(tracker) -> Variant:
-	if tracker not in trackers:
+func get_next_path_point(tracker_node) -> Variant:
+	if tracker_node not in trackers:
 		return
-	trackers[tracker] += 1
-	if trackers[tracker] >= points.size():
-		return
-	var point: Vector2 = points[trackers[tracker]]
+	var tracker: Tracker = trackers[tracker_node]
+	var idx = tracker.get_next_idx()
+	if idx >= points.size() or idx < 0:
+		if not tracker.reversed:
+			tracker.reverse()
+			# first idx is the one we just had
+			idx = tracker.get_next_idx()
+		else:
+			return
+	var point: Vector2 = points[idx]
 	# If point is not covered by snow, it will still be in snow_time dict
 	if point in snow_time:
 		return point
@@ -107,7 +118,7 @@ func _update_snow_cover() -> void:
 			points.pop_front()
 			# decrement index for trackers' next points
 			for tracker in trackers:
-				trackers[tracker] = max(0, trackers[tracker] - 1)
+				trackers[tracker].decrement_idx()
 	#print("snow times count: %d\nareas count: %d\nlines count: %d" % [snow_time.keys().size(), areas.keys().size(), lines.keys().size()])
 
 
@@ -132,8 +143,9 @@ func _physics_process(delta):
 	elif points[-1].distance_to(pos) >= min_distance_between_points:
 		# Before adding points, update prior 2 lines with point
 		# Each line should end up with 3 points to ensure smooth curves
-		lines[points[-1]].add_point(pos)
-		if points.size() > 2:
+		if points[-1] in lines:
+			lines[points[-1]].add_point(pos)
+		if points.size() > 2 and points[-2] in lines:
 			lines[points[-2]].add_point(pos)
 		# Now add the new line
 		add_line(pos)
@@ -143,3 +155,23 @@ func _physics_process(delta):
 		#print("adding area to trail at %.1v" % pos)
 		points_since_area_count = 0
 		add_area(pos)
+
+
+class Tracker:
+	extends RefCounted
+	## current index into points
+	var idx: int
+	## increment or decrement to get next point
+	var step: int
+	var reversed: bool = false
+
+	func reverse() -> void:
+		step = -step
+		reversed = true
+
+	func get_next_idx() -> int:
+		idx += step
+		return idx
+
+	func decrement_idx() -> void:
+		idx = max(0, idx - 1)

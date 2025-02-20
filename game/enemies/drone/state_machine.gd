@@ -8,6 +8,9 @@ var scanned: Array[Node2D] = []
 
 
 func on_detect_area_entered(area: Area2D) -> void:
+	if area in scanned:
+		return
+	scanned.append(area)
 	if current_state == _track:
 		return
 

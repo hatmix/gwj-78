@@ -1,7 +1,0 @@
-[gd_resource type="Gradient" format=3 uid="uid://cihyhkbfsmlws"]
-
-[resource]
-resource_name = "gradient_for_cover_point"
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.19322, 0.813559)
-colors = PackedColorArray(0.921569, 0.921569, 0.921569, 0.501961, 0.921569, 0.921569, 0.921569, 1, 1, 1, 1, 0.501961)
