@@ -23,7 +23,7 @@ var areas: Dictionary = {}
 
 # lookup points index by node tracking
 var trackers: Dictionary = {}
-var last_track_step: int = -1
+var last_track_step: int = [-1, 1].pick_random()
 
 # lookup which line starts at point
 var lines: Dictionary = {}
