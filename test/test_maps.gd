@@ -3,8 +3,8 @@ extends GdUnitTestSuite
 
 # TODO: maybe get list of scenes dynamically
 const MAP_SCENES: Array[String] = [
-	"res://game/maps/map_1/Map_1.tscn",
-	"res://game/maps/map_2/Map_2.tscn",
+	"res://game/maps/map_1/map_1.tscn",
+	"res://game/maps/map_2/map_2.tscn",
 ]
 
 
