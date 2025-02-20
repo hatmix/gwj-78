@@ -22,6 +22,25 @@ radius = 3.0
 radius = 12.0
 height = 92.0
 
+[sub_resource type="Animation" id="Animation_wbwsv"]
+resource_name = "caws"
+length = 3.75
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sfx")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.900359,
+"start_offset": 0.0886364,
+"stream": ExtResource("4_pgax8")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
 [sub_resource type="Animation" id="Animation_bfyks"]
 length = 2.6
 tracks/0/type = "value"
@@ -66,25 +85,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
-
-[sub_resource type="Animation" id="Animation_wbwsv"]
-resource_name = "caws"
-length = 3.75
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sfx")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.900359,
-"start_offset": 0.0886364,
-"stream": ExtResource("4_pgax8")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/0/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_el1bp"]
 _data = {
@@ -167,7 +167,8 @@ libraries = {
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_pgax8")
-volume_db = -6.0
+volume_db = -12.0
+max_distance = 200.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0
