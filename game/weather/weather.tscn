@@ -28,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.222293, 0.315605, 0.359181, 0.2)
 
 [node name="Snowfall" type="ColorRect" parent="."]
@@ -39,6 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="WeatherChangeTimer" type="Timer" parent="."]
