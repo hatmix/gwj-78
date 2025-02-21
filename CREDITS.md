@@ -15,6 +15,8 @@ Various sound effects by [OwlishMedia](https://opengameart.org/users/owlishmedia
 
 [Crow sound effects](https://freesound.org/people/Mish7913/packs/41274/) by [Mish7913](https://freesound.org/people/Mish7913/) under CC0
 
+Pixel fonts by [CupNooble](https://cupnooble.itch.io/) via Discord
+
 ## Godot Engine
 Authors: [AUTHORS.md](https://github.com/godotengine/godot/blob/master/AUTHORS.md)  
 Source: [https://github.com/godotengine/godot](https://github.com/godotengine/godot)  
@@ -35,3 +37,8 @@ License: [MIT](https://github.com/daenvil/MarkdownLabel/tree/main?tab=MIT-1-ov-f
 Author: [Godotneers](https://github.com/godotneers)  
 Source: [https://github.com/godotneers/G.U.I.D.E](https://github.com/godotneers/G.U.I.D.E)  
 License: [MIT](https://github.com/godotneers/G.U.I.D.E?tab=MIT-1-ov-file#readme)  
+
+### Universal Fade
+Author: [Tomek (KoBeWi)](https://github.com/KoBeWi)
+Source: [github: Godot-Universal-Fade](https://github.com/KoBeWi/Godot-Universal-Fade)
+License: [MIT License](https://github.com/KoBeWi/Godot-Universal-Fade/blob/master/LICENSE.txt)

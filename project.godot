@@ -124,6 +124,6 @@ renderer/rendering_method="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 textures/decals/filter=0
 textures/light_projectors/filter=0
-environment/defaults/default_clear_color=Color(0.921569, 0.921569, 0.921569, 1)
+environment/defaults/default_clear_color=Color(0.796078, 0.835294, 0.843137, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true

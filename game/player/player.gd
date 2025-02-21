@@ -33,11 +33,11 @@ func footstep() -> void:
 
 
 func _hide(enabled: bool = true) -> void:
-		set_collision_layer_value(4, !enabled)
-		if enabled:
-			visual.self_modulate = Color("#FFFFFF88")
-		else:
-			visual.self_modulate = Color("#FFFFFFFF")
+	set_collision_layer_value(4, !enabled)
+	if enabled:
+		visual.self_modulate = Color("#FFFFFF88")
+	else:
+		visual.self_modulate = Color("#FFFFFFFF")
 
 
 func _ready() -> void:
@@ -68,7 +68,7 @@ func _input(_event: InputEvent) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if direction.length() > 0:
+	if direction.length() > 0 and speed > 0:
 		state = State.WALK
 		var facing = get_sprite_facing(direction.angle())
 		last_facing = facing

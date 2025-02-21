@@ -19,6 +19,7 @@ var map: Map
 
 
 func _ready() -> void:
+	$UI.find_child("MainMenu").queue_free()
 	GUIDE.enable_mapping_context(default_mapping_context)
 	Global.player_lost.connect(_lose)
 	Global.player_won.connect(_win)

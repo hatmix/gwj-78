@@ -1,8 +1,15 @@
 extends CanvasLayer
 
+const IN: String = "GradientVertical"
+const OUT: String = "GradientVerticalInverted"
+
+var _crossfade: bool = false
+
 
 # TODO: consider using the hide_ui and show_ui functions to add ui animation
 func hide_ui(page: Variant = null) -> void:
+	Fade.crossfade_prepare(1.0, IN, true)
+	_crossfade = true
 	if page:
 		var ui_page: UiPage = _resolve_ui_page(page)
 		if ui_page:
@@ -31,6 +38,9 @@ func show_ui(page: Variant) -> void:
 		#await get_tree().create_timer(0.2).timeout
 		#var cap := get_viewport().get_texture().get_image()
 		#cap.save_png("media/%s.png" % ui_page.name)
+	if _crossfade:
+		Fade.crossfade_execute()
+		_crossfade = false
 
 
 func go_to(page: Variant) -> void:
