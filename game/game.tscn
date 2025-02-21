@@ -9,6 +9,7 @@
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0dwuo")
+first_level = ExtResource("4_txadc")
 default_mapping_context = ExtResource("2_yrvkc")
 
 [node name="Bgm" type="AudioStreamPlayer" parent="."]
@@ -18,8 +19,6 @@ volume_db = -18.0
 bus = &"Music"
 
 [node name="MapPlaceholder" type="Node2D" parent="."]
-
-[node name="Map_1" parent="MapPlaceholder" instance=ExtResource("4_txadc")]
 
 [node name="Weather" parent="." instance=ExtResource("4_ktfyp")]
 process_mode = 3
