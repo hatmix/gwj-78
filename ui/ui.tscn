@@ -34,7 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.921569, 0.921569, 0.921569, 1)
+color = Color(0.611765, 0.686275, 0.701961, 0.501961)
 script = ExtResource("5_n6lj8")
 
 [node name="Credits" parent="." instance=ExtResource("5_hqkqk")]

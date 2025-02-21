@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://ctnbcpnjg1cg6"]
+[gd_scene load_steps=8 format=4 uid="uid://ctnbcpnjg1cg6"]
 
 [ext_resource type="Script" path="res://game/maps/features/campfire/campfire.gd" id="1_4u44f"]
 
@@ -29,6 +29,19 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_34k06"]
 radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_ffu3q"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.0301003, 0.160535, 0.351171, 0.655518, 0.856187, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.733005, 0.733005, 0.733005, 1, 0.521141, 0.521141, 0.521141, 1, 0.226707, 0.226707, 0.226707, 1, 0.133196, 0.133196, 0.133196, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_moa0i"]
+gradient = SubResource("Gradient_ffu3q")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="Campfire" type="Node2D" groups=["Campfire"]]
 script = ExtResource("1_4u44f")
@@ -72,3 +85,7 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_34k06")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_moa0i")
+offset = Vector2(0, -5)
