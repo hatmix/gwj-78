@@ -49,7 +49,7 @@ func _win() -> void:
 		map_placeholder.add_child(next_level)
 		map = next_level
 		victory.visible = false
-		Fade.fade_in(1.0, snow_color, IN).finished
+		Fade.fade_in(1.0, snow_color, IN)
 		get_tree().set_deferred("paused", false)
 	else:
 		Fade.fade_in(1.0, snow_color, IN)

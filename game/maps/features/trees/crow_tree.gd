@@ -20,7 +20,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print(body.name, " entered crow's area with delay time let ", $Timer.time_left)
+	#print(body.name, " entered crow's area with delay time let ", $Timer.time_left)
 	if body.name == "Player" and $Timer.is_stopped():
 		anim_player.play("caws")
 		crow_for_drones = false
@@ -29,8 +29,3 @@ func _on_body_entered(body: Node2D) -> void:
 		anim_player.play("circle")
 		crow_for_drones = true
 		$Timer.start()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
