@@ -57,6 +57,10 @@ func _win() -> void:
 		map = next_level
 		victory.visible = false
 		Fade.fade_in(1.0, snow_color, IN)
+		# Will this prevent starting map with input triggered?
+		GUIDE.disable_mapping_context(default_mapping_context)
+		GUIDE.enable_mapping_context(default_mapping_context)
+
 		get_tree().set_deferred("paused", false)
 	else:
 		Fade.fade_in(1.0, snow_color, IN)
