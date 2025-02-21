@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsh8lu3xwvk31"]
+[gd_scene load_steps=7 format=3 uid="uid://bsh8lu3xwvk31"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_0dwuo"]
 [ext_resource type="AudioStream" uid="uid://okiy571q8qdd" path="res://assets/music/contemplative.ogg" id="2_dm1aw"]
