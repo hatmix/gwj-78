@@ -21,11 +21,17 @@ scale = Vector2(1, 0.75)
 texture = ExtResource("3_vyogy")
 
 [node name="Impassable" type="StaticBody2D" parent="."]
-collision_layer = 33
-collision_mask = 33
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Impassable"]
-polygon = PackedVector2Array(-160, -50, 80, 1, -159, 43)
+polygon = PackedVector2Array(-160, -50, 52, -5, 52, 6, -159, 43)
+
+[node name="PlayerBlocked" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerBlocked"]
+polygon = PackedVector2Array(-160, -52, 81, 1, -160, 45)
 
 [node name="Player" parent="." instance=ExtResource("4_ex1md")]
 position = Vector2(-141, 79)
