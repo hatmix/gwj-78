@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsh8lu3xwvk31"]
+[gd_scene load_steps=8 format=3 uid="uid://bsh8lu3xwvk31"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_0dwuo"]
 [ext_resource type="AudioStream" uid="uid://okiy571q8qdd" path="res://assets/music/contemplative.ogg" id="2_dm1aw"]
@@ -12,6 +12,7 @@ script = ExtResource("1_0dwuo")
 default_mapping_context = ExtResource("2_yrvkc")
 
 [node name="Bgm" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("2_dm1aw")
 volume_db = -18.0
 bus = &"Music"
@@ -21,6 +22,7 @@ bus = &"Music"
 [node name="Map_1" parent="MapPlaceholder" instance=ExtResource("4_txadc")]
 
 [node name="Weather" parent="." instance=ExtResource("4_ktfyp")]
+process_mode = 3
 
 [node name="UI" parent="." instance=ExtResource("5_mq8ia")]
 visible = false

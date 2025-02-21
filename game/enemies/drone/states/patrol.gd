@@ -43,7 +43,9 @@ func physics_process(_delta: float) -> void:
 
 	# move_and_slide() returns true if collision happened
 	if _state.target.move_and_slide():
-		_change_direction()
+		# turn left or right 60 degrees
+		var angle: float = [-PI / 3, PI / 3].pick_random()
+		_state.target.direction = _state.target.direction.rotated(angle)
 
 
 func _ready() -> void:
@@ -77,7 +79,7 @@ func _change_direction() -> void:
 	if min_quad == my_quad:
 		var angle: float = [-PI / 3, PI / 3].pick_random()
 		_state.target.direction = _state.target.direction.rotated(angle)
-	else:	
+	else:
 		print(_state.target.name, " moving to quad ", min_quad)
 		target_quads[_state.target] = min_quad
 		target_point = QUADS[min_quad].get_center()
