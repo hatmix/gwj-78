@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bycr21mgk8bn3"]
+[gd_scene load_steps=31 format=4 uid="uid://bycr21mgk8bn3"]
 
 [ext_resource type="Script" path="res://game/enemies/drone/drone.gd" id="1_ry1n7"]
 [ext_resource type="Texture2D" uid="uid://obaqax6kif5y" path="res://game/enemies/drone/assets/shadow.png" id="2_1dl6r"]
@@ -6,24 +6,90 @@
 [ext_resource type="FontFile" uid="uid://cslcrejpjhg8f" path="res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf" id="3_dyvb2"]
 [ext_resource type="Texture2D" uid="uid://boxqycewo5c3j" path="res://game/enemies/drone/assets/top_down_45_cone_front_32x32.png" id="4_0166a"]
 [ext_resource type="Script" path="res://game/enemies/drone/states/patrol.gd" id="4_y21gw"]
-[ext_resource type="AudioStream" uid="uid://dmduauj4kxhbc" path="res://game/enemies/drone/assets/collect1.wav" id="5_fymge"]
+[ext_resource type="AudioStream" uid="uid://dmduauj4kxhbc" path="res://game/enemies/drone/assets/audio/collect1.wav" id="5_fymge"]
 [ext_resource type="Script" path="res://game/enemies/drone/states/track.gd" id="5_vmfby"]
-[ext_resource type="AudioStream" uid="uid://bjwd0t7ib22nn" path="res://game/enemies/drone/assets/scanning.ogg" id="6_ah7xn"]
+[ext_resource type="AudioStream" uid="uid://bjwd0t7ib22nn" path="res://game/enemies/drone/assets/audio/scanning.ogg" id="6_ah7xn"]
 [ext_resource type="Script" path="res://game/enemies/drone/states/search.gd" id="6_eotgj"]
-[ext_resource type="AudioStream" uid="uid://xbv3i1t2x02s" path="res://game/enemies/drone/assets/whimper.wav" id="7_j2hoy"]
-[ext_resource type="Script" path="res://game/enemies/drone/state_machine.gd" id="9_wcwxo"]
+[ext_resource type="AudioStream" uid="uid://xbv3i1t2x02s" path="res://game/enemies/drone/assets/audio/whimper.wav" id="7_j2hoy"]
+[ext_resource type="Script" path="res://game/enemies/drone/drone_state_controller.gd" id="9_wcwxo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vm57"]
 size = Vector2(10, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wr6sn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nhbnk"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15qic"]
+size = Vector2(4, 4)
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_shu6c"]
-_data = PackedByteArray("AAADAAUAAAABAAAAoAAAAIAAAAAoAwAAUklGRiADAABXRUJQVlA4TBMDAAAvn8AfEG+gJpKkWNDVKfjfmBAFxHggRG0kqW38MwgZIh8hV4XURJIUC7q6+FXwE6KAGA+EzH8AwHR1FSSGxOBHl68hR0PWW759B8fDs7FBkrTtbdvAjUNpxu0GHMhpWrlcoIFpSw3ddIzUK5BZMVWDXXoBeQJSJ3DVBXAZF376fyBuq4j+O3LbyJHk02zkhFeIK3r5PwwxGJIx9w6XjnFitPPSbdS6EnTIT9qJZiEqmhTskPxvc2pa8I94naRwXzTp+XOpfXPos/nnaPnkyM/TfjkeyBdeOZbfbm+rQbNDKeSIk3EcJHdiTBw2psiOhOz4XpV95CiQ4wA7SqrjcNgNiI4aO6jOgwI6SuygOivgiDrGxM4dqrk12XPu2GxOLJ5NuHdcaRtZO0t3ELNW0Oed2/150h3kGzXr/EbPirvW5Zl3pb61/tO3yxS1UX95+4rPOtfQ8ew51aVRqUbpswHHow/IoZHUpMC5rrTWuBbNYVLgyFLgijaRMz9P0xzZU+BQ6EJEH7DzgXxBdKgl4JASuCLoXH67va0GNIfELqojMSYOvXJ8Pyj7wFFhR9FHzoLqrIfdgOY4xI6a6qpK1AG/o2gu2jImbnZ0nDvWlnoKOKRjh1g8m3DvuFI3snYWZK0L1xV7OEt1WMvguktdrtsQ8g+GYZgJy0JYOgaM2F/UuprGECIs/0dlRlJAyCQRlqdUppgUzFtXuUZ33rUjmtRaA4kfjpZPjvw87ZfjgXzhlWP5rVJq0OyIE6pje5voUMbEIcmRsDu+V0UfOA6wo+R2HA67AXDU4zhozho6Dkqyo0BV2AGcUceYmN2hmh1b0LUme4rbsYkcS8AlFs8m3Duu1lnr2DGydvaKPRjNunZYK+4Wp9t0B3dZSHdwp6bpDu4kg+N/X67pDvavnY3u4K9Fd7Aen6fpDt4eyBea7GBt+e32thrQHawlxsQh3cHa96rsh8BRIMdB0WeuHnaD5g6xo+4GvB2U3YDq4C3qGBMHZAdva7KnAgYH5xbPxuC4VjaydhZkrcCOK3/U6ziaHcNxQ54AAA==")
-size_override = Vector2(160, 128)
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_s1rsc"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAAAAGAAAACcAQAAUklGRpQBAABXRUJQVlA4TIcBAAAvf8AXEGegJJIkN351CnLEp+Lxe3j4aiNJbeOfQcgQ+Qi5KqQkkiQ3fnU4Ksin4vF7ePjzHwAwXV0FiSEx+NHla8jRkH3r23dwPDyAW9u204jIhXTAkpci14Hm/wbkpTLGtjAhGeulhA8qMBVAVzI8XV6mpSCi/4rctm2Uzhvf4byIJiZtBxGRviPQdMS3SNcx7n2qOuZ/+71J2h3GSA67Ax07Zuu3Zp5zQM60yC+SI5MctewQnU01c0FHiTrqTHTksgNzRn1mq+tY9TZG1eGE13G6d7xZzT9YTNoOIiJ9R6DpiG+RrmPc+1R1zP/2e5N06+hJjh2z9VUdaZ1fQEchOzLJ0VQzt73yKQfmLDLRkUvVoCPqM5t2xwezFVywY9VbC60GGyO5QIcTXsfp3vFWNjHhDjQiItyBF+AO7E9EhDuwxr1Pgh1Q87/93iS4A2rHbH3cAZXW2aW9tMhFR3YBa8qZ215ZSY7m6gCPfOaiDqyoz2xd2IG16m2M24EDmfA6HThek+MAAA==")
+size_override = Vector2(128, 96)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ct1ha"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAAEAAAACEAAAAUklGRnwAAABXRUJQVlA4TG8AAAAvX8APEBcgEEii3N9kDQFB0WvzCQSSuPb3WkBQ5P9oAf9VYFNbe5ovDHtMREUkYPdKqZSOFcoMU0T/iaZtFjXXO/CHqG68psFKg5/pW+KXMqJY3YcVfRsFgp9OFONVt7Teru3r7NrTmpm+jQLBBQAA")
+size_override = Vector2(96, 64)
+
+[sub_resource type="Animation" id="Animation_hf37y"]
+length = 1.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 1, 5, 0, 1, 2, 3, 5, 0, 1, 2, 3, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5s1h"]
+_data = {
+"default": SubResource("Animation_hf37y")
+}
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_y2stu"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAADOAAAAUklGRsYAAABXRUJQVlA4TLkAAAAvf8AfECegpm0DNlUo8y+1Emnb5iZlcOzWrqZtAzZVKPMvtc5/ANiW0n+twKgB0DjQGqAOCBZAQHf4t8W17LUlEf03kLZNZmD7XcBLZVugSDUNFEkOuaeHxcWSHGIuQhdhcogMyCc5ZMH/N9vaaTeW7jsQZu9wz+472Oy+g4zuL6/HfbkbIXz6s62ddu9kqe651UOYLbq1eidsTfYkTGNJ9wwIDPv4556ebdXMp9VkeFiqLfAQwm8iAAA=")
+size_override = Vector2(128, 128)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_kh1c6"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAABkAAAAUklGRlwAAABXRUJQVlA4TFAAAAAvf8AfEA8w//M///Mf8GAUSbaT+eQMEpCAhC8NaXh7VenfPqeI/k8AZb6i1WQhN8ioJ/6AU5icTB3QqGQyuX6m+jiZ9JNqwqp7qJ0XcKuqKw==")
+size_override = Vector2(128, 128)
+
+[sub_resource type="Animation" id="Animation_aqd8q"]
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Eye:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dt678"]
+_data = {
+"default": SubResource("Animation_aqd8q")
+}
 
 [sub_resource type="Animation" id="Animation_erdqq"]
 length = 0.001
@@ -38,18 +104,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -20)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimPlayerSfx2D:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_1v5nm"]
@@ -78,7 +132,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 1, 2, 3, 4, 5, 9, 10, 8]
 }
 
 [sub_resource type="Animation" id="Animation_e2ito"]
@@ -99,7 +153,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimPlayerSfx2D")
+tracks/1/path = NodePath("Sfx2D")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -114,7 +168,7 @@ tracks/1/use_blend = true
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimPlayerSfx2D:volume_db")
+tracks/2/path = NodePath("Sfx2D:volume_db")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -124,48 +178,6 @@ tracks/2/keys = {
 "values": [6.0]
 }
 
-[sub_resource type="Animation" id="Animation_cnijn"]
-resource_name = "search_exit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.766667, 0.833333, 0.9, 0.933333, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -20), Vector2(0, -17), Vector2(0, -16), Vector2(0, -21), Vector2(0, -16), Vector2(0, -21), Vector2(0, -20)]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimPlayerSfx2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("7_j2hoy")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/1/use_blend = true
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimPlayerSfx2D:volume_db")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="Animation" id="Animation_pr557"]
 resource_name = "searching"
 length = 1.8
@@ -173,7 +185,7 @@ loop_mode = 1
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = false
-tracks/0/path = NodePath("AnimPlayerSfx2D")
+tracks/0/path = NodePath("Sfx2D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -212,7 +224,7 @@ tracks/0/use_blend = true
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = false
-tracks/1/path = NodePath("AnimPlayerSfx2D:volume_db")
+tracks/1/path = NodePath("Sfx2D:volume_db")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -231,7 +243,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 1, 2, 3, 4, 5, 9, 10, 8]
 }
 
 [sub_resource type="Animation" id="Animation_01c5a"]
@@ -247,7 +259,49 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 0, 1, 2, 3, 4, 5, 9, 10, 8]
+}
+
+[sub_resource type="Animation" id="Animation_cnijn"]
+resource_name = "search_exit_nothing_found"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.766667, 0.833333, 0.9, 0.933333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, -17), Vector2(0, -16), Vector2(0, -21), Vector2(0, -16), Vector2(0, -21), Vector2(0, -20)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sfx2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_j2hoy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sfx2D:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e5d8y"]
@@ -255,55 +309,174 @@ _data = {
 "RESET": SubResource("Animation_erdqq"),
 "patrolling": SubResource("Animation_1v5nm"),
 "search_enter": SubResource("Animation_e2ito"),
-"search_exit": SubResource("Animation_cnijn"),
+"search_exit_nothing_found": SubResource("Animation_cnijn"),
 "searching": SubResource("Animation_pr557"),
 "tracking": SubResource("Animation_01c5a")
 }
 
 [node name="Drone" type="CharacterBody2D" groups=["Drones"]]
 collision_layer = 16
-collision_mask = 2
+collision_mask = 34
 motion_mode = 1
 script = ExtResource("1_ry1n7")
-speed = 20.0
+snow_speed_reduction = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_0vm57")
 
 [node name="DetectArea2D" type="Area2D" parent="."]
 position = Vector2(0, 3)
 collision_layer = 0
-collision_mask = 4
+collision_mask = 13
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectArea2D"]
 shape = SubResource("CircleShape2D_wr6sn")
 
 [node name="PlayerDetectArea2D" type="Area2D" parent="."]
+z_index = 7
 position = Vector2(0, 3)
 collision_layer = 0
 collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectArea2D"]
-shape = SubResource("CircleShape2D_nhbnk")
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_15qic")
 
 [node name="ScannerBack" type="Sprite2D" parent="."]
+visible = false
 self_modulate = Color(1, 0.498039, 0.498039, 0.501961)
 z_index = -1
 texture = ExtResource("2_k8n0g")
 
 [node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+y_sort_enabled = true
 texture = ExtResource("2_1dl6r")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": ""
+}
+}
 
 [node name="Visual" type="Sprite2D" parent="."]
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, -4)
-texture = SubResource("PortableCompressedTexture2D_shu6c")
+texture = SubResource("PortableCompressedTexture2D_s1rsc")
 offset = Vector2(0, -20)
-hframes = 5
+hframes = 4
+vframes = 3
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": ["Layer 1"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"player": "AnimationPlayer",
+"slice": "",
+"source": "res://game/enemies/drone/assets/enemy-patrol.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "f89855884fdcf659e8f27dc3bddb1a6d"
+
+[node name="Propulsion" type="Node2D" parent="."]
+
+[node name="Visual" type="Sprite2D" parent="Propulsion"]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_ct1ha")
+offset = Vector2(0, -24)
+hframes = 3
+vframes = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": ["Bright"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "Propulsion/AnimationPlayer",
+"slice": "",
+"source": "res://game/enemies/drone/assets/propulsion.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "c40f7a05a3ebb0828b1b6a9d17762722"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Propulsion"]
+libraries = {
+"": SubResource("AnimationLibrary_u5s1h")
+}
+autoplay = "default"
+
+[node name="ScannerFront" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.5, 0.191667, 0, 1)
+z_index = 1
+texture = ExtResource("4_0166a")
+
+[node name="TrackerBeam" type="Line2D" parent="."]
+y_sort_enabled = true
+points = PackedVector2Array(0, -18, 0, 3)
+width = 6.0
+
+[node name="LilDrone" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="LilDrone"]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_y2stu")
+offset = Vector2(0, -24)
+hframes = 4
+vframes = 4
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": true,
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": ["Lil Drone Body"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "LilDrone/AnimationPlayer",
+"slice": "",
+"source": "res://game/enemies/drone/assets/little_drone.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "fb66ef8738a291022c180d623b2b80a5"
+
+[node name="Eye" type="Sprite2D" parent="LilDrone"]
+modulate = Color(1, 0.290196, 0.290196, 1)
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_kh1c6")
+offset = Vector2(0, -24)
+hframes = 4
 vframes = 4
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
@@ -313,28 +486,30 @@ metadata/_aseprite_wizard_config_ = {
 "embed_tex": true,
 "i_mode": 0,
 "keep_anim_length": false,
-"layers": [],
+"layers": ["Eye"],
 "o_ex_p": "",
 "o_folder": "",
 "o_name": "",
-"only_visible": true,
-"player": "AnimationPlayer",
+"only_visible": false,
+"player": "LilDrone/AnimationPlayer",
 "slice": "",
-"source": "res://game/enemies/drone/assets/enemy-patrol.aseprite"
+"source": "res://game/enemies/drone/assets/little_drone.aseprite"
 }
-metadata/_aseprite_wizard_source_file_hash_ = "c0a659e592e1c560567045a867d8e08d"
+metadata/_aseprite_wizard_source_file_hash_ = "fb66ef8738a291022c180d623b2b80a5"
 
-[node name="ScannerFront" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0.498039, 0.498039, 0.501961)
-z_index = 1
-texture = ExtResource("4_0166a")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LilDrone"]
+root_node = NodePath("../Body")
+libraries = {
+"": SubResource("AnimationLibrary_dt678")
+}
+autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_e5d8y")
 }
 
-[node name="AnimPlayerSfx2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Sfx2D" type="AudioStreamPlayer2D" parent="."]
 max_distance = 200.0
 attenuation = 2.0
 bus = &"SFX"
@@ -345,6 +520,7 @@ scale = Vector2(0.6, 0.8)
 
 [node name="StateLabel" type="Label" parent="."]
 unique_name_in_owner = true
+visible = false
 z_index = 99
 z_as_relative = false
 anchors_preset = 7
@@ -391,24 +567,29 @@ theme_override_font_sizes/font_size = 8
 text = "State"
 horizontal_alignment = 1
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("target", "initial_state")]
+[node name="DroneStateController" type="Node" parent="." node_paths=PackedStringArray("target", "initial_state")]
 script = ExtResource("9_wcwxo")
 target = NodePath("..")
 initial_state = NodePath("Patrol")
 
-[node name="Patrol" type="Node" parent="StateMachine"]
+[node name="Patrol" type="Node" parent="DroneStateController"]
 script = ExtResource("4_y21gw")
 
-[node name="DirectionChangeTimer" type="Timer" parent="StateMachine/Patrol"]
+[node name="DirectionChangeTimer" type="Timer" parent="DroneStateController/Patrol"]
 wait_time = 5.0
 
-[node name="Track" type="Node" parent="StateMachine"]
+[node name="Track" type="Node" parent="DroneStateController"]
 script = ExtResource("5_vmfby")
 
-[node name="Search" type="Node" parent="StateMachine"]
+[node name="Search" type="Node" parent="DroneStateController"]
 script = ExtResource("6_eotgj")
 
-[node name="PatrolPattern" type="Line2D" parent="StateMachine/Search"]
+[node name="PatrolPattern" type="Line2D" parent="DroneStateController/Search"]
 visible = false
-points = PackedVector2Array(0, 0, 36, 0, 18, 30, -18, -30, 18, -30, -18, 30, -36, 0, 0, 0)
+points = PackedVector2Array(0, 0, 18, 0, 9, 15, -9, -15, 9, -15, -9, 15, -18, 0, 0, 0)
+width = 2.0
+
+[node name="PatrolPattern2" type="Line2D" parent="DroneStateController/Search"]
+visible = false
+points = PackedVector2Array(8, 0, 8, -8, -16, -8, -16, 8, 24, 8, 24, -16, -32, -16)
 width = 2.0

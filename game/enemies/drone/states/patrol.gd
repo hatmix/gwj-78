@@ -34,8 +34,11 @@ func exit_state() -> void:
 
 
 func physics_process(_delta: float) -> void:
+	var snow_slow: float = 0
+	if is_instance_valid(Global.get_weather()):
+		snow_slow = _state.target.snow_speed_reduction * Global.get_weather().get_snow_intensity()
 	if _state.target.direction:
-		_state.target.velocity = _state.target.direction * _state.target.speed
+		_state.target.velocity = _state.target.direction * (_state.target.patrol_speed - snow_slow)
 	else:
 		_state.target.velocity = _state.target.velocity.move_toward(
 			Vector2.ZERO, _state.target.speed
@@ -59,7 +62,7 @@ func _change_direction() -> void:
 		return
 	# check other drone locations and try to turn toward empty part of map...
 	var my_quad: int
-	var drones_in_quad: Dictionary = {0:0, 1:0, 2:0, 3:0}
+	var drones_in_quad: Dictionary = {0: 0, 1: 0, 2: 0, 3: 0}
 	for drone: Drone in get_tree().get_nodes_in_group("Drones"):
 		# Include any defined target quads
 		if drone in target_quads:
@@ -74,13 +77,13 @@ func _change_direction() -> void:
 	for idx: int in range(1, QUADS.size()):
 		if drones_in_quad[idx] < drones_in_quad[min_quad]:
 			min_quad = idx
-	
+
 	# if I'm already in my target quad, take the random turn
 	if min_quad == my_quad:
 		var angle: float = [-PI / 3, PI / 3].pick_random()
 		_state.target.direction = _state.target.direction.rotated(angle)
 	else:
-		print(_state.target.name, " moving to quad ", min_quad)
+		#print(_state.target.name, " moving to quad ", min_quad)
 		target_quads[_state.target] = min_quad
 		target_point = QUADS[min_quad].get_center()
 		patrol_target_changed.emit(target_point)

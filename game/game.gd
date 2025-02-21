@@ -6,7 +6,9 @@ const OUT: String = "GradientVerticalInverted"
 @export var default_mapping_context: GUIDEMappingContext
 @export var transition_pattern: Image
 
-var snow_color: Color = ProjectSettings.get_setting("rendering/environment/defaults/default_clear_color")
+var snow_color: Color = ProjectSettings.get_setting(
+	"rendering/environment/defaults/default_clear_color"
+)
 
 @onready var bgm: AudioStreamPlayer = $Bgm
 @onready var game_over: Label = $UI/GameOver
@@ -23,6 +25,11 @@ func _ready() -> void:
 	victory.visible = false
 	$UI.show_ui("Game")
 	bgm.play()
+
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("next_level"):
+		Global.player_won.emit()
 
 
 func _lose() -> void:

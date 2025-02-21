@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dmduauj4kxhbc"
-path="res://.godot/imported/collect1.wav-9828a78e5f17ba198fb547634b959679.sample"
+path="res://.godot/imported/collect1.wav-d7792f87e62378e21cc84d8bf3e7f466.sample"
 
 [deps]
 
-source_file="res://game/enemies/drone/assets/collect1.wav"
-dest_files=["res://.godot/imported/collect1.wav-9828a78e5f17ba198fb547634b959679.sample"]
+source_file="res://game/enemies/drone/assets/audio/collect1.wav"
+dest_files=["res://.godot/imported/collect1.wav-d7792f87e62378e21cc84d8bf3e7f466.sample"]
 
 [params]
 

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ccqocey6de18j"
+path="res://.godot/imported/propulsion.aseprite-8dc3890e0f96572e10b7934ff7fc3eef.res"
+
+[deps]
+
+source_file="res://game/enemies/drone/assets/propulsion.aseprite"
+dest_files=["res://.godot/imported/propulsion.aseprite-8dc3890e0f96572e10b7934ff7fc3eef.res"]
+
+[params]
+

@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dluyrtqjcb4sq"]
+[gd_scene load_steps=5 format=3 uid="uid://dluyrtqjcb4sq"]
 
 [ext_resource type="Texture2D" uid="uid://batcdjrmwjwls" path="res://game/maps/features/cart/cart.png" id="1_bgulp"]
 [ext_resource type="Texture2D" uid="uid://crp21mbjwr25s" path="res://game/maps/features/rocks/smallstone-shadow.png" id="2_j1d53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tmrip"]
 size = Vector2(22, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_flghx"]
+radius = 12.0
 
 [node name="Cart" type="StaticBody2D"]
 y_sort_enabled = true
@@ -23,3 +26,11 @@ offset = Vector2(0, -6)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -5)
 shape = SubResource("RectangleShape2D_tmrip")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_flghx")

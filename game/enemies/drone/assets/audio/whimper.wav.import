@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://xbv3i1t2x02s"
-path="res://.godot/imported/whimper.wav-674bc2badd93c28c5305192bd356e88b.sample"
+path="res://.godot/imported/whimper.wav-5a17a2af1874228cc495801651f68fa5.sample"
 
 [deps]
 
-source_file="res://game/enemies/drone/assets/whimper.wav"
-dest_files=["res://.godot/imported/whimper.wav-674bc2badd93c28c5305192bd356e88b.sample"]
+source_file="res://game/enemies/drone/assets/audio/whimper.wav"
+dest_files=["res://.godot/imported/whimper.wav-5a17a2af1874228cc495801651f68fa5.sample"]
 
 [params]
 

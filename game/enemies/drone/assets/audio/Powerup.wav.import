@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://js8ssr1361jt"
-path="res://.godot/imported/Powerup.wav-81814e1bcdb1572be82352d0fbbbc602.sample"
+path="res://.godot/imported/Powerup.wav-49e06f6bfca5b3427e1dc51d5e4662a3.sample"
 
 [deps]
 
-source_file="res://game/enemies/drone/assets/Powerup.wav"
-dest_files=["res://.godot/imported/Powerup.wav-81814e1bcdb1572be82352d0fbbbc602.sample"]
+source_file="res://game/enemies/drone/assets/audio/Powerup.wav"
+dest_files=["res://.godot/imported/Powerup.wav-49e06f6bfca5b3427e1dc51d5e4662a3.sample"]
 
 [params]
 

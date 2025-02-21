@@ -104,7 +104,10 @@ func _update_snow_cover() -> void:
 	accumulation = 0
 	for point: Vector2 in snow_time.keys():
 		snow_time[point] += amount
-		# First half of disappearing...
+		if snow_time[point] >= snow_time_to_cover - 1.0:
+			var line: Line2D = lines[point]
+			var tween: Tween = line.create_tween()
+			tween.tween_property(line, "modulate", Color.TRANSPARENT, 1.0)
 		if snow_time[point] >= snow_time_to_cover:
 			snow_time.erase(point)
 			if point in areas:
@@ -114,11 +117,7 @@ func _update_snow_cover() -> void:
 			# decrement index for trackers' next points
 			for tracker in trackers:
 				trackers[tracker].decrement_idx()
-			var line: Line2D = lines[point]
 			lines.erase(point)
-			var tween: Tween = line.create_tween()
-			tween.tween_property(line, "modulate", Color.TRANSPARENT, 0.5)
-			tween.tween_callback(line.queue_free)
 	#print("snow times count: %d\nareas count: %d\nlines count: %d" % [snow_time.keys().size(), areas.keys().size(), lines.keys().size()])
 
 

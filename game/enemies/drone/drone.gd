@@ -1,5 +1,5 @@
 class_name Drone
-extends Enemy  # Maybe not useful now...
+extends CharacterBody2D
 
 ## Overview of states
 ## PATROL
@@ -11,12 +11,22 @@ extends Enemy  # Maybe not useful now...
 ##   trail ended, so enter search pattern from last point
 ##   (see https://owaysonline.com/iamsar-search-patterns/)
 
-@export var search_speed: float = 15.0
+const SCAN_COLOR := Color("#FE610080")
 
-var scan_audio_stream: AudioStream = preload("res://game/enemies/drone/assets/scanning.ogg")
+@export var patrol_speed: float = 20.0
+@export var search_speed: float = 15.0
+@export var track_speed: float = 24.0
+@export var snow_speed_reduction: float = 4.0
+
+var direction: Vector2
+var scan_audio_stream: AudioStream = preload("res://game/enemies/drone/assets/audio/scanning.ogg")
+var track_audio_stream: AudioStream = preload("res://game/enemies/drone/assets/audio/tracking.ogg")
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
-@onready var anim_player_sfx_2d: AudioStreamPlayer2D = $AnimPlayerSfx2D
+@onready var propulsion_anim_player: AnimationPlayer = $Propulsion/AnimationPlayer
+@onready var lildrone_anim_player: AnimationPlayer = $LilDrone/AnimationPlayer
+
+@onready var sfx_2d: AudioStreamPlayer2D = $Sfx2D
 # Detect trails and interesting objects
 @onready var detect_area_2d: Area2D = $DetectArea2D
 # Detect player in smaller area for better feel
@@ -25,9 +35,10 @@ var scan_audio_stream: AudioStream = preload("res://game/enemies/drone/assets/sc
 @onready var scanner_back: Sprite2D = $ScannerBack
 @onready var scanner_front: Sprite2D = $ScannerFront
 @onready var shadow: Sprite2D = $Shadow
+@onready var tracker_beam: Line2D = $TrackerBeam
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
-@onready var _state: StateMachine = $StateMachine
+@onready var _state: StateMachine = $DroneStateController
 
 
 func scan(enable: bool = true) -> void:
@@ -38,44 +49,54 @@ func scan(enable: bool = true) -> void:
 		# playing the audio here allows for smooth looping where doing it in
 		# the animation different ways caused chops or multiple plays
 		# overlapping for one scan
-		anim_player_sfx_2d.stream = scan_audio_stream
-		anim_player_sfx_2d.play()
+		sfx_2d.stream = scan_audio_stream
+		sfx_2d.play()
+
+
+func track(enable: bool = true) -> void:
+	tracker_beam.visible = enable
+	shadow.visible = !enable
+	if enable:
+		sfx_2d.stream = track_audio_stream
+		sfx_2d.play()
 
 
 func _ready() -> void:
+	scanner_back.self_modulate = SCAN_COLOR
+	scanner_front.self_modulate = SCAN_COLOR
+	tracker_beam.self_modulate = SCAN_COLOR
+	scan(false)
+	track(false)
+
 	%StateLabel.text = name
 	%TargetLabel.text = "%s\npatrol\ntarget" % name
+
+	# Signal connections
 	_state._patrol.patrol_target_changed.connect(_update_target_label)
 	visible_on_screen_notifier_2d.screen_exited.connect(
 		_state._patrol.on_visible_on_screen_notifier_2d_screen_exited
 	)
 	player_detect_area_2d.body_entered.connect(_on_body_entered_player_detect_area)
 	detect_area_2d.area_entered.connect(_state.on_detect_area_entered)
-	scan(false)
+	detect_area_2d.body_entered.connect(_state.on_detect_body_entered)
+	detect_area_2d.body_exited.connect(_state.on_detect_body_exited)
+
+	# randomize lildrone and propulsion start frames
+	lildrone_anim_player.seek(randf_range(0, lildrone_anim_player.get_current_animation_length()))
+	propulsion_anim_player.seek(
+		randf_range(0, propulsion_anim_player.get_current_animation_length())
+	)
+
 	# set initial direction toward center of screen
 	direction = global_position.direction_to(Vector2(160, 90))
 
 
 func _update_target_label(pos: Vector2) -> void:
-	%TargetLabel.visible = true
 	%TargetLabel.global_position = pos
 
 
-# Override base Enemy _input behavior
-func _input(_event: InputEvent) -> void:
-	pass
-
-
-# Override base Enemy _physics_process behavior
-func _physics_process(_delta: float) -> void:
-	pass
-	#if _state.current_state:
-	#	%StateLabel.text = "%s\n%s" % [_state.current_state.name, anim_player.current_animation]
-
-
 func _update_state_label(new_state: FsmState, _old_state: FsmState) -> void:
-	pass
-	#%StateLabel.text = new_state.name
+	%StateLabel.text = new_state.name
 
 
 func _on_body_entered_player_detect_area(body: Node2D) -> void:

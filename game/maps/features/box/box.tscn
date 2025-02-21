@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwbproqji3tyu"]
+[gd_scene load_steps=5 format=3 uid="uid://bwbproqji3tyu"]
 
 [ext_resource type="Texture2D" uid="uid://ccbq0ft50vcn4" path="res://game/maps/features/box/box.png" id="1_u6fqq"]
 [ext_resource type="Texture2D" uid="uid://codmcfab4hgok" path="res://game/maps/features/box/box-shadow.png" id="2_b4p7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34c62"]
 size = Vector2(14, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f70ae"]
+size = Vector2(12.5, 10.75)
 
 [node name="Box" type="StaticBody2D"]
 y_sort_enabled = true
@@ -23,3 +26,11 @@ offset = Vector2(0, -6)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_34c62")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0.75, -7.375)
+shape = SubResource("RectangleShape2D_f70ae")
