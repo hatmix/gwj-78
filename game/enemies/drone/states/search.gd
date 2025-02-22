@@ -62,10 +62,10 @@ func physics_process(_delta: float) -> void:
 		return
 
 	_state.target.direction = _state.target.global_position.direction_to(path[0])
-	var snow_slow: float = 0
+	var speed: float = _state.target.search_speed
 	if is_instance_valid(Global.weather):
-		snow_slow = _state.target.snow_speed_reduction * Global.weather.get_snow_intensity()
-	_state.target.velocity = _state.target.direction * (_state.target.search_speed - snow_slow)
+		speed = lerp(speed, _state.target.snowing_search_speed, Global.weather.get_snow_intensity())
+	_state.target.velocity = _state.target.direction * speed
 
 	# FIXME: handle obstacle avoidance--what if path[0] is inside a collider?
 	if _state.target.move_and_slide():

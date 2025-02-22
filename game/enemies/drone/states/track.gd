@@ -46,10 +46,10 @@ func physics_process(_delta: float) -> void:
 		return
 
 	_state.target.direction = _state.target.global_position.direction_to(next_point)
-	var snow_slow: float = 0
+	var speed: float = _state.target.track_speed
 	if is_instance_valid(Global.weather):
-		snow_slow = _state.target.snow_speed_reduction * Global.weather.get_snow_intensity()
-	_state.target.velocity = _state.target.direction * (_state.target.track_speed - snow_slow)
+		speed = lerp(speed, _state.target.snowing_track_speed, Global.weather.get_snow_intensity())
+	_state.target.velocity = _state.target.direction * speed
 	# FIXME: handle obstacle avoidance
 	if _state.target.move_and_slide():
 		print(_state.target.name, " trail tracking collision :(")

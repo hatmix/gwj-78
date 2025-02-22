@@ -316,7 +316,6 @@ collision_layer = 16
 collision_mask = 34
 motion_mode = 1
 script = ExtResource("1_ry1n7")
-snow_speed_reduction = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0vm57")

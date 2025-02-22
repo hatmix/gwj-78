@@ -14,9 +14,11 @@ extends CharacterBody2D
 const SCAN_COLOR := Color("#FE610080")
 
 @export var patrol_speed: float = 20.0
+@export var snowing_patrol_speed: float = 12.0
 @export var search_speed: float = 15.0
+@export var snowing_search_speed: float = 10.0
 @export var track_speed: float = 24.0
-@export var snow_speed_reduction: float = 4.0
+@export var snowing_track_speed: float = 14.0
 
 var direction: Vector2
 var scan_audio_stream: AudioStream = preload("res://game/enemies/drone/assets/audio/scanning.ogg")

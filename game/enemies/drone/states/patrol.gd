@@ -34,14 +34,14 @@ func exit_state() -> void:
 
 
 func physics_process(_delta: float) -> void:
-	var snow_slow: float = 0
-	if is_instance_valid(Global.weather):
-		snow_slow = _state.target.snow_speed_reduction * Global.weather.get_snow_intensity()
 	if _state.target.direction:
-		_state.target.velocity = _state.target.direction * (_state.target.patrol_speed - snow_slow)
+		var speed: float = _state.target.patrol_speed
+		if is_instance_valid(Global.weather):
+			speed = lerp(speed, _state.target.snowing_patrol_speed, Global.weather.get_snow_intensity())
+		_state.target.velocity = _state.target.direction * speed
 	else:
 		_state.target.velocity = _state.target.velocity.move_toward(
-			Vector2.ZERO, _state.target.speed
+			Vector2.ZERO, _state.target.patrol_speed
 		)
 
 	# move_and_slide() returns true if collision happened
