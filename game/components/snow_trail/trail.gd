@@ -67,6 +67,10 @@ func get_next_path_point(tracker_node) -> Variant:
 	var point: Vector2 = points[idx]
 	# If point is not covered by snow, it will still be in snow_time dict
 	if point in snow_time and snow_time[point] < snow_time_to_cover:
+		# attempting to prevent the drone getting a far off point
+		if tracker.last_point and tracker.last_point.distance_to(point) > 2 * min_distance_between_points:
+			return
+		tracker.last_point = point
 		return point
 	return
 
@@ -99,9 +103,7 @@ func add_line(global_pos: Vector2) -> void:
 	snow_time[global_pos] = 0
 
 
-func _update_snow_cover() -> void:
-	var amount: float = accumulation
-	accumulation = 0
+func _update_snow_cover(amount: float) -> void:
 	for point: Vector2 in snow_time.keys():
 		snow_time[point] += amount
 		if snow_time[point] >= snow_time_to_cover - 1.0:
@@ -118,16 +120,19 @@ func _update_snow_cover() -> void:
 			for tracker in trackers:
 				trackers[tracker].decrement_idx()
 			lines.erase(point)
-	#print("snow times count: %d\nareas count: %d\nlines count: %d" % [snow_time.keys().size(), areas.keys().size(), lines.keys().size()])
+	
 
 
 func _ready() -> void:
-	snow_cover_timer.timeout.connect(_update_snow_cover)
+	pass
+	#snow_cover_timer.timeout.connect(func():
+	#	print("snow times count: %d\nareas count: %d\nlines count: %d" % [snow_time.keys().size(), areas.keys().size(), lines.keys().size()])
+	#)
 
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if is_instance_valid(Global.weather) and Global.weather.is_snowing():
-		accumulation += delta * Global.weather.get_snow_intensity()
+		_update_snow_cover(delta * Global.weather.get_snow_intensity())
 		#print("accumulation = ", accumulation)
 	if not is_instance_valid(node_tracked):
 		return
@@ -160,6 +165,8 @@ class Tracker:
 	var idx: int
 	## increment or decrement to get next point
 	var step: int
+	## store last point to check distance between
+	var last_point: Vector2
 	var reversed: bool = false
 
 	func reverse() -> void:
