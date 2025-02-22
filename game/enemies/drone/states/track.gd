@@ -52,4 +52,6 @@ func physics_process(_delta: float) -> void:
 	_state.target.velocity = _state.target.direction * speed
 	# FIXME: handle obstacle avoidance
 	if _state.target.move_and_slide():
-		print(_state.target.name, " trail tracking collision :(")
+		var collider: KinematicCollision2D = _state.target.get_last_slide_collision()
+		next_point = next_point + collider.get_normal() * 2
+		#print(_state.target.name, " trail tracking collision :(")
