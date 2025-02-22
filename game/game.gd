@@ -7,9 +7,6 @@ const OUT: String = "GradientVerticalInverted"
 @export var default_mapping_context: GUIDEMappingContext
 @export var transition_pattern: Image
 
-var snow_color: Color = ProjectSettings.get_setting(
-	"rendering/environment/defaults/default_clear_color"
-)
 var map: Map
 
 @onready var bgm: AudioStreamPlayer = $Bgm
@@ -37,11 +34,11 @@ func _input(_event: InputEvent) -> void:
 
 
 func fade_out(duration: float = 1.0) -> Fade:
-	return Fade.fade_out(duration, snow_color, OUT)
+	return Fade.fade_out(duration, Global.COLOR_CLEAR, OUT)
 
 
 func fade_in(duration: float = 1.0) -> Fade:
-	return Fade.fade_in(duration, snow_color, IN)
+	return Fade.fade_in(duration, Global.COLOR_CLEAR, IN)
 
 
 func start_level(_map: PackedScene) -> void:

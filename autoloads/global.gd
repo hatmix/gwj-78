@@ -16,6 +16,13 @@ signal post_ui_message(text: String)
 @warning_ignore("unused_signal")
 signal controls_changed(config: GUIDERemappingConfig)
 
+const COLOR_BRIGHT := Color("ebebeb")
+const COLOR_SHADOW := Color("#9cafb3")
+const COLOR_MID := Color("889ca1")
+const COLOR_DARK := Color("565a5d")
+const COLOR_BLACK := Color("#242430")
+var COLOR_CLEAR: Color = ProjectSettings.get_setting("rendering/environment/defaults/default_clear_color")
+
 # I guess it is pretty weird/difficult to store a ref to a node in the tree in a var in an autoload
 # Doing the previous way was only working until the scene was reloaded. Then, Global was left with
 # an empty "previously freed" value. Using the group, it avoids this problem /shrug.

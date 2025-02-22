@@ -29,7 +29,7 @@ func _resume() -> void:
 
 
 func _main_menu() -> void:
-	await Fade.fade_out(1.0, Color("#ebebeb"), "GradientVertical", true).finished
-	Fade.fade_in.call_deferred(1.0, Color("#ebebeb"), "GradientVertical")
+	await Fade.fade_out(1.0, Global.COLOR_CLEAR, "GradientVertical", true).finished
+	Fade.fade_in.call_deferred(1.0, Global.COLOR_CLEAR, "GradientVertical")
 	get_tree().set_deferred("paused", false)
 	get_tree().change_scene_to_file("res://main.tscn")

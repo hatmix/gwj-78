@@ -9,6 +9,9 @@ var _player_exit: bool = false
 
 
 func _ready() -> void:
+	Global.weather.snow_fade_duration = 0.0
+	Global.weather.transition_to_state(Weather.State.CLEAR)
+	Global.weather.set_deferred("snow_fade_duration", 3.0)
 	title.visible = false
 	buttons.visible = false
 	call_deferred("_connect_buttons")
@@ -27,9 +30,7 @@ func _connect_buttons() -> void:
 
 
 func _start_game() -> void:
-	await Fade.fade_out(1.0, Color("#ebebeb"), "GradientVertical", true).finished
-	#Fade.fade_in.call_deferred(1.0, Color("#ebebeb"), "GradientVertical")
-	#get_tree().set_deferred("paused", false)
+	await Fade.fade_out(1.0, Global.COLOR_CLEAR, "GradientVertical", true).finished
 	get_tree().change_scene_to_file("res://game/game.tscn")
 
 
