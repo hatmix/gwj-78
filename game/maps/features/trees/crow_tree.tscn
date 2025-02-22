@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dnuekebmdvkjw" path="res://game/maps/features/trees/assets/audio/crow.ogg" id="4_pgax8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4mkx"]
-radius = 3.0
+radius = 2.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwo2j"]
 radius = 14.0
@@ -16,11 +16,11 @@ _data = PackedByteArray("AAADAAUAAAABAAAAoAAAAFgCAACwCgAAUklGRqgKAABXRUJQVlA4TJw
 size_override = Vector2(160, 600)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fmada"]
-radius = 3.0
+radius = 2.5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8raub"]
-radius = 12.0
-height = 92.0
+radius = 7.0
+height = 86.0
 
 [sub_resource type="Animation" id="Animation_wbwsv"]
 resource_name = "caws"
@@ -99,6 +99,8 @@ collision_mask = 0
 script = ExtResource("1_r86w4")
 
 [node name="Trunk2" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(-0.5, -1)
 shape = SubResource("CircleShape2D_c4mkx")
 
 [node name="Canopy" type="Area2D" parent="."]
@@ -114,7 +116,7 @@ shape = SubResource("CircleShape2D_cwo2j")
 y_sort_enabled = true
 texture_filter = 1
 texture = SubResource("PortableCompressedTexture2D_omony")
-offset = Vector2(0, -44)
+offset = Vector2(2, -47)
 hframes = 5
 vframes = 5
 metadata/_aseprite_wizard_interface_config_ = {
@@ -140,7 +142,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "609a9298e0ef124d2046797288902094"
 z_index = -1
 y_sort_enabled = true
 texture = ExtResource("4_fp17p")
-offset = Vector2(0, -44)
+offset = Vector2(-1, -43)
 
 [node name="PlayerInteraction" type="Area2D" parent="."]
 collision_layer = 8
@@ -148,7 +150,7 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteraction"]
-position = Vector2(0, -4)
+position = Vector2(-0.5, -1)
 shape = SubResource("CircleShape2D_fmada")
 
 [node name="CrowInteraction" type="Area2D" parent="."]
@@ -157,7 +159,7 @@ collision_mask = 24
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrowInteraction"]
-position = Vector2(-1, -39)
+position = Vector2(0, -39)
 shape = SubResource("CapsuleShape2D_8raub")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
