@@ -6,8 +6,8 @@
 [ext_resource type="Resource" uid="uid://c6tovgnwacf3x" path="res://input/move.tres" id="2_unicu"]
 [ext_resource type="AudioStream" uid="uid://c5qtjpbprbkmh" path="res://game/player/assets/footsteps/footsteps_audio_stream_randomizer.tres" id="3_yiwyq"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wvibx"]
-radius = 2.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ybyl"]
+size = Vector2(3, 2)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bo614"]
 radius = 4.0
@@ -182,8 +182,8 @@ move_action = ExtResource("2_unicu")
 speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
-shape = SubResource("CircleShape2D_wvibx")
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_1ybyl")
 
 [node name="InteractionArea2D" type="Area2D" parent="."]
 collision_layer = 0
