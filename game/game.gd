@@ -15,7 +15,6 @@ var player: CharacterBody2D:
 		return player
 
 @onready var camera_2d: Camera2D = $Camera2D
-@onready var bgm: AudioStreamPlayer = $Bgm
 @onready var game_over: Label = $UI/GameOver
 @onready var victory: Label = $UI/Victory
 @onready var map_placeholder: Node2D = $MapPlaceholder
@@ -29,7 +28,7 @@ func _ready() -> void:
 	game_over.visible = false
 	victory.visible = false
 	$UI.show_ui("Game")
-	bgm.play()
+	Bgm.play_track("map", 3.0)
 	await get_tree().process_frame
 	start_level(first_level)
 
@@ -39,7 +38,7 @@ func _input(_event: InputEvent) -> void:
 		Global.player_won.emit()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	#camera_2d.global_position = player.global_position
 

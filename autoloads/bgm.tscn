@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://pcrkptr61ax"]
+
+[ext_resource type="AudioStream" uid="uid://okiy571q8qdd" path="res://assets/music/contemplative.ogg" id="1_xp1yp"]
+[ext_resource type="Script" path="res://autoloads/bgm.gd" id="2_jbm5u"]
+
+[node name="Bgm" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_xp1yp")
+volume_db = -18.0
+bus = &"Music"
+script = ExtResource("2_jbm5u")
