@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8sl4t1smo0s7"]
+
+[ext_resource type="Script" path="res://ui/dialogue/popup_balloon.gd" id="1_avwtk"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_2yrfx"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_4b1o8"]
+[ext_resource type="AudioStream" uid="uid://c2vdk20ygcayt" path="res://ui/assets/audio/plop.wav" id="4_myp6r"]
+[ext_resource type="AudioStream" uid="uid://bum8pxr0exorw" path="res://ui/assets/audio/hit2.wav" id="5_cuft4"]
+
+[node name="PopupBalloon" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_avwtk")
+
+[node name="Balloon" type="Control" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 10)
+layout_mode = 3
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Panel" type="Panel" parent="Balloon"]
+unique_name_in_owner = true
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Responses" type="MarginContainer" parent="Balloon"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -218.0
+offset_right = 125.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_bottom = 13
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 2
+script = ExtResource("3_4b1o8")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
+layout_mode = 2
+theme_type_variation = &"DialogueButton"
+text = "Response Example"
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 2
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 51.0
+offset_bottom = 9.0
+mouse_filter = 1
+theme_type_variation = &"DialogueRichTextLabel"
+bbcode_enabled = true
+text = "Character"
+fit_content = true
+scroll_active = false
+
+[node name="DialogueLabel" parent="Balloon" instance=ExtResource("2_2yrfx")]
+unique_name_in_owner = true
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 5.0
+offset_bottom = 94.0
+grow_horizontal = 1
+size_flags_vertical = 3
+theme_type_variation = &"DialogueRichTextLabel"
+text = "Dialogue..."
+
+[node name="TestLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -93.0
+offset_top = -58.0
+offset_right = -30.0
+offset_bottom = -46.0
+theme_type_variation = &"DialogueTestLabel"
+text = "Test contents"
+
+[node name="PopInSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_myp6r")
+volume_db = -12.0
+bus = &"SFX"
+
+[node name="TypeOutSfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_cuft4")
+volume_db = -18.0
+bus = &"SFX"

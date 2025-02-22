@@ -7,6 +7,9 @@ extends CanvasLayer
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 
+const MARGIN := 4
+const MARGINS := Vector2(4, 4)
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -67,6 +70,11 @@ func _ready() -> void:
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
 
+	# Position balloon to player -- do we need the transforms here?
+	balloon.position = get_tree().get_first_node_in_group("Player").global_position
+	# Offset for proper position
+	balloon.position += Vector2(0, -32)
+
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Only the balloon is allowed to handle input while it's showing
@@ -113,6 +121,19 @@ func apply_dialogue_line() -> void:
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
 
+	# calculate the size of the popup
+	%TestLabel.size = Vector2.ZERO
+	await get_tree().process_frame
+	%TestLabel.text = dialogue_line.text
+	await get_tree().process_frame
+	print(%TestLabel.size)
+	#dialogue_label.custom_minimum_size = %TestLabel.size
+	dialogue_label.size = %TestLabel.size
+	%Panel.size = %TestLabel.size + MARGINS
+	await get_tree().process_frame
+	balloon.pivot_offset = Vector2(balloon.size.x / 2, balloon.size.y)
+	balloon.scale = Vector2.ZERO
+
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
 
@@ -121,6 +142,8 @@ func apply_dialogue_line() -> void:
 
 	# Show our balloon
 	balloon.show()
+	%PopInSfx.play()
+	await create_tween().tween_property(balloon, "scale", Vector2.ONE, 0.1).finished
 	will_hide_balloon = false
 
 	dialogue_label.show()

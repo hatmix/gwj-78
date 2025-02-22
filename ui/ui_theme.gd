@@ -107,7 +107,7 @@ func define_theme() -> void:
 	)
 	var sb_dialogue_button_focus = inherit(sb_dialogue_button, {bg_color = Global.COLOR_DARK})
 
-	define_style("Panel", {panel = sb_dialogue})
+	define_style("Panel", {panel = sb_dialogue})  # replace with stylebox_texture
 	define_variant_style(
 		"DialogueButton",
 		"Button",
@@ -124,6 +124,16 @@ func define_theme() -> void:
 			focus = sb_dialogue_button_focus,
 			hover = sb_dialogue_button_focus,
 			pressed = sb_dialogue_button_focus,
+		}
+	)
+
+	define_variant_style(
+		"DialogueTestLabel",
+		"Label",
+		{
+			font = load("res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf"),
+			font_size = 8,
+			outline_size = 0,
 		}
 	)
 

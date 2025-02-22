@@ -1,7 +1,9 @@
 class_name DialogueController
 extends Node
 
-var test_dialogue := preload("res://game/dialogue/test.dialogue")
+var test_dialogue := preload("res://game/dialogue/popup_test.dialogue")
+var popup := preload("res://ui/dialogue/popup_balloon.tscn")
+var balloon := preload("res://ui/dialogue/balloon.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +16,7 @@ func _on_level_started() -> void:
 	await get_tree().physics_frame
 	Global.game.state = Game.State.DIALOGUE
 	get_tree().paused = true
-	DialogueManager.show_dialogue_balloon(test_dialogue)
+	DialogueManager.show_dialogue_balloon_scene(popup, test_dialogue)
 
 
 func _on_dialogue_ended(dialogue_resource: DialogueResource) -> void:
