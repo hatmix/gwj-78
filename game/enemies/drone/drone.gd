@@ -102,4 +102,8 @@ func _update_state_label(new_state: FsmState, _old_state: FsmState) -> void:
 func _on_body_entered_player_detect_area(body: Node2D) -> void:
 	#print(name, " detected ", body.name)
 	if body.name == "Player":
+		scan(false)
+		track(true)
+		tracker_beam.z_index += 1
+		await get_tree().process_frame
 		Global.player_lost.emit()
