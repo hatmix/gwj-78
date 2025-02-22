@@ -42,3 +42,8 @@ License: [MIT](godotengine.org/license)
 * Author: [Tomek (KoBeWi)](https://github.com/KoBeWi)
 * Source: [github: Godot-Universal-Fade](https://github.com/KoBeWi/Godot-Universal-Fade)
 * License: [MIT License](https://github.com/KoBeWi/Godot-Universal-Fade/blob/master/LICENSE.txt)
+
+##### Godot Dialogue Manager
+* Author: [Nathan Hoad](patreon.com/nathanhoad)
+* Source: [github: godot_dialogue_manager](https://github.com/nathanhoad/godot_dialogue_manager)
+* License: [MIT License](https://github.com/nathanhoad/godot_dialogue_manager/blob/main/LICENSE)

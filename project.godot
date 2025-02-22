@@ -26,6 +26,7 @@ GUIDE="*res://addons/guide/guide.gd"
 ProjectUISoundController="*res://addons/maaacks_ui_sound_controller/base/scenes/Autoloads/ProjectUISoundController.tscn"
 Settings="*res://autoloads/settings.gd"
 Bgm="*res://autoloads/bgm.tscn"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -37,7 +38,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/maaacks_ui_sound_controller/plugin.cfg", "res://addons/markdownlabel/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/guide/plugin.cfg", "res://addons/maaacks_ui_sound_controller/plugin.cfg", "res://addons/markdownlabel/plugin.cfg")
 
 [gdunit4]
 

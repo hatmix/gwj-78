@@ -3,7 +3,7 @@
 
 Move with WASD keys or left controller stick (remappable)
 
-Avoid drones and make it to the campfire
+Avoid drones and move to the campfire
 
 You are undetectable by drones when near trees
 
