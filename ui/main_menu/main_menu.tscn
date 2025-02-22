@@ -48,16 +48,18 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 4
+theme_override_constants/separation = 10
 
 [node name="Play" type="Button" parent="MarginContainer/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "Play"
 
 [node name="HowToPlay" type="Button" parent="MarginContainer/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 9
 text = "How to Play"
 
 [node name="Settings" type="Button" parent="MarginContainer/Buttons"]

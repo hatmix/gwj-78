@@ -43,15 +43,13 @@ func _notification(what: int) -> void:
 				await get_tree().create_timer(1.0).timeout
 				Fade.crossfade_prepare(2.0, "GradientVertical", true)
 				title.visible = true
-				await Fade.crossfade_execute().finished
-				Fade.crossfade_prepare(1.0, "GradientVertical", true)
 				buttons.visible = true
 				await Fade.crossfade_execute().finished
 				await get_tree().create_timer(1.0).timeout
 				_player_active = true
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not visible or not _player_active:
 		player.direction = Vector2.ZERO
 		return

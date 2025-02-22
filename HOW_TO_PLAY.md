@@ -1,3 +1,15 @@
+[center]
 # How to Play
 
-###### TODO: Create a markdown doc with instructions for the player--see https://github.com/daenvil/MarkdownLabel for formatting.
+Move with WASD keys or left controller stick (remappable)
+
+Avoid drones and make it to the campfire
+
+You are undetectable by drones when near trees
+
+Drones follow tracks
+
+Tracks are erased once enough snow falls on them
+
+Drones are slowed by falling snow
+[/center]
