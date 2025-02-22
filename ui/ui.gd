@@ -108,6 +108,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _focus_something() -> void:
+	print("_focus_something called (looking for sporadic hanging bug)")
 	for child: Node in get_children():
 		if not child is UiPage or not child.visible:
 			continue
