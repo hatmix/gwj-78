@@ -26,6 +26,7 @@ offset_right = 35.0
 offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 
 [node name="Resume" type="Button" parent="Buttons"]
 unique_name_in_owner = true
