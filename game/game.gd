@@ -8,7 +8,13 @@ const OUT: String = "GradientVerticalInverted"
 @export var transition_pattern: Image
 
 var map: Map
+var player: CharacterBody2D:
+	get:
+		if player == null:
+			player = get_tree().get_first_node_in_group("Player")
+		return player
 
+@onready var camera_2d: Camera2D = $Camera2D
 @onready var bgm: AudioStreamPlayer = $Bgm
 @onready var game_over: Label = $UI/GameOver
 @onready var victory: Label = $UI/Victory
@@ -29,8 +35,13 @@ func _ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("next_level"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("next_level"):
 		Global.player_won.emit()
+
+
+func _process(delta: float) -> void:
+	pass
+	#camera_2d.global_position = player.global_position
 
 
 func fade_out(duration: float = 1.0) -> Fade:
@@ -45,6 +56,9 @@ func start_level(_map: PackedScene) -> void:
 	fade_out()
 	game_over.visible = false
 	victory.visible = false
+	camera_2d.zoom = Vector2.ONE
+	camera_2d.global_position = Vector2(160, 90)
+	player = null
 	map = _map.instantiate()
 	for child in map_placeholder.get_children():
 		child.queue_free()
@@ -56,17 +70,21 @@ func start_level(_map: PackedScene) -> void:
 
 
 func _lose() -> void:
-	game_over.visible = true
 	get_tree().paused = true
+	await camera_2d.zoom_to_position(player.global_position)
+	game_over.visible = true
 	var redo: PackedScene = load(map.scene_file_path)
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(4.0).timeout
 	start_level(redo)
 
 
 func _win() -> void:
-	victory.visible = true
 	get_tree().paused = true
-	await get_tree().create_timer(2.0).timeout
+	get_tree().call_group("Drones", "hide")
+	await camera_2d.zoom_to_position(player.global_position)
+	victory.visible = true
+
+	await get_tree().create_timer(10.0).timeout
 	if map.next_level:
 		start_level(map.next_level)
 	else:
