@@ -1,9 +1,9 @@
 [gd_scene load_steps=30 format=4 uid="uid://bycr21mgk8bn3"]
 
 [ext_resource type="Script" path="res://game/enemies/drone/drone.gd" id="1_ry1n7"]
-[ext_resource type="Texture2D" uid="uid://obaqax6kif5y" path="res://game/enemies/drone/assets/shadow.png" id="2_1dl6r"]
 [ext_resource type="Texture2D" uid="uid://bmcbxghs4viyy" path="res://game/enemies/drone/assets/top_down_45_cone_back_32x32.png" id="2_k8n0g"]
 [ext_resource type="FontFile" uid="uid://cslcrejpjhg8f" path="res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf" id="3_dyvb2"]
+[ext_resource type="Texture2D" uid="uid://cqvrmffym5u3w" path="res://game/enemies/drone/assets/shadow2.png" id="3_ygork"]
 [ext_resource type="Texture2D" uid="uid://boxqycewo5c3j" path="res://game/enemies/drone/assets/top_down_45_cone_front_32x32.png" id="4_0166a"]
 [ext_resource type="Script" path="res://game/enemies/drone/states/patrol.gd" id="4_y21gw"]
 [ext_resource type="AudioStream" uid="uid://dmduauj4kxhbc" path="res://game/enemies/drone/assets/audio/collect1.wav" id="5_fymge"]
@@ -347,7 +347,7 @@ texture = ExtResource("2_k8n0g")
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1
 y_sort_enabled = true
-texture = ExtResource("2_1dl6r")
+texture = ExtResource("3_ygork")
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "pending_changes": {
