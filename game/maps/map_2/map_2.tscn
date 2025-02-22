@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/maps/map.gd" id="1_jakva"]
 [ext_resource type="PackedScene" uid="uid://cra7xo2obmyky" path="res://game/maps/map_borders/map_borders.tscn" id="2_wey4s"]
-[ext_resource type="Texture2D" uid="uid://bcmobfdjx564e" path="res://game/maps/map_2/map_2_blockout.png" id="3_vyogy"]
+[ext_resource type="Texture2D" uid="uid://dsj8s240rhyht" path="res://game/maps/map_2/cliff.png" id="3_jum1p"]
 [ext_resource type="PackedScene" uid="uid://s158exwbtkoy" path="res://game/player/player.tscn" id="4_ex1md"]
 [ext_resource type="PackedScene" uid="uid://ctnbcpnjg1cg6" path="res://game/maps/features/campfire/campfire.tscn" id="5_u3ba8"]
 [ext_resource type="PackedScene" uid="uid://dluyrtqjcb4sq" path="res://game/maps/features/cart/cart.tscn" id="7_dthe0"]
@@ -17,21 +17,24 @@ script = ExtResource("1_jakva")
 [node name="MapBorders" parent="." instance=ExtResource("2_wey4s")]
 
 [node name="Terrain" type="Sprite2D" parent="."]
-scale = Vector2(1, 0.75)
-texture = ExtResource("3_vyogy")
+z_index = -10
+z_as_relative = false
+position = Vector2(-48, 0)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_jum1p")
 
 [node name="Impassable" type="StaticBody2D" parent="."]
 collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Impassable"]
-polygon = PackedVector2Array(-160, -50, 52, -5, 52, 6, -159, 43)
+polygon = PackedVector2Array(-160, -56, -71, -38, 53, -7, 54, -4, -45, 24, -159, 51)
 
 [node name="PlayerBlocked" type="StaticBody2D" parent="."]
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerBlocked"]
-polygon = PackedVector2Array(-160, -52, 81, 1, -160, 45)
+polygon = PackedVector2Array(-160, -57, -151, -57, -100, -45, -62, -38, -27, -29, 7, -21, 35, -14, 59, -7, 59, -4, 44, 1, 33, 1, -46, 24, -139, 46, -143, 45, -153, 45, -159, 51)
 
 [node name="Player" parent="." instance=ExtResource("4_ex1md")]
 position = Vector2(-141, 79)
@@ -43,10 +46,10 @@ position = Vector2(-112, -56)
 position = Vector2(130, 77)
 
 [node name="Tree" parent="." instance=ExtResource("8_evmde")]
-position = Vector2(59, 76)
+position = Vector2(83, 70)
 
 [node name="Tree2" parent="." instance=ExtResource("8_evmde")]
-position = Vector2(-35, 46)
+position = Vector2(64, -35)
 
 [node name="Tree3" parent="." instance=ExtResource("8_evmde")]
 position = Vector2(127, 6)
