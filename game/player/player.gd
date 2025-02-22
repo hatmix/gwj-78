@@ -62,7 +62,7 @@ func _on_move_action():
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("DebugHide"):
+	if OS.is_debug_build() and Input.is_action_just_pressed("DebugHide"):
 		# toggle on whether collision layer is on
 		_hide(get_collision_layer_value(4))
 
