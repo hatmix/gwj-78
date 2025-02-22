@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cf07yba27ttru"]
+[gd_scene load_steps=15 format=4 uid="uid://cf07yba27ttru"]
 
 [ext_resource type="Script" path="res://game/maps/features/trees/crow_tree.gd" id="1_r86w4"]
 [ext_resource type="AudioStream" uid="uid://p8e0qw6u1wvp" path="res://game/maps/features/trees/assets/audio/crow-angry.ogg" id="3_hsgpr"]
@@ -93,6 +93,8 @@ _data = {
 "idle": SubResource("Animation_b8ano")
 }
 
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_85mbc"]
+
 [node name="CrowTree" type="StaticBody2D" groups=["Trees"]]
 y_sort_enabled = true
 collision_mask = 0
@@ -168,8 +170,8 @@ libraries = {
 }
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_pgax8")
-volume_db = -12.0
+stream = SubResource("AudioStreamPolyphonic_85mbc")
+volume_db = -18.0
 max_distance = 200.0
 
 [node name="Timer" type="Timer" parent="."]
