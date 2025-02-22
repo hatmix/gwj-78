@@ -15,7 +15,7 @@ universal_fade/patterns_directory="res://addons/UniversalFade/Patterns"
 [application]
 
 config/name="Snow"
-run/main_scene="res://main.tscn"
+run/main_scene="res://game/game.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
