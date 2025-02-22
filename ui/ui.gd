@@ -3,13 +3,9 @@ extends CanvasLayer
 const IN: String = "GradientVertical"
 const OUT: String = "GradientVerticalInverted"
 
-var _crossfade: bool = false
-
 
 # TODO: consider using the hide_ui and show_ui functions to add ui animation
 func hide_ui(page: Variant = null) -> void:
-	Fade.crossfade_prepare(1.0, IN, true)
-	_crossfade = true
 	if page:
 		var ui_page: UiPage = _resolve_ui_page(page)
 		if ui_page:
@@ -33,14 +29,12 @@ func show_ui(page: Variant) -> void:
 			await ui_page.show_ui()
 		else:
 			ui_page.show()
+		print("show_ui ", page, " called")
 		# Uncomment to capture screenshots in media/ folder
 		# Must wait for visibility changes and one frame is not enough
 		#await get_tree().create_timer(0.2).timeout
 		#var cap := get_viewport().get_texture().get_image()
 		#cap.save_png("media/%s.png" % ui_page.name)
-	if _crossfade:
-		Fade.crossfade_execute()
-		_crossfade = false
 
 
 func go_to(page: Variant) -> void:
@@ -67,14 +61,25 @@ func _resolve_ui_page(node_or_name: Variant) -> Node:
 
 
 func _ready() -> void:
+	Global.game_state_changed.connect(_on_game_state_changed)
 	get_viewport().gui_focus_changed.connect(_on_focus_changed)
 	hide()
 	for child: Node in get_children():
 		if child is UiPage:
-			#print("injecting ui in ", child.name)
+			print("injecting ui in ", child.name)
 			child.set("ui", self)
 			child.hide()
 	show()
+
+
+func _on_game_state_changed(new_state: Game.State) -> void:
+	match new_state:
+		Game.State.PLAY:
+			print("ui set process mode ALWAYS")
+			set_process_mode(Node.PROCESS_MODE_ALWAYS)
+		Game.State.DIALOGUE:
+			print("ui set process mode DISABLED")
+			set_process_mode(Node.PROCESS_MODE_DISABLED)
 
 
 func _unhandled_input(event: InputEvent) -> void:

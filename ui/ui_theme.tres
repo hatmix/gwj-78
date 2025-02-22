@@ -1,10 +1,10 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://douptobb2vwx8"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://douptobb2vwx8"]
 
 [ext_resource type="FontFile" uid="uid://dfjqj2dggb8fk" path="res://assets/fonts/pixelFont-3-7x5-sproutLands.ttf" id="1_1bdrk"]
 [ext_resource type="FontFile" uid="uid://dyqe506lgtkhx" path="res://assets/fonts/pixelFont-4-7x7-sproutLands.ttf" id="1_n8bdp"]
 [ext_resource type="FontFile" uid="uid://cslcrejpjhg8f" path="res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf" id="1_p1aly"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnslv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysfk5"]
 bg_color = Color(0.337255, 0.352941, 0.364706, 1)
 skew = Vector2(0.2, 0)
 border_width_left = 2
@@ -25,7 +25,7 @@ shadow_size = 2
 shadow_offset = Vector2(0, -2)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h32ok"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j4fhg"]
 bg_color = Color(0.337255, 0.352941, 0.364706, 1)
 skew = Vector2(0.2, 0)
 border_width_left = 2
@@ -46,7 +46,7 @@ shadow_size = 2
 shadow_offset = Vector2(0, -2)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpv3d"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_id4as"]
 bg_color = Color(0.337255, 0.352941, 0.364706, 1)
 skew = Vector2(0.2, 0)
 border_width_left = 2
@@ -67,7 +67,7 @@ shadow_size = 2
 shadow_offset = Vector2(0, -2)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odft6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6j67"]
 bg_color = Color(0.337255, 0.352941, 0.364706, 1)
 skew = Vector2(0.2, 0)
 border_width_left = 2
@@ -88,9 +88,56 @@ shadow_size = 2
 shadow_offset = Vector2(0, -2)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hafnc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu4qs"]
+bg_color = Color(0.337255, 0.352941, 0.364706, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xku3c"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fle0g"]
+bg_color = Color(0.337255, 0.352941, 0.364706, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cub2k"]
+bg_color = Color(0.141176, 0.141176, 0.188235, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snike"]
+bg_color = Color(0.337255, 0.352941, 0.364706, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srum7"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.611765, 0.686275, 0.701961, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tk7re"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2sd1h"]
+bg_color = Color(0.141176, 0.141176, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ced8r"]
 bg_color = Color(1, 1, 1, 0)
 border_width_left = 2
 border_width_top = 2
@@ -102,7 +149,7 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_se82j"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwt16"]
 bg_color = Color(1, 1, 1, 0)
 border_width_left = 2
 border_width_top = 2
@@ -114,9 +161,9 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qu1ls"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ot3u"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ihik3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2or3"]
 bg_color = Color(1, 1, 1, 0)
 border_width_left = 2
 border_width_top = 2
@@ -128,7 +175,7 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btjky"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qq37"]
 bg_color = Color(1, 1, 1, 0)
 border_width_left = 2
 border_width_top = 2
@@ -154,10 +201,40 @@ Button/colors/font_hover_color = Color(0.611765, 0.686275, 0.701961, 1)
 Button/colors/font_outline_color = Color(0.921569, 0.921569, 0.921569, 1)
 Button/colors/font_pressed_color = Color(0.611765, 0.686275, 0.701961, 1)
 Button/constants/outline_size = 2
-Button/styles/focus = SubResource("StyleBoxFlat_bnslv")
-Button/styles/hover = SubResource("StyleBoxFlat_h32ok")
-Button/styles/normal = SubResource("StyleBoxFlat_dpv3d")
-Button/styles/pressed = SubResource("StyleBoxFlat_odft6")
+Button/styles/focus = SubResource("StyleBoxFlat_ysfk5")
+Button/styles/hover = SubResource("StyleBoxFlat_j4fhg")
+Button/styles/normal = SubResource("StyleBoxFlat_id4as")
+Button/styles/pressed = SubResource("StyleBoxFlat_n6j67")
+DialogueButton/base_type = &"Button"
+DialogueButton/colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+DialogueButton/colors/font_focus_color = Color(0.611765, 0.686275, 0.701961, 1)
+DialogueButton/colors/font_hover_color = Color(0.611765, 0.686275, 0.701961, 1)
+DialogueButton/colors/font_outline_color = Color(0.141176, 0.141176, 0.188235, 1)
+DialogueButton/colors/font_pressed_color = Color(0.611765, 0.686275, 0.701961, 1)
+DialogueButton/constants/outline_size = 0
+DialogueButton/font_sizes/font_size = 8
+DialogueButton/fonts/font = ExtResource("1_p1aly")
+DialogueButton/styles/focus = SubResource("StyleBoxFlat_qu4qs")
+DialogueButton/styles/hover = SubResource("StyleBoxFlat_fle0g")
+DialogueButton/styles/normal = SubResource("StyleBoxFlat_cub2k")
+DialogueButton/styles/pressed = SubResource("StyleBoxFlat_snike")
+DialogueRichTextLabel/base_type = &"RichTextLabel"
+DialogueRichTextLabel/colors/default_color = Color(0.921569, 0.921569, 0.921569, 1)
+DialogueRichTextLabel/constants/line_separation = 2
+DialogueRichTextLabel/constants/outline_size = 0
+DialogueRichTextLabel/constants/shadow_offset_x = 0
+DialogueRichTextLabel/constants/shadow_offset_y = 0
+DialogueRichTextLabel/constants/shadow_outline_size = 0
+DialogueRichTextLabel/font_sizes/bold_font_size = 8
+DialogueRichTextLabel/font_sizes/italics_font_size = 8
+DialogueRichTextLabel/font_sizes/mono_font_size = 8
+DialogueRichTextLabel/font_sizes/normal_font_size = 8
+DialogueRichTextLabel/fonts/bold_font = ExtResource("1_p1aly")
+DialogueRichTextLabel/fonts/bold_italics_font = ExtResource("1_p1aly")
+DialogueRichTextLabel/fonts/italics_font = ExtResource("1_p1aly")
+DialogueRichTextLabel/fonts/mono_font = ExtResource("1_p1aly")
+DialogueRichTextLabel/fonts/normal_font = ExtResource("1_p1aly")
+DialogueRichTextLabel/styles/focus = SubResource("StyleBoxFlat_srum7")
 GameOver/base_type = &"Label"
 GameOver/colors/font_color = Color(0.141176, 0.141176, 0.188235, 1)
 GameOver/colors/font_outline_color = Color(0.921569, 0.921569, 0.921569, 1)
@@ -173,12 +250,13 @@ Label/constants/outline_size = 2
 MessageLabel/base_type = &"Label"
 MessageLabel/constants/outline_size = 6
 MessagePanelContainer/base_type = &"PanelContainer"
-MessagePanelContainer/styles/panel = SubResource("StyleBoxEmpty_hafnc")
+MessagePanelContainer/styles/panel = SubResource("StyleBoxEmpty_tk7re")
+Panel/styles/panel = SubResource("StyleBoxFlat_2sd1h")
 RemapButton/base_type = &"Button"
-RemapButton/styles/focus = SubResource("StyleBoxFlat_xku3c")
-RemapButton/styles/hover = SubResource("StyleBoxFlat_se82j")
-RemapButton/styles/normal = SubResource("StyleBoxEmpty_qu1ls")
-RemapButton/styles/pressed = SubResource("StyleBoxFlat_ihik3")
+RemapButton/styles/focus = SubResource("StyleBoxFlat_ced8r")
+RemapButton/styles/hover = SubResource("StyleBoxFlat_xwt16")
+RemapButton/styles/normal = SubResource("StyleBoxEmpty_7ot3u")
+RemapButton/styles/pressed = SubResource("StyleBoxFlat_m2or3")
 RemapRichTextLabel/base_type = &"RichTextLabel"
 RichTextLabel/colors/default_color = Color(0.141176, 0.141176, 0.188235, 1)
 RichTextLabel/colors/font_outline_color = Color(0.921569, 0.921569, 0.921569, 1)
@@ -192,4 +270,4 @@ RichTextLabel/font_sizes/italics_font_size = 8
 RichTextLabel/font_sizes/mono_font_size = 8
 RichTextLabel/font_sizes/normal_font_size = 8
 RichTextLabel/fonts/normal_font = ExtResource("1_1bdrk")
-RichTextLabel/styles/focus = SubResource("StyleBoxFlat_btjky")
+RichTextLabel/styles/focus = SubResource("StyleBoxFlat_8qq37")

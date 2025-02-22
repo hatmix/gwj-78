@@ -6,12 +6,16 @@ signal player_lost
 signal player_won
 
 @warning_ignore("unused_signal")
+signal game_state_changed(state: Game.State)
+@warning_ignore("unused_signal")
+signal level_started
+
+@warning_ignore("unused_signal")
 signal weather_changed(state: Weather.State)
 
 ## Use UI/MessageBox to display a status update message to the player
 @warning_ignore("unused_signal")
 signal post_ui_message(text: String)
-
 ## Emitted by UI/Controls when a action is remapped
 @warning_ignore("unused_signal")
 signal controls_changed(config: GUIDERemappingConfig)
@@ -21,7 +25,9 @@ const COLOR_SHADOW := Color("#9cafb3")
 const COLOR_MID := Color("889ca1")
 const COLOR_DARK := Color("565a5d")
 const COLOR_BLACK := Color("#242430")
-var COLOR_CLEAR: Color = ProjectSettings.get_setting("rendering/environment/defaults/default_clear_color")
+var COLOR_CLEAR: Color = ProjectSettings.get_setting(
+	"rendering/environment/defaults/default_clear_color"
+)
 
 # I guess it is pretty weird/difficult to store a ref to a node in the tree in a var in an autoload
 # Doing the previous way was only working until the scene was reloaded. Then, Global was left with
@@ -29,6 +35,15 @@ var COLOR_CLEAR: Color = ProjectSettings.get_setting("rendering/environment/defa
 var weather: Weather:
 	get:
 		return get_tree().get_first_node_in_group("Weather")
+
+var game: Game:
+	get:
+		return get_tree().get_first_node_in_group("Game")
+
+# Used to track dialogue/story stuff
+var p_state: Dictionary = {
+	"maps_completed": [],
+}
 
 
 func _ready() -> void:

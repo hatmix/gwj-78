@@ -1,4 +1,7 @@
+class_name Game
 extends Node
+
+enum State { PLAY, MENUS, DIALOGUE }
 
 const IN: String = "GradientVertical"
 const OUT: String = "GradientVerticalInverted"
@@ -6,6 +9,12 @@ const OUT: String = "GradientVerticalInverted"
 @export var first_level: PackedScene
 @export var default_mapping_context: GUIDEMappingContext
 @export var transition_pattern: Image
+
+var state: State = State.PLAY:
+	set(value):
+		if state != value:
+			state = value
+			Global.game_state_changed.emit(state)
 
 var map: Map
 var player: CharacterBody2D:
@@ -18,10 +27,12 @@ var player: CharacterBody2D:
 @onready var game_over: Label = $UI/GameOver
 @onready var victory: Label = $UI/Victory
 @onready var map_placeholder: Node2D = $MapPlaceholder
+@onready var dialogue: DialogueController = $DialogueController
 
 
 func _ready() -> void:
 	$UI.find_child("MainMenu").queue_free()
+
 	GUIDE.enable_mapping_context(default_mapping_context)
 	Global.player_lost.connect(_lose)
 	Global.player_won.connect(_win)
@@ -34,7 +45,7 @@ func _ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if OS.is_debug_build() and Input.is_action_just_pressed("next_level"):
+	if OS.is_debug_build() and state == State.PLAY and Input.is_action_just_pressed("next_level"):
 		Global.player_won.emit()
 
 
@@ -64,8 +75,9 @@ func start_level(_map: PackedScene) -> void:
 	map_placeholder.add_child.call_deferred(map)
 	GUIDE.disable_mapping_context(default_mapping_context)
 	GUIDE.enable_mapping_context(default_mapping_context)
-	fade_in()
+	await fade_in().finished
 	get_tree().set_deferred("paused", false)
+	Global.level_started.emit()
 
 
 func _lose() -> void:

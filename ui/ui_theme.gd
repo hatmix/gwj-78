@@ -12,18 +12,20 @@ func define_theme() -> void:
 	define_default_font(ResourceLoader.load("res://assets/fonts/pixelFont-4-7x7-sproutLands.ttf"))
 	define_default_font_size(9)
 
-	var sb_snow = stylebox_flat({
-		border_ = border_width(2),
-		border_color = Global.COLOR_BRIGHT,
-		corners_ = corner_radius(4),
-		bg_color = Global.COLOR_DARK,
-		expand_margins_ = expand_margins(3),
-		shadow_color = Global.COLOR_BRIGHT,
-		shadow_size = 2,
-		shadow_offset = Vector2i(0, -2),
-		skew = Vector2(0.2, 0),
-		anti_aliasing = false,
-	})
+	var sb_snow = stylebox_flat(
+		{
+			border_ = border_width(2),
+			border_color = Global.COLOR_BRIGHT,
+			corners_ = corner_radius(4),
+			bg_color = Global.COLOR_DARK,
+			expand_margins_ = expand_margins(3),
+			shadow_color = Global.COLOR_BRIGHT,
+			shadow_size = 2,
+			shadow_offset = Vector2i(0, -2),
+			skew = Vector2(0.2, 0),
+			anti_aliasing = false,
+		}
+	)
 
 	define_style(
 		"Button",
@@ -62,7 +64,6 @@ func define_theme() -> void:
 			font_shadow_color = Global.COLOR_BRIGHT,
 			shadow_offset_y = -4,
 			shadow_outline_size = 4,
-			
 		}
 	)
 
@@ -81,7 +82,8 @@ func define_theme() -> void:
 			bold_font_size = 8,
 			mono_font_size = 8,
 			italics_font_size = 8,
-			focus = stylebox_flat(
+			focus =
+			stylebox_flat(
 				{
 					border_ = border_width(2),
 					border_color = Global.COLOR_SHADOW,
@@ -92,6 +94,71 @@ func define_theme() -> void:
 		}
 	)
 
+#region Dialogue styling
+
+	var sb_dialogue = stylebox_flat({bg_color = Global.COLOR_BLACK})
+	var sb_dialogue_button = inherit(
+		sb_dialogue,
+		{
+			expand_margins_ = expand_margins(0, 2, 0, 2),
+			border_ = border_width(0, 2, 0, 2),
+			border_color = Color.TRANSPARENT,
+		}
+	)
+	var sb_dialogue_button_focus = inherit(sb_dialogue_button, {bg_color = Global.COLOR_DARK})
+
+	define_style("Panel", {panel = sb_dialogue})
+	define_variant_style(
+		"DialogueButton",
+		"Button",
+		{
+			font = load("res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf"),
+			font_size = 8,
+			font_color = Global.COLOR_BRIGHT,
+			font_focus_color = Global.COLOR_SHADOW,
+			font_pressed_color = Global.COLOR_SHADOW,
+			font_hover_color = Global.COLOR_SHADOW,
+			font_outline_color = Global.COLOR_BLACK,
+			outline_size = 0,
+			normal = sb_dialogue_button,
+			focus = sb_dialogue_button_focus,
+			hover = sb_dialogue_button_focus,
+			pressed = sb_dialogue_button_focus,
+		}
+	)
+
+	define_variant_style(
+		"DialogueRichTextLabel",
+		"RichTextLabel",
+		{
+			default_color = Global.COLOR_BRIGHT,
+			outline_size = 0,
+			shadow_outline_size = 0,
+			shadow_offset_x = 0,
+			shadow_offset_y = 0,
+			line_separation = 2,
+			normal_font = load("res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf"),
+			bold_font = load("res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf"),
+			bold_italics_font = load("res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf"),
+			italics_font = load("res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf"),
+			mono_font = load("res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf"),
+			normal_font_size = 8,
+			bold_font_size = 8,
+			mono_font_size = 8,
+			italics_font_size = 8,
+			focus =
+			stylebox_flat(
+				{
+					border_ = border_width(2),
+					border_color = Global.COLOR_SHADOW,
+					corners_ = corner_radius(2),
+					bg_color = Color.TRANSPARENT,
+				}
+			)
+		}
+	)
+
+#endregion
 
 #region Message (notifications) controls styling
 	define_variant_style("MessagePanelContainer", "PanelContainer", {panel = stylebox_empty({})})
@@ -124,7 +191,9 @@ func define_theme() -> void:
 #endregion
 
 #region BuildInfo label style
-	define_variant_style("BuildInfoLabel", "Label", 
+	define_variant_style(
+		"BuildInfoLabel",
+		"Label",
 		{
 			font = ResourceLoader.load("res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf"),
 			font_size = 8,
