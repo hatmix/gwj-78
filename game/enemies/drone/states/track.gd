@@ -47,8 +47,8 @@ func physics_process(_delta: float) -> void:
 
 	_state.target.direction = _state.target.global_position.direction_to(next_point)
 	var snow_slow: float = 0
-	if is_instance_valid(Global.get_weather()):
-		snow_slow = _state.target.snow_speed_reduction * Global.get_weather().get_snow_intensity()
+	if is_instance_valid(Global.weather):
+		snow_slow = _state.target.snow_speed_reduction * Global.weather.get_snow_intensity()
 	_state.target.velocity = _state.target.direction * (_state.target.track_speed - snow_slow)
 	# FIXME: handle obstacle avoidance
 	if _state.target.move_and_slide():

@@ -128,7 +128,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	if is_instance_valid(Global.weather) and Global.weather.is_snowing():
 		accumulation += delta * Global.weather.get_snow_intensity()
-		print("accumulation = ", accumulation)
+		#print("accumulation = ", accumulation)
 	if not is_instance_valid(node_tracked):
 		return
 	var pos: Vector2 = node_tracked.global_position
