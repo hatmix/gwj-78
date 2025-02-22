@@ -16,16 +16,12 @@ signal post_ui_message(text: String)
 @warning_ignore("unused_signal")
 signal controls_changed(config: GUIDERemappingConfig)
 
-var _weather: Weather
-
-
-# Supposed to be called only by the Weather class. This is how Godot apparently wants us to do Singleton Nodes / Scenes.
-func set_weather(new: Weather):
-	_weather = new
-
-
-func get_weather():
-	return _weather
+# I guess it is pretty weird/difficult to store a ref to a node in the tree in a var in an autoload
+# Doing the previous way was only working until the scene was reloaded. Then, Global was left with
+# an empty "previously freed" value. Using the group, it avoids this problem /shrug.
+var weather: Weather:
+	get:
+		return get_tree().get_first_node_in_group("Weather")
 
 
 func _ready() -> void:

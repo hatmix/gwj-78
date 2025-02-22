@@ -66,7 +66,7 @@ func get_next_path_point(tracker_node) -> Variant:
 			return
 	var point: Vector2 = points[idx]
 	# If point is not covered by snow, it will still be in snow_time dict
-	if point in snow_time:
+	if point in snow_time and snow_time[point] < snow_time_to_cover:
 		return point
 	return
 
@@ -126,8 +126,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta):
-	if is_instance_valid(Global.get_weather()) and Global.get_weather().is_snowing():
-		accumulation += delta * Global.get_weather().get_snow_intensity()
+	if is_instance_valid(Global.weather) and Global.weather.is_snowing():
+		accumulation += delta * Global.weather.get_snow_intensity()
+		print("accumulation = ", accumulation)
 	if not is_instance_valid(node_tracked):
 		return
 	var pos: Vector2 = node_tracked.global_position

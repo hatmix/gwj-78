@@ -40,10 +40,6 @@ var shader_time: float
 @onready var snowfall_shader: ShaderMaterial = snowfall.material
 
 
-func _init():
-	Global.set_weather(self)
-
-
 func _ready():
 	shader_time = snowfall_shader.get_shader_parameter("time")
 	last_shader_update = shader_time

@@ -35,8 +35,8 @@ func exit_state() -> void:
 
 func physics_process(_delta: float) -> void:
 	var snow_slow: float = 0
-	if is_instance_valid(Global.get_weather()):
-		snow_slow = _state.target.snow_speed_reduction * Global.get_weather().get_snow_intensity()
+	if is_instance_valid(Global.weather):
+		snow_slow = _state.target.snow_speed_reduction * Global.weather.get_snow_intensity()
 	if _state.target.direction:
 		_state.target.velocity = _state.target.direction * (_state.target.patrol_speed - snow_slow)
 	else:

@@ -18,7 +18,7 @@ shader_parameter/additional_rain_speed = 0.348
 shader_parameter/slant = 0.125
 shader_parameter/time = 9882.13
 
-[node name="Weather" type="CanvasLayer"]
+[node name="Weather" type="CanvasLayer" groups=["Weather"]]
 script = ExtResource("1_bltdc")
 snowfall_fps_limit = 30
 
