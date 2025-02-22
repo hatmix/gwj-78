@@ -46,7 +46,7 @@ func _notification(what: int) -> void:
 				title.visible = true
 				buttons.visible = true
 				await Fade.crossfade_execute().finished
-				await get_tree().create_timer(1.0).timeout
+				await get_tree().create_timer(3.0).timeout
 				_player_active = true
 
 
