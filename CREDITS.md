@@ -14,6 +14,7 @@ Created by
 * [Music](https://clement-panchout.itch.io/yet-another-free-music-pack) by [Clement Panchout](https://clement-panchout.itch.io) under CC-BY 4.0
 * Various sound effects by [OwlishMedia](https://opengameart.org/users/owlishmedia) under CC0
 * [Crow sound effects](https://freesound.org/people/Mish7913/packs/41274/) by [Mish7913](https://freesound.org/people/Mish7913/) under CC0
+* [Wind sound effect](https://freesound.org/people/csaszi/sounds/557340/) by [csaszi](https://freesound.org/people/csaszi/) under CC0
 * Pixel fonts by [CupNooble](https://cupnooble.itch.io/) via Discord
 
 #### Godot Engine
@@ -23,21 +24,21 @@ License: [MIT](godotengine.org/license)
 
 #### Godot Addons
 ##### Godot UI Sound Controller
-Author: [Marek "Maaack"](https://github.com/Maaack)  
-Source: [https://github.com/Maaack/Godot-UI-Sound-Controller](https://github.com/Maaack/Godot-UI-Sound-Controller)  
-License: [MIT](https://github.com/Maaack/Godot-UI-Sound-Controller?tab=MIT-1-ov-file#readme)  
+* Author: [Marek "Maaack"](https://github.com/Maaack)  
+* Source: [https://github.com/Maaack/Godot-UI-Sound-Controller](https://github.com/Maaack/Godot-UI-Sound-Controller)  
+* License: [MIT](https://github.com/Maaack/Godot-UI-Sound-Controller?tab=MIT-1-ov-file#readme)  
 
 ##### Markdown Label
-Author: [Daenvil](https://github.com/daenvil)  
-Source: [https://github.com/daenvil/MarkdownLabel](https://github.com/daenvil/MarkdownLabel)  
-License: [MIT](https://github.com/daenvil/MarkdownLabel/tree/main?tab=MIT-1-ov-file#readme)  
+* Author: [Daenvil](https://github.com/daenvil)  
+* Source: [https://github.com/daenvil/MarkdownLabel](https://github.com/daenvil/MarkdownLabel)  
+* License: [MIT](https://github.com/daenvil/MarkdownLabel/tree/main?tab=MIT-1-ov-file#readme)  
 
 ##### G.U.I.D.E Godot Unified Input Detection Engine
-Author: [Godotneers](https://github.com/godotneers)  
-Source: [https://github.com/godotneers/G.U.I.D.E](https://github.com/godotneers/G.U.I.D.E)  
-License: [MIT](https://github.com/godotneers/G.U.I.D.E?tab=MIT-1-ov-file#readme)  
+* Author: [Godotneers](https://github.com/godotneers)  
+* Source: [https://github.com/godotneers/G.U.I.D.E](https://github.com/godotneers/G.U.I.D.E)  
+* License: [MIT](https://github.com/godotneers/G.U.I.D.E?tab=MIT-1-ov-file#readme)  
 
 ##### Universal Fade
-Author: [Tomek (KoBeWi)](https://github.com/KoBeWi)
-Source: [github: Godot-Universal-Fade](https://github.com/KoBeWi/Godot-Universal-Fade)
-License: [MIT License](https://github.com/KoBeWi/Godot-Universal-Fade/blob/master/LICENSE.txt)
+* Author: [Tomek (KoBeWi)](https://github.com/KoBeWi)
+* Source: [github: Godot-Universal-Fade](https://github.com/KoBeWi/Godot-Universal-Fade)
+* License: [MIT License](https://github.com/KoBeWi/Godot-Universal-Fade/blob/master/LICENSE.txt)

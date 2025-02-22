@@ -25,6 +25,7 @@ Global="*res://autoloads/global.gd"
 GUIDE="*res://addons/guide/guide.gd"
 ProjectUISoundController="*res://addons/maaacks_ui_sound_controller/base/scenes/Autoloads/ProjectUISoundController.tscn"
 Settings="*res://autoloads/settings.gd"
+Bgm="*res://autoloads/bgm.tscn"
 
 [display]
 

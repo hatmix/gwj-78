@@ -3,6 +3,7 @@ extends UiPage
 @onready var title: TextureRect = $Title
 @onready var player: CharacterBody2D = $Player
 @onready var buttons: VBoxContainer = %Buttons
+@onready var wind: AudioStreamPlayer = $Wind
 
 var _player_active: bool = false
 var _player_exit: bool = false
@@ -41,11 +42,14 @@ func _notification(what: int) -> void:
 		NOTIFICATION_VISIBILITY_CHANGED:
 			if ui and ui.is_shown("MainMenu") and not title.visible:
 				# Wait for initial fade in
+				Bgm.fade_out()
 				await get_tree().create_timer(1.0).timeout
 				Fade.crossfade_prepare(2.0, "GradientVertical", true)
 				title.visible = true
 				buttons.visible = true
+				wind.play()
 				await Fade.crossfade_execute().finished
+				Bgm.play_track("menu", 3.0)
 				await get_tree().create_timer(3.0).timeout
 				_player_active = true
 
