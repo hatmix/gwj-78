@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cf07yba27ttru"]
+[gd_scene load_steps=14 format=4 uid="uid://cf07yba27ttru"]
 
 [ext_resource type="Script" path="res://game/maps/features/trees/crow_tree.gd" id="1_r86w4"]
 [ext_resource type="AudioStream" uid="uid://p8e0qw6u1wvp" path="res://game/maps/features/trees/assets/audio/crow-angry.ogg" id="3_hsgpr"]
@@ -19,7 +19,7 @@ size_override = Vector2(160, 600)
 radius = 2.5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8raub"]
-radius = 7.0
+radius = 14.0
 height = 86.0
 
 [sub_resource type="Animation" id="Animation_wbwsv"]
@@ -93,8 +93,6 @@ _data = {
 "idle": SubResource("Animation_b8ano")
 }
 
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_85mbc"]
-
 [node name="CrowTree" type="StaticBody2D" groups=["Trees"]]
 y_sort_enabled = true
 collision_mask = 0
@@ -121,6 +119,7 @@ texture = SubResource("PortableCompressedTexture2D_omony")
 offset = Vector2(2, -47)
 hframes = 5
 vframes = 5
+frame = 21
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "pending_changes": {}
@@ -170,9 +169,8 @@ libraries = {
 }
 
 [node name="Sfx" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStreamPolyphonic_85mbc")
-volume_db = -18.0
-max_distance = 100.0
+volume_db = -6.0
+max_distance = 200.0
 attenuation = 2.0
 
 [node name="Timer" type="Timer" parent="."]
