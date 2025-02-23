@@ -4,16 +4,37 @@ As you approach the people outside begin to gather, waving and shouting. More ap
 Some start running in your direction, shouting a name.
 - Look behind you
 	You look behind you for who the mob is shouting at, but it's only watchers back there.
-	set Global.p_state["reaction"] = "donfused"
+	The group begins to exchange nervous glances with each other.
+	set Global.p_state["reaction"] = "confused"
 - Look for routes to escape the mob
 	Your eyes dart around for a path to safety, but there's nowhere to go except into the mob, or back into the watchers.
 	set Global.p_state["reaction"] = "fearful"
 - Shout back at them
 	"Ahhhhh!" You shout back at them, "What are you yelling about?"
+	The mob stops in it tracks.
 	set Global.p_state["reaction"] = "aggressive"
 - Just keep going
 	You ignore the hubbub hoping it's about someone or something else.
+	The group begins to exchange nervous glances with each other.
 	set Global.p_state["reaction"] = "detatched"
 do debug(Global.p_state)
+
+An older woman steps to the front of the crowd, looks at you and speaks calmly, "Well, you're awfully {{ Global.p_state["reaction"]}} today."
+- You all know me!
+	"This is the third time now people have acted like they know me, but," you say... "And I'm sorry to say it, but I don't seem to know any of you."
+- What's this about?
+	"Look," you say, "You all seem like good folks, but what's this all about?"
+- Go back to the woods
+	"I...", you stumble for the right words, "I think I should just go back to the woods."
+
+Gasps and sobs erupt from the gathered crowd. A few men storm off. "Did it on purpose," you think you hear someone say, "Too good to have just gotten caught"
+The woman raises her hand and the mood quiets down. 
+Older woman: "Whatever the cause," she says loudly to the group behind her before turning back to you and continuing softly.
+Older woman: Whatever brought you here, you are among friends who welcome you and will help you however we can. Is that alright with you?
+You nod, even if you're not completely sure about this.
+Older woman: Let's get you inside and comfortable. Everything's going to be alright.
+Man in crowd: Who's gonna take over supply runs?
+The older woman nods to him meaningfully and he strides off with purpose.
+And somewhere in your memory you feel the weight of that nod, but not the knowledge of it.
 
 => END
