@@ -1,0 +1,12 @@
+~ start
+do player.move_to(Vector2(160,150))
+do map.spawn_borders()
+Finally far enough away\nto not see town behind me,
+But not far enough for\nwatchers on patrol.
+do player.move_to(Vector2(160,130))
+Nice little camp up ahead.
+I wonder whose it is.
+do player.move_to(Vector2(160,110))
+do map.spawn_drone()
+
+=> END
