@@ -43,3 +43,6 @@ position = Vector2(-139, 75)
 
 [node name="Drone" parent="." instance=ExtResource("7_d0bnm")]
 position = Vector2(0, -17)
+
+[node name="Drone2" parent="." instance=ExtResource("7_d0bnm")]
+position = Vector2(-69, -28)

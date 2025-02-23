@@ -4,17 +4,16 @@ As you approach the people outside begin to gather, waving and shouting. More ap
 Some start running in your direction, shouting a name.
 - Look behind you
 	You look behind you for who the mob is shouting at, but it's only watchers back there.
-	set Global.p_state["reaction"] = "Confused"
+	set Global.p_state["reaction"] = "donfused"
 - Look for routes to escape the mob
 	Your eyes dart around for a path to safety, but there's nowhere to go except into the mob, or back into the watchers.
-	set Global.p_state["reaction"] = "Fearful"
+	set Global.p_state["reaction"] = "fearful"
 - Shout back at them
 	"Ahhhhh!" You shout back at them, "What are you yelling about?"
-	set Global.p_state["reaction"] = "Aggressive"
-	The mob stops in it tracks. An older woman looks at you and speaks. 
+	set Global.p_state["reaction"] = "aggressive"
 - Just keep going
 	You ignore the hubbub hoping it's about someone or something else.
-	set Global.p_state["reaction"] = "Detatched"
+	set Global.p_state["reaction"] = "detatched"
 do debug(Global.p_state)
 
 => END
