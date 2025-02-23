@@ -27,7 +27,7 @@ func start_dialogue(dialogue: DialogueResource) -> void:
 func start_level_end_dialogue(scene_path) -> void:
 	var level_end_dialogues: Dictionary = {
 		"res://game/maps/map_0/map_0.tscn": "res://game/dialogue/map_0_end.dialogue",
-		"res://game/maps/map_1/map_1.tscn": "res://game/dialogue/map_1_start.dialogue",
+		"res://game/maps/map_1/map_1.tscn": "res://game/dialogue/map_1_end.dialogue",
 		#"res://game/maps/map_2/map_2.tscn": "res://game/dialogue/map_2_start.dialogue",
 	}
 	if scene_path in level_end_dialogues:
