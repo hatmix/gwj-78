@@ -1,0 +1,7 @@
+~ start
+do player.move_to(Vector2(27, 163))
+do map.spawn_borders()
+Well, this is just crazy.
+But this feeling is telling me\n
+I have to go this way.
+=> END

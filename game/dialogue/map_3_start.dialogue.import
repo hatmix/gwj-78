@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://dlwms3myw15bj"
+path="res://.godot/imported/map_3_start.dialogue-4ad01301ca76aaab64c2321dec002c2d.tres"
+
+[deps]
+
+source_file="res://game/dialogue/map_3_start.dialogue"
+dest_files=["res://.godot/imported/map_3_start.dialogue-4ad01301ca76aaab64c2321dec002c2d.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://v8r7jl15ordc"]
+
+[ext_resource type="Script" path="res://game/maps/map.gd" id="1_bb81s"]
+[ext_resource type="PackedScene" uid="uid://s158exwbtkoy" path="res://game/player/player.tscn" id="3_coy0m"]
+[ext_resource type="Texture2D" uid="uid://iucepfbh1oox" path="res://game/maps/map_4/cliff-3.png" id="4_4bx86"]
+[ext_resource type="PackedScene" uid="uid://ctnbcpnjg1cg6" path="res://game/maps/features/campfire/campfire.tscn" id="4_xmfkb"]
+[ext_resource type="PackedScene" uid="uid://dihbu6hike2d3" path="res://game/maps/features/trees/tree.tscn" id="6_3fxd3"]
+[ext_resource type="PackedScene" uid="uid://bycr21mgk8bn3" path="res://game/enemies/drone/drone.tscn" id="7_d0bnm"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_umyod"]
+a = Vector2(64, -89)
+b = Vector2(-160, -17)
+
+[node name="Map_2" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(160, 90)
+script = ExtResource("1_bb81s")
+
+[node name="Cliff-3" type="Sprite2D" parent="."]
+z_index = -50
+z_as_relative = false
+position = Vector2(0, 1)
+texture = ExtResource("4_4bx86")
+
+[node name="Impassable" type="StaticBody2D" parent="."]
+collision_layer = 33
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Impassable"]
+shape = SubResource("SegmentShape2D_umyod")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Impassable"]
+polygon = PackedVector2Array(-113, 91, -41, 56, -36, 61, 25, 30, 32, 16, 67, 8, 77, 13, 103, -1, 110, 1, 118, -4, 119, -10, 160, -23, 160, 91)
+
+[node name="Player" parent="." instance=ExtResource("3_coy0m")]
+position = Vector2(-164, 82)
+
+[node name="Campfire" parent="." instance=ExtResource("4_xmfkb")]
+position = Vector2(136, -70)
+
+[node name="Tree4" parent="." instance=ExtResource("6_3fxd3")]
+position = Vector2(-139, 75)
+
+[node name="Drone" parent="." instance=ExtResource("7_d0bnm")]
+position = Vector2(0, -17)

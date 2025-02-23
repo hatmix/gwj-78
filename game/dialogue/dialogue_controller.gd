@@ -53,6 +53,8 @@ func _on_level_started(scene_path) -> void:
 		"res://game/maps/map_0/map_0.tscn": "res://game/dialogue/map_0_start.dialogue",
 		"res://game/maps/map_1/map_1.tscn": "res://game/dialogue/map_1_start.dialogue",
 		"res://game/maps/map_2/map_2.tscn": "res://game/dialogue/map_2_start.dialogue",
+		"res://game/maps/map_3/map_3.tscn": "res://game/dialogue/map_3_start.dialogue",
+		"res://game/maps/map_4/map_4.tscn": "res://game/dialogue/map_4_start.dialogue",
 	}
 
 	if scene_path in level_started_popups:
