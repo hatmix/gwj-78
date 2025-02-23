@@ -10,7 +10,6 @@
 [node name="Balloon" type="CanvasLayer"]
 process_mode = 3
 layer = 2
-follow_viewport_enabled = true
 script = ExtResource("1_s2gbs")
 next_action = ExtResource("2_sj7yn")
 skip_action = ExtResource("3_xaowp")
@@ -22,6 +21,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
 
