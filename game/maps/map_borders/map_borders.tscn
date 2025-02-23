@@ -9,6 +9,7 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kqt61"]
 
 [node name="MapBorders" type="Node2D"]
+position = Vector2(160, 90)
 
 [node name="Bottom" type="StaticBody2D" parent="."]
 collision_layer = 40
