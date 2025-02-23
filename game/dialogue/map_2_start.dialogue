@@ -1,5 +1,6 @@
 ~ start
 do player.move_to(Vector2(28, 167))
 do map.spawn_borders()
-blah blah blah
+[next=auto]I can't say I know where I'm going.\nBut... somehow I know,
+There's a warm, friendly place\nout this far.
 => END
