@@ -16,6 +16,30 @@ func start_popup_dialogue(dialogue: DialogueResource, pause: bool = false) -> vo
 	DialogueManager.show_dialogue_balloon_scene(popup, dialogue)
 
 
+func start_dialogue(dialogue: DialogueResource) -> void:
+	Global.game.state = Game.State.DIALOGUE
+	get_tree().set_deferred("paused", true)
+	print("enabling dialogue_mapping_context")
+	GUIDE.enable_mapping_context(dialogue_mapping_context)
+	DialogueManager.show_dialogue_balloon_scene(balloon, dialogue)
+
+
+func start_level_end_dialogue(scene_path) -> void:
+	var level_end_dialogues: Dictionary = {
+		"res://game/maps/map_0/map_0.tscn": "res://game/dialogue/map_0_end.dialogue",
+		#"res://game/maps/map_1/map_1.tscn": "res://game/dialogue/map_1_start.dialogue",
+		#"res://game/maps/map_2/map_2.tscn": "res://game/dialogue/map_2_start.dialogue",
+	}
+	if scene_path in level_end_dialogues:
+		var dialogue: DialogueResource = load(level_end_dialogues[scene_path])
+		#if "map_0" not in scene_path:
+		#	start_popup_dialogue(dialogue)
+		#else:
+		# Always starting unpaused to walk to starting point from off edge
+		start_dialogue(dialogue)
+		await DialogueManager.dialogue_ended
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.level_started.connect(_on_level_started)

@@ -90,7 +90,7 @@ func _lose() -> void:
 	await camera_2d.zoom_to_position(player.global_position)
 	game_over.visible = true
 	var redo: PackedScene = load(map.scene_file_path)
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	start_level(redo)
 
 
@@ -99,8 +99,12 @@ func _win() -> void:
 	get_tree().call_group("Drones", "hide")
 	await camera_2d.zoom_to_position(player.global_position)
 	victory.visible = true
+	get_tree().call_group("Drones", "queue_free")
+	await get_tree().create_timer(1.0).timeout
+	victory.visible = false
+	# can this await? YES!
+	await dialogue.start_level_end_dialogue(map.scene_file_path)
 
-	await get_tree().create_timer(3.0).timeout
 	if map.next_level:
 		start_level(map.next_level)
 	else:

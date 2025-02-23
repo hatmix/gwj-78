@@ -1,14 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb12xw8ggv12a"]
+[gd_scene load_steps=7 format=3 uid="uid://bb12xw8ggv12a"]
 
 [ext_resource type="Script" path="res://ui/dialogue/balloon.gd" id="1_s2gbs"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_hfvdi"]
+[ext_resource type="Resource" uid="uid://ctgnme6wwfppp" path="res://input/advance_dialogue.tres" id="2_sj7yn"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_1j1j0"]
+[ext_resource type="Resource" uid="uid://e42yndmbyef6" path="res://input/skip_dialogue.tres" id="3_xaowp"]
 [ext_resource type="AudioStream" uid="uid://bum8pxr0exorw" path="res://ui/assets/audio/hit2.wav" id="4_po3rq"]
 
 [node name="Balloon" type="CanvasLayer"]
 process_mode = 3
 layer = 2
+follow_viewport_enabled = true
 script = ExtResource("1_s2gbs")
+next_action = ExtResource("2_sj7yn")
+skip_action = ExtResource("3_xaowp")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true

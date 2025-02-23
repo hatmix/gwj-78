@@ -8,3 +8,10 @@ func zoom_to_position(global_pos: Vector2, duration: float = 0.25) -> void:
 	tween.tween_property(self, "global_position", global_pos, duration)
 	tween.tween_property(self, "zoom", Vector2.ONE * 8, duration)
 	await tween.finished
+
+
+func zoom_out(duration: float = 1.0) -> void:
+	var tween: Tween = create_tween()
+	#tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "zoom", Vector2.ONE, duration)
+	await tween.finished
