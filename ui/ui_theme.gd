@@ -14,15 +14,15 @@ func define_theme() -> void:
 
 	var sb_snow = stylebox_flat(
 		{
-			border_ = border_width(2),
+			border_ = border_width(0,2,0,0),
 			border_color = Global.COLOR_BRIGHT,
 			corners_ = corner_radius(4),
 			bg_color = Global.COLOR_DARK,
 			expand_margins_ = expand_margins(3),
-			shadow_color = Global.COLOR_BRIGHT,
-			shadow_size = 2,
-			shadow_offset = Vector2i(0, -2),
-			skew = Vector2(0.2, 0),
+			#shadow_color = Global.COLOR_BRIGHT,
+			#shadow_size = 2,
+			#shadow_offset = Vector2i(0, -2),
+			#skew = Vector2(0.2, 0),
 			anti_aliasing = false,
 		}
 	)
