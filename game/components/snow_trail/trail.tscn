@@ -4,6 +4,7 @@
 
 [node name="Trail" type="Node2D" groups=["Trails"]]
 script = ExtResource("1_j5sb6")
+snow_time_to_cover = 4.0
 
 [node name="SnowCoverTimer" type="Timer" parent="."]
 wait_time = 0.5
