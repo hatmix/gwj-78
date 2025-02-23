@@ -8,7 +8,7 @@ signal player_won
 @warning_ignore("unused_signal")
 signal game_state_changed(state: Game.State)
 @warning_ignore("unused_signal")
-signal level_started
+signal level_started(level_scene: String)
 
 @warning_ignore("unused_signal")
 signal weather_changed(state: Weather.State)
@@ -22,6 +22,7 @@ signal controls_changed(config: GUIDERemappingConfig)
 
 const COLOR_BRIGHT := Color("ebebeb")
 const COLOR_SHADOW := Color("#9cafb3")
+const COLOR_BUTTON := Color("c4c6c8")
 const COLOR_MID := Color("889ca1")
 const COLOR_DARK := Color("565a5d")
 const COLOR_BLACK := Color("#242430")
@@ -48,5 +49,6 @@ var p_state: Dictionary = {
 
 func _ready() -> void:
 	pass
-	#weather_changed.connect(func(v): print("signal weather_changed emitted with value ", v))
+	weather_changed.connect(func(v): print("signal weather_changed emitted with value ", v))
+	level_started.connect(func(v): print("signal level_started emitted with value ", v))
 	#post_ui_message.connect(func(v): print("signal post_ui_message emitted with value ", v))

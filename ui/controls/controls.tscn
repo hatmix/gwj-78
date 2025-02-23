@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://mwbv2jh1ugjq"]
+[gd_scene load_steps=8 format=3 uid="uid://mwbv2jh1ugjq"]
 
 [ext_resource type="Script" path="res://ui/controls/controls.gd" id="1_ypuet"]
 [ext_resource type="Script" path="res://addons/guide/guide_mapping_context.gd" id="2_v7gdq"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="3_b2afy"]
+[ext_resource type="Resource" uid="uid://c20bc0x68q26s" path="res://input/dialogue_mapping_context.tres" id="4_rxq8t"]
 [ext_resource type="Script" path="res://ui/controls/input_panel.gd" id="5_7bxk6"]
 [ext_resource type="Script" path="res://addons/guide/remapping/guide_input_detector.gd" id="5_64hdo"]
 
@@ -18,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ypuet")
-remap_mapping_contexts = Array[ExtResource("2_v7gdq")]([ExtResource("3_b2afy")])
+remap_mapping_contexts = Array[ExtResource("2_v7gdq")]([ExtResource("3_b2afy"), ExtResource("4_rxq8t")])
 icon_size = 24
 default_focus_control = NodePath("Buttons/Back")
 
@@ -116,6 +117,8 @@ script = ExtResource("5_7bxk6")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 320.0
+offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 

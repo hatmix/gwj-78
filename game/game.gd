@@ -14,6 +14,13 @@ var state: State = State.PLAY:
 	set(value):
 		if state != value:
 			state = value
+			match state:
+				State.DIALOGUE:
+					print("disabling default_mapping_context")
+					GUIDE.disable_mapping_context(default_mapping_context)
+				_:
+					print("enabling default_mapping_context")
+					GUIDE.enable_mapping_context(default_mapping_context)
 			Global.game_state_changed.emit(state)
 
 var map: Map
@@ -32,8 +39,6 @@ var player: CharacterBody2D:
 
 func _ready() -> void:
 	$UI.find_child("MainMenu").queue_free()
-
-	GUIDE.enable_mapping_context(default_mapping_context)
 	Global.player_lost.connect(_lose)
 	Global.player_won.connect(_win)
 	game_over.visible = false
@@ -77,7 +82,7 @@ func start_level(_map: PackedScene) -> void:
 	GUIDE.enable_mapping_context(default_mapping_context)
 	await fade_in().finished
 	get_tree().set_deferred("paused", false)
-	Global.level_started.emit()
+	Global.level_started.emit(map.scene_file_path)
 
 
 func _lose() -> void:

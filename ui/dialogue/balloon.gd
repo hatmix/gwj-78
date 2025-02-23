@@ -2,10 +2,13 @@ extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
 ## The action to use for advancing the dialogue
-@export var next_action: StringName = &"ui_accept"
+@export var next_action: GUIDEAction
 
 ## The action to use to skip typing the dialogue
-@export var skip_action: StringName = &"ui_cancel"
+@export var skip_action: GUIDEAction
+
+const MARGIN := 4
+const MARGINS := Vector2(4, 4)
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -23,6 +26,8 @@ var will_hide_balloon: bool = false
 var locals: Dictionary = {}
 
 var _locale: String = TranslationServer.get_locale()
+
+var _first_line: bool = true
 
 ## The current line
 var dialogue_line: DialogueLine:
@@ -56,22 +61,21 @@ func _ready() -> void:
 	print("popup balloon instantiated")
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
-	%Balloon.gui_input.connect(_on_balloon_gui_input)
+	#%Balloon.gui_input.connect(_on_balloon_gui_input)
 	%ResponsesMenu.response_selected.connect(_on_responses_menu_response_selected)
 	%DialogueLabel.spoke.connect(type_sfx)
 
 	# If the responses menu doesn't have a next action set, use this one
-	if responses_menu.next_action.is_empty():
-		responses_menu.next_action = next_action
+	#if responses_menu.next_action.is_empty():
+	#	responses_menu.next_action = next_action
 
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
 
-
-func _unhandled_input(_event: InputEvent) -> void:
-	# Only the balloon is allowed to handle input while it's showing
-	# ... if only it worked.
-	get_viewport().set_input_as_handled()
+	# Position balloon to player -- do we need the transforms here?
+	balloon.position = get_tree().get_first_node_in_group("Player").global_position
+	# Offset for proper position
+	balloon.position += Vector2(0, -32)
 
 
 func _notification(what: int) -> void:
@@ -88,7 +92,7 @@ func _notification(what: int) -> void:
 			dialogue_label.skip_typing()
 
 
-func type_sfx(_letter, _idx, speed) -> void:
+func type_sfx(_letter, _idx, _speed) -> void:
 	%TypeOutSfx.play()
 
 
@@ -107,11 +111,25 @@ func apply_dialogue_line() -> void:
 	mutation_cooldown.stop()
 
 	is_waiting_for_input = false
-	balloon.focus_mode = Control.FOCUS_ALL
-	balloon.grab_focus()
+	#balloon.focus_mode = Control.FOCUS_ALL
+	#balloon.grab_focus()
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+
+	# calculate the size of the popup
+	%TestLabel.size = Vector2.ZERO
+	await get_tree().process_frame
+	%TestLabel.text = dialogue_line.text
+	await get_tree().process_frame
+	#print(%TestLabel.size)
+	#dialogue_label.custom_minimum_size = %TestLabel.size
+	dialogue_label.size = %TestLabel.size
+	%Panel.size = %TestLabel.size + MARGINS
+	await get_tree().process_frame
+	if _first_line:
+		balloon.pivot_offset = Vector2(balloon.size.x / 2, balloon.size.y)
+		balloon.scale = Vector2.ZERO
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -121,6 +139,10 @@ func apply_dialogue_line() -> void:
 
 	# Show our balloon
 	balloon.show()
+	if _first_line:
+		_first_line = false
+		%PopInSfx.play()
+		await create_tween().tween_property(balloon, "scale", Vector2.ONE, 0.1).finished
 	will_hide_balloon = false
 
 	dialogue_label.show()
@@ -142,16 +164,11 @@ func apply_dialogue_line() -> void:
 		next(dialogue_line.next_id)
 	else:
 		is_waiting_for_input = true
-		balloon.focus_mode = Control.FOCUS_ALL
-		balloon.grab_focus()
 
 
 ## Go to the next line
 func next(next_id: String) -> void:
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
-
-
-#region Signals
 
 
 func _on_mutation_cooldown_timeout() -> void:
@@ -166,35 +183,20 @@ func _on_mutated(_mutation: Dictionary) -> void:
 	mutation_cooldown.start(0.1)
 
 
-func _on_balloon_gui_input(event: InputEvent) -> void:
+func _process(_delta: float) -> void:
 	# See if we need to skip typing of the dialogue
 	if dialogue_label.is_typing:
-		var mouse_was_clicked: bool = (
-			event is InputEventMouseButton
-			and event.button_index == MOUSE_BUTTON_LEFT
-			and event.is_pressed()
-		)
-		var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
-		if mouse_was_clicked or skip_button_was_pressed:
-			get_viewport().set_input_as_handled()
+		if skip_action.is_triggered():
 			dialogue_label.skip_typing()
 			return
 
 	if not is_waiting_for_input:
 		return
+
 	if dialogue_line.responses.size() > 0:
 		return
 
-	# When there are no response options the balloon itself is the clickable thing
-	get_viewport().set_input_as_handled()
-
-	if (
-		event is InputEventMouseButton
-		and event.is_pressed()
-		and event.button_index == MOUSE_BUTTON_LEFT
-	):
-		next(dialogue_line.next_id)
-	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
+	if next_action.is_triggered():
 		next(dialogue_line.next_id)
 
 

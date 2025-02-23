@@ -31,5 +31,6 @@ text = "GUIDE Debugger"
 
 [node name="GuideDebugger" parent="VBoxContainer" instance=ExtResource("2_li4ca")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 3

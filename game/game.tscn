@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsh8lu3xwvk31"]
+[gd_scene load_steps=9 format=3 uid="uid://bsh8lu3xwvk31"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_0dwuo"]
 [ext_resource type="Resource" uid="uid://v5u0dyabni7e" path="res://input/default_mapping_context.tres" id="2_yrvkc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c45lhaiu1a1rd" path="res://game/weather/weather.tscn" id="4_ktfyp"]
 [ext_resource type="Script" path="res://game/camera_2d.gd" id="4_mqf6i"]
 [ext_resource type="PackedScene" uid="uid://de5gr0w8nmik3" path="res://game/maps/map_1/map_1.tscn" id="4_txadc"]
+[ext_resource type="Resource" uid="uid://c20bc0x68q26s" path="res://input/dialogue_mapping_context.tres" id="5_4ohh4"]
 [ext_resource type="PackedScene" uid="uid://u1vgfeia861q" path="res://ui/ui.tscn" id="5_mq8ia"]
 
 [node name="Game" type="Node2D" groups=["Game"]]
@@ -15,6 +16,7 @@ default_mapping_context = ExtResource("2_yrvkc")
 
 [node name="DialogueController" type="Node" parent="."]
 script = ExtResource("4_jgcxn")
+dialogue_mapping_context = ExtResource("5_4ohh4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3

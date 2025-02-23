@@ -5,7 +5,7 @@ extends UiPage
 
 func _ready() -> void:
 	%ToggleGuideDebugger.toggled.connect(_toggle_guide_debugger)
-	%GuideDebugger.hide()
+	#%GuideDebugger.hide()
 
 
 func _input(event: InputEvent) -> void:

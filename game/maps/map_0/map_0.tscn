@@ -1,0 +1,50 @@
+[gd_scene load_steps=11 format=3 uid="uid://byb036xts8jwt"]
+
+[ext_resource type="Script" path="res://game/maps/map.gd" id="1_qhtfk"]
+[ext_resource type="PackedScene" uid="uid://nwm3kg78jexn" path="res://game/maps/map_2/map_2.tscn" id="2_k7ltf"]
+[ext_resource type="PackedScene" uid="uid://cra7xo2obmyky" path="res://game/maps/map_borders/map_borders.tscn" id="3_xe8gj"]
+[ext_resource type="PackedScene" uid="uid://s158exwbtkoy" path="res://game/player/player.tscn" id="4_52bbk"]
+[ext_resource type="PackedScene" uid="uid://dihbu6hike2d3" path="res://game/maps/features/trees/tree.tscn" id="5_6rh14"]
+[ext_resource type="PackedScene" uid="uid://cf07yba27ttru" path="res://game/maps/features/trees/crow_tree.tscn" id="6_4s7xy"]
+[ext_resource type="PackedScene" uid="uid://bwbproqji3tyu" path="res://game/maps/features/box/box.tscn" id="7_1jst0"]
+[ext_resource type="PackedScene" uid="uid://dluyrtqjcb4sq" path="res://game/maps/features/cart/cart.tscn" id="8_6qd3s"]
+[ext_resource type="PackedScene" uid="uid://ctnbcpnjg1cg6" path="res://game/maps/features/campfire/campfire.tscn" id="9_eucpf"]
+[ext_resource type="PackedScene" uid="uid://povhohul3eoq" path="res://game/maps/features/rocks/rock_small.tscn" id="10_weg15"]
+
+[node name="Map_0" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(160, 90)
+script = ExtResource("1_qhtfk")
+next_level = ExtResource("2_k7ltf")
+
+[node name="MapBorders" parent="." instance=ExtResource("3_xe8gj")]
+
+[node name="Player" parent="." instance=ExtResource("4_52bbk")]
+position = Vector2(-1, 101)
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="tree14" parent="Trees" instance=ExtResource("5_6rh14")]
+position = Vector2(137, 15)
+
+[node name="tree5" parent="Trees" instance=ExtResource("5_6rh14")]
+position = Vector2(-118, -25)
+
+[node name="tree6" parent="Trees" instance=ExtResource("5_6rh14")]
+position = Vector2(117, -30)
+
+[node name="CrowTree" parent="Trees" instance=ExtResource("6_4s7xy")]
+position = Vector2(-130, 75)
+
+[node name="Box" parent="." instance=ExtResource("7_1jst0")]
+position = Vector2(-138, -66)
+
+[node name="Cart" parent="." instance=ExtResource("8_6qd3s")]
+position = Vector2(134, -62)
+
+[node name="Campfire" parent="." instance=ExtResource("9_eucpf")]
+position = Vector2(1, 0)
+
+[node name="RockSmall" parent="." instance=ExtResource("10_weg15")]
+position = Vector2(90, 71)

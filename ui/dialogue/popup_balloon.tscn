@@ -1,20 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8sl4t1smo0s7"]
+[gd_scene load_steps=9 format=3 uid="uid://c8sl4t1smo0s7"]
 
 [ext_resource type="Script" path="res://ui/dialogue/popup_balloon.gd" id="1_avwtk"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_2yrfx"]
+[ext_resource type="Resource" uid="uid://ctgnme6wwfppp" path="res://input/advance_dialogue.tres" id="2_dpbc4"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_4b1o8"]
+[ext_resource type="Resource" uid="uid://e42yndmbyef6" path="res://input/skip_dialogue.tres" id="3_eb44f"]
 [ext_resource type="AudioStream" uid="uid://c2vdk20ygcayt" path="res://ui/assets/audio/plop.wav" id="4_myp6r"]
 [ext_resource type="AudioStream" uid="uid://bum8pxr0exorw" path="res://ui/assets/audio/hit2.wav" id="5_cuft4"]
+[ext_resource type="Theme" uid="uid://dnwjeod058ffj" path="res://ui/dialogue/popup_dialogue_panel_theme.tres" id="6_qa6us"]
 
 [node name="PopupBalloon" type="CanvasLayer"]
 process_mode = 3
 layer = 2
 script = ExtResource("1_avwtk")
+next_action = ExtResource("2_dpbc4")
+skip_action = ExtResource("3_eb44f")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 10)
 layout_mode = 3
+anchors_preset = 0
 grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -29,6 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = ExtResource("6_qa6us")
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 visible = false
@@ -81,10 +88,10 @@ unique_name_in_owner = true
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
-offset_left = 4.0
-offset_top = 6.0
-offset_right = 5.0
-offset_bottom = 94.0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 3.0
+offset_bottom = 92.0
 grow_horizontal = 1
 size_flags_vertical = 3
 theme_type_variation = &"DialogueRichTextLabel"
