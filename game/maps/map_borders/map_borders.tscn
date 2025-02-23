@@ -11,7 +11,7 @@
 [node name="MapBorders" type="Node2D"]
 
 [node name="Bottom" type="StaticBody2D" parent="."]
-collision_layer = 8
+collision_layer = 40
 collision_mask = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bottom"]
@@ -19,7 +19,7 @@ position = Vector2(0, 90)
 shape = SubResource("WorldBoundaryShape2D_hfiol")
 
 [node name="Left" type="StaticBody2D" parent="."]
-collision_layer = 8
+collision_layer = 40
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
@@ -28,7 +28,7 @@ rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_ti2me")
 
 [node name="Right" type="StaticBody2D" parent="."]
-collision_layer = 8
+collision_layer = 40
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
@@ -37,7 +37,7 @@ rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_1bu0w")
 
 [node name="Top" type="StaticBody2D" parent="."]
-collision_layer = 8
+collision_layer = 40
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]

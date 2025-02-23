@@ -45,6 +45,10 @@ func _ready() -> void:
 	victory.visible = false
 	$UI.show_ui("Game")
 	Bgm.play_track("map", 3.0)
+	
+	# On starting a new game, reset Global.p_state
+	Global.p_state = Global.p_state_defaults
+	
 	await get_tree().process_frame
 	start_level(first_level)
 

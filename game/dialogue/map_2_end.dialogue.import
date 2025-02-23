@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://dl5r3kucam2o2"
+path="res://.godot/imported/map_2_end.dialogue-4d3a044ebbf0c86fa2b4505275c7159c.tres"
+
+[deps]
+
+source_file="res://game/dialogue/map_2_end.dialogue"
+dest_files=["res://.godot/imported/map_2_end.dialogue-4d3a044ebbf0c86fa2b4505275c7159c.tres"]
+
+[params]
+
+defaults=true

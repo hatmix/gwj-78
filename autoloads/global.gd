@@ -42,10 +42,16 @@ var game: Game:
 		return get_tree().get_first_node_in_group("Game")
 
 # Used to track dialogue/story stuff
-var p_state: Dictionary = {
-	"maps_completed": [],
+var p_state_defaults: Dictionary = {
 	"mud": false,
+	"mud_expired": false,
+	"transponder": false,
+	"transponder_used": false,
+	"reaction": "",
 }
+
+# initialized by game _ready
+var p_state: Dictionary = {}
 
 
 func _ready() -> void:

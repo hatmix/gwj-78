@@ -8,7 +8,9 @@ You ask about how the watchers don't bother this place.
 She exclaims they just got two extra transponders and offers you one.
 - Accept the gift
 	set Global.p_state["transponder"] = true
+	set Global.p_state["transponder_used"] = false
 - Decline the gift
+	set Global.p_state["transponder"] = false
 
 => END
 
