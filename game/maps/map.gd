@@ -25,6 +25,7 @@ func spawn_drone(pos: Vector2 = Vector2(20, 20)) -> void:
 
 func _ready() -> void:
 	# Reset player position to 0,0 so dialogue offsets work as expected
-	var global_pos: Vector2 = Global.game.player.global_position
-	Global.game.player.position = Vector2.ZERO
-	Global.game.player.global_position = global_pos
+	if is_instance_valid(Global.game) and is_instance_valid(Global.game.player):
+		var global_pos: Vector2 = Global.game.player.global_position
+		Global.game.player.position = Vector2.ZERO
+		Global.game.player.global_position = global_pos
