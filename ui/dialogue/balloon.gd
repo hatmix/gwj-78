@@ -163,7 +163,7 @@ func _on_mutated(_mutation: Dictionary) -> void:
 func _process(_delta: float) -> void:
 	# See if we need to skip typing of the dialogue
 	if dialogue_label.is_typing:
-		if skip_action.is_triggered():
+		if skip_action.is_triggered() or Input.is_action_just_pressed("ui_accept"):
 			dialogue_label.skip_typing()
 			return
 
@@ -173,7 +173,7 @@ func _process(_delta: float) -> void:
 	if dialogue_line.responses.size() > 0:
 		return
 
-	if next_action.is_triggered():
+	if next_action.is_triggered() or Input.is_action_just_pressed("ui_accept"):
 		next(dialogue_line.next_id)
 
 

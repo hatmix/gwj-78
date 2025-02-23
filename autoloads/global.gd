@@ -44,6 +44,7 @@ var game: Game:
 # Used to track dialogue/story stuff
 var p_state: Dictionary = {
 	"maps_completed": [],
+	"mud": false,
 }
 
 

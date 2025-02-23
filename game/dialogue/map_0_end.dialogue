@@ -1,7 +1,22 @@
 ~ start
-There's a man here, covered in mud. He sees you approaching.
+Just off to the side of a smelly, filty camp you find a mud pit and a man covered in mud.
+He sees you approaching and waves.
 
-...
+Mud man: Heya!
+Player: Hey. What's with the mud?
+The mud man tilts his head to the side and looks at you for a moment, then smiles.
+Mud man: Well, it helps me grow my mushrooms and other stuff, but mostly it keeps the watchers from bothering me.
+Mud man: Those watchers have the worst eye sight. Like this they think I'm just a tree or rock.
+Mud man: You should try it!
+- Cover yourself in mud
+	As you dig your hand into the mud pit, a strong stench comes from the fresh mud you turn up.
+	- Ignore the smell and spread it all over
+		Mud man: That's the spirit!
+		set Global.p_state["mud"] = true
+	- Maybe this is a bad idea
+		Mud man: Ha! Suit yourself.
+- Maybe next time
+	Mud man: Ha! Suit yourself.
 
-Mud man: Those watchers have the worst vision. Covered in mud they think I'm some uninteresting tree or rock. You should try it!
+
 => END
