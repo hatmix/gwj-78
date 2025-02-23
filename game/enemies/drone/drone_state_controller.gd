@@ -3,6 +3,7 @@ extends StateMachine
 var scanned: Array[Node2D] = []
 var _player: Node2D
 
+@onready var _dialogue: Node = $Dialogue
 @onready var _patrol: Node = $Patrol
 @onready var _search: Node = $Search
 @onready var _track: Node = $Track
@@ -10,10 +11,11 @@ var _player: Node2D
 
 func on_detect_body_entered(body: Node2D) -> void:
 	#print(target.name, " detected ", body.name)
-
 	if body.is_in_group("Player"):
 		_player = body
 		match current_state:
+			_dialogue:
+				pass
 			_patrol:
 				_search.point_of_interest = body.global_position
 				change_to(_search)

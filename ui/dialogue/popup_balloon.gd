@@ -73,7 +73,7 @@ func _ready() -> void:
 	add_child(mutation_cooldown)
 
 	# Position balloon to player -- do we need the transforms here?
-	balloon.position = get_tree().get_first_node_in_group("Player").global_position
+	balloon.position = Global.game.player.global_position
 	# Offset for proper position
 	balloon.position += Vector2(0, -32)
 

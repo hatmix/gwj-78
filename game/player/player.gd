@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal in_position
+
 enum State { IDLE, WALK }
 
 @export var move_action: GUIDEAction
@@ -8,6 +10,7 @@ enum State { IDLE, WALK }
 var state: State
 var last_facing: String = "Right"
 var direction: Vector2 = Vector2.ZERO
+var _target_position: Vector2 = Vector2.ZERO
 
 @onready var visual: Sprite2D = $Visual
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
@@ -40,6 +43,15 @@ func _hide(enabled: bool = true) -> void:
 		visual.self_modulate = Color("#FFFFFFFF")
 
 
+func move_to(point: Vector2) -> void:
+	if Global.game.state != Game.State.DIALOGUE:
+		return
+	print("moving player to %v", point)
+	_target_position = point
+	direction = global_position.direction_to(_target_position)
+	await in_position
+
+
 func _ready() -> void:
 	move_action.triggered.connect(_on_move_action)
 	move_action.completed.connect(_on_move_action)
@@ -68,6 +80,11 @@ func _input(_event: InputEvent) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if _target_position and global_position.distance_to(_target_position) <= 4:
+		_target_position = Vector2.ZERO
+		direction = Vector2.ZERO
+		in_position.emit()
+		
 	if direction.length() > 0 and speed > 0:
 		state = State.WALK
 		var facing = get_sprite_facing(direction.angle())
@@ -90,3 +107,7 @@ func _physics_process(_delta: float) -> void:
 	%StateLabel.text = "%s-%s" % [animation, last_facing]
 
 	move_and_slide()
+
+	#if move_and_slide() and _target_position:
+	#	var collider: KinematicCollision2D = get_last_slide_collision()
+		

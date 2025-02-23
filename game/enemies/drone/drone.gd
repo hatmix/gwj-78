@@ -11,6 +11,8 @@ extends CharacterBody2D
 ##   trail ended, so enter search pattern from last point
 ##   (see https://owaysonline.com/iamsar-search-patterns/)
 
+signal in_position
+
 const SCAN_COLOR := Color("#FE610080")
 
 @export var patrol_speed: float = 20.0
@@ -63,6 +65,16 @@ func track(enable: bool = true) -> void:
 		sfx_2d.play()
 
 
+func move_to(point: Vector2) -> void:
+	if Global.game.state != Game.State.DIALOGUE:
+		return
+	prints("moving", name, "to %v" % point)
+	# apparently I really want protected vars...
+	_state._dialogue._target_point = point
+	_state.change_to("Dialogue")	
+	await in_position
+
+
 func _ready() -> void:
 	scanner_back.self_modulate = SCAN_COLOR
 	scanner_front.self_modulate = SCAN_COLOR
@@ -103,6 +115,8 @@ func _update_state_label(new_state: FsmState, _old_state: FsmState) -> void:
 
 func _on_body_entered_player_detect_area(body: Node2D) -> void:
 	#print(name, " detected ", body.name)
+	if _state.current_state == _state._dialogue:
+		return
 	if body.name == "Player":
 		scan(false)
 		track(true)

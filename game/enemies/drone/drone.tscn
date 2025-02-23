@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bycr21mgk8bn3"]
+[gd_scene load_steps=31 format=4 uid="uid://bycr21mgk8bn3"]
 
 [ext_resource type="Script" path="res://game/enemies/drone/drone.gd" id="1_ry1n7"]
 [ext_resource type="Texture2D" uid="uid://bmcbxghs4viyy" path="res://game/enemies/drone/assets/top_down_45_cone_back_32x32.png" id="2_k8n0g"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://game/enemies/drone/states/search.gd" id="6_eotgj"]
 [ext_resource type="AudioStream" uid="uid://xbv3i1t2x02s" path="res://game/enemies/drone/assets/audio/whimper.wav" id="7_j2hoy"]
 [ext_resource type="Script" path="res://game/enemies/drone/drone_state_controller.gd" id="9_wcwxo"]
+[ext_resource type="Script" path="res://game/enemies/drone/states/dialogue.gd" id="10_h66ai"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vm57"]
 size = Vector2(4, 4)
@@ -566,6 +567,9 @@ horizontal_alignment = 1
 script = ExtResource("9_wcwxo")
 target = NodePath("..")
 initial_state = NodePath("Patrol")
+
+[node name="Dialogue" type="Node" parent="DroneStateController"]
+script = ExtResource("10_h66ai")
 
 [node name="Patrol" type="Node" parent="DroneStateController"]
 script = ExtResource("4_y21gw")

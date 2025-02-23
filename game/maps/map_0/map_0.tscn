@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://byb036xts8jwt"]
+[gd_scene load_steps=10 format=3 uid="uid://byb036xts8jwt"]
 
-[ext_resource type="Script" path="res://game/maps/map.gd" id="1_qhtfk"]
-[ext_resource type="PackedScene" uid="uid://nwm3kg78jexn" path="res://game/maps/map_2/map_2.tscn" id="2_k7ltf"]
-[ext_resource type="PackedScene" uid="uid://cra7xo2obmyky" path="res://game/maps/map_borders/map_borders.tscn" id="3_xe8gj"]
+[ext_resource type="Script" path="res://game/maps/map_0/map_0.gd" id="1_sli8o"]
+[ext_resource type="PackedScene" uid="uid://de5gr0w8nmik3" path="res://game/maps/map_1/map_1.tscn" id="2_u4n8o"]
 [ext_resource type="PackedScene" uid="uid://s158exwbtkoy" path="res://game/player/player.tscn" id="4_52bbk"]
 [ext_resource type="PackedScene" uid="uid://dihbu6hike2d3" path="res://game/maps/features/trees/tree.tscn" id="5_6rh14"]
 [ext_resource type="PackedScene" uid="uid://cf07yba27ttru" path="res://game/maps/features/trees/crow_tree.tscn" id="6_4s7xy"]
@@ -14,13 +13,11 @@
 [node name="Map_0" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(160, 90)
-script = ExtResource("1_qhtfk")
-next_level = ExtResource("2_k7ltf")
-
-[node name="MapBorders" parent="." instance=ExtResource("3_xe8gj")]
+script = ExtResource("1_sli8o")
+next_level = ExtResource("2_u4n8o")
 
 [node name="Player" parent="." instance=ExtResource("4_52bbk")]
-position = Vector2(-1, 101)
+position = Vector2(0, 100)
 
 [node name="Trees" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -44,7 +41,7 @@ position = Vector2(-138, -66)
 position = Vector2(134, -62)
 
 [node name="Campfire" parent="." instance=ExtResource("9_eucpf")]
-position = Vector2(1, 0)
+position = Vector2(0, -40)
 
 [node name="RockSmall" parent="." instance=ExtResource("10_weg15")]
 position = Vector2(90, 71)
