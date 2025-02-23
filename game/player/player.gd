@@ -46,7 +46,7 @@ func _hide(enabled: bool = true) -> void:
 func move_to(point: Vector2) -> void:
 	if Global.game.state != Game.State.DIALOGUE:
 		return
-	print("moving player to %v", point)
+	print("moving player to %v" % point)
 	_target_position = point
 	direction = global_position.direction_to(_target_position)
 	await in_position
@@ -84,7 +84,7 @@ func _physics_process(_delta: float) -> void:
 		_target_position = Vector2.ZERO
 		direction = Vector2.ZERO
 		in_position.emit()
-		
+
 	if direction.length() > 0 and speed > 0:
 		state = State.WALK
 		var facing = get_sprite_facing(direction.angle())
@@ -110,4 +110,3 @@ func _physics_process(_delta: float) -> void:
 
 	#if move_and_slide() and _target_position:
 	#	var collider: KinematicCollision2D = get_last_slide_collision()
-		

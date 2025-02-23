@@ -21,7 +21,10 @@ func spawn_drone(pos: Vector2 = Vector2(20, 20)) -> void:
 	drone.process_mode = Node.PROCESS_MODE_PAUSABLE
 	drone._state.change_to("Dialogue")
 	drone.visible = true
-	
+
 
 func _ready() -> void:
-	pass
+	# Reset player position to 0,0 so dialogue offsets work as expected
+	var global_pos: Vector2 = Global.game.player.global_position
+	Global.game.player.position = Vector2.ZERO
+	Global.game.player.global_position = global_pos

@@ -1,0 +1,5 @@
+~ start
+do player.move_to(Vector2(28, 167))
+do map.spawn_borders()
+blah blah blah
+=> END

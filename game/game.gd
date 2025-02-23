@@ -100,7 +100,7 @@ func _win() -> void:
 	await camera_2d.zoom_to_position(player.global_position)
 	victory.visible = true
 
-	await get_tree().create_timer(10.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	if map.next_level:
 		start_level(map.next_level)
 	else:

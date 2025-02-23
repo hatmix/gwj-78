@@ -8,10 +8,9 @@ var popup := preload("res://ui/dialogue/popup_balloon.tscn")
 var balloon := preload("res://ui/dialogue/balloon.tscn")
 
 
-func start_popup_dialogue(dialogue: DialogueResource, pause: bool = true) -> void:
+func start_popup_dialogue(dialogue: DialogueResource, pause: bool = false) -> void:
 	Global.game.state = Game.State.DIALOGUE
-	if pause:
-		get_tree().set_deferred("paused", true)
+	get_tree().set_deferred("paused", pause)
 	print("enabling dialogue_mapping_context")
 	GUIDE.enable_mapping_context(dialogue_mapping_context)
 	DialogueManager.show_dialogue_balloon_scene(popup, dialogue)
@@ -29,22 +28,23 @@ func _on_level_started(scene_path) -> void:
 	var level_started_popups: Dictionary = {
 		"res://game/maps/map_0/map_0.tscn": "res://game/dialogue/map_0_start.dialogue",
 		"res://game/maps/map_1/map_1.tscn": "res://game/dialogue/map_1_start.dialogue",
-		#"res://game/maps/map_2/map_2.tscn"
+		"res://game/maps/map_2/map_2.tscn": "res://game/dialogue/map_2_start.dialogue",
 	}
 
 	if scene_path in level_started_popups:
 		var dialogue: DialogueResource = load(level_started_popups[scene_path])
-		if "map_0" not in scene_path:
-			start_popup_dialogue(dialogue)
-		else:
-			start_popup_dialogue(dialogue, false)
+		#if "map_0" not in scene_path:
+		#	start_popup_dialogue(dialogue)
+		#else:
+		# Always starting unpaused to walk to starting point from off edge
+		start_popup_dialogue(dialogue, false)
 
 
-func _on_weather_changed(state: Weather.State):
+func _on_weather_changed(_state: Weather.State):
 	pass
 
 
-func _on_dialogue_ended(dialogue_resource: DialogueResource) -> void:
+func _on_dialogue_ended(_dialogue_resource: DialogueResource) -> void:
 	get_tree().paused = false
 	print("disabling dialogue_mapping_context")
 	GUIDE.disable_mapping_context(dialogue_mapping_context)

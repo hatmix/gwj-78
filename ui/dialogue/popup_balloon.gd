@@ -72,11 +72,6 @@ func _ready() -> void:
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
 
-	# Position balloon to player -- do we need the transforms here?
-	balloon.position = Global.game.player.global_position
-	# Offset for proper position
-	balloon.position += Vector2(0, -32)
-
 
 func _notification(what: int) -> void:
 	## Detect a change of locale and update the current dialogue line to show the new language
@@ -130,6 +125,7 @@ func apply_dialogue_line() -> void:
 	if _first_line:
 		balloon.pivot_offset = Vector2(balloon.size.x / 2, balloon.size.y)
 		balloon.scale = Vector2.ZERO
+		move_bubble_to_player()
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line
@@ -164,6 +160,18 @@ func apply_dialogue_line() -> void:
 		next(dialogue_line.next_id)
 	else:
 		is_waiting_for_input = true
+
+
+func reset_bubble() -> void:
+	_first_line = true
+
+
+func move_bubble_to_player() -> void:
+	# Position balloon to player -- do we need the canvas transforms here?
+	balloon.global_position = Global.game.player.global_position
+	# Offset for proper position
+	balloon.global_position += Vector2(16, -(20 + balloon.size.y))
+	print("balloon positioned at %.1v" % balloon.position)
 
 
 ## Go to the next line
