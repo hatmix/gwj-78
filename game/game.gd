@@ -106,7 +106,10 @@ func _win() -> void:
 	await dialogue.start_level_end_dialogue(map.scene_file_path)
 
 	if map.next_level:
+		print("starting next level")
 		start_level(map.next_level)
 	else:
-		var redo: PackedScene = load(map.scene_file_path)
-		start_level(redo)
+		print("no next level, showing thank you screen")
+		await fade_out().finished
+		$UI.go_to("Thanks")
+		fade_in()
