@@ -45,13 +45,21 @@ var game: Game:
 var p_state_defaults: Dictionary = {
 	"mud": false,
 	"mud_expired": false,
-	"transponder": false,
+	"transponder_offer": false,
+	"transponder_taken": false,
 	"transponder_used": false,
 	"reaction": "",
 }
 
-# initialized by game _ready
-var p_state: Dictionary = {}
+# initialized by game _ready but duplicated for testing dialogue in engine
+var p_state: Dictionary = {
+	"mud": false,
+	"mud_expired": false,
+	"transponder_offer": false,
+	"transponder_taken": false,
+	"transponder_used": false,
+	"reaction": "",
+}
 
 
 func _ready() -> void:

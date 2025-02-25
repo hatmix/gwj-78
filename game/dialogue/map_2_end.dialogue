@@ -2,9 +2,10 @@
 You hunker down near a wood stove in the collapsed ruins of a cabin.
 You wonder about the mud man and the young woman.
 You didn't recognize them, but did they act like they knew you?
-if Global.p_state["transponder"] and not Global.p_state["transponder_used"]
-	You look the device over in your hands.
-A transponder from a watcher must be very valuable. It would be foolish to offer it to a stranger.
+if Global.p_state["transponder_taken"] and not Global.p_state["transponder_used"]
+	You turn the the gift from the young woman over in your hands. This will make watchers think you're just another watcher, at least until its internal power runs out.
+if Global.p_state["transponder_offer"]
+	A transponder from a watcher must be very valuable. It would be foolish to offer it to a stranger.
 Your thoughts become a tangle of how you might know the two as you drift to sleep.
 
 => END
