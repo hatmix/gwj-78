@@ -1,18 +1,18 @@
 ~ start
 do player.move_to(Vector2(160,150))
 do map.spawn_borders()
-[next=auto]Finally far enough away\nto not see town behind me,
-[next=auto]But not far enough for\nwatchers on patrol.
+[next=4]Finally far enough away\nto not see town behind me,
+[next=4]But not far enough for\nwatchers on patrol.
 do player.move_to(Vector2(160,130))
 do map.spawn_drone(Vector2(30,30))
 do reset_bubble()
-[next=auto]Spoke too soon. There's a watcher.
-[next=auto]Should I make for the trees\njust to be safe?
+[next=3]Spoke too soon. There's a watcher.
+[next=4]Should I make for the trees\njust to be safe?
 do Global.weather.start_snowing()
 do player.move_to(Vector2(180,130))
 do reset_bubble()
-[next=auto]No, the snow will slow it down.
-[next=auto]I can make it to that camp ahead.
+[next=3]No, the snow will slow it down.
+[next=4]I can make it to that camp ahead.
 I wonder whose it is and how\nthe watchers don't bother them?
 do map.resume_weather()
 => END
