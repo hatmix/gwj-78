@@ -1,7 +1,7 @@
 ~ start
 do player.move_to(Vector2(33,153))
 do map.spawn_borders()
-[next=auto]Snow slows them down...
-[next=auto]Sometimes I just know things.
+[next=3]Snow slows them down...
+[next=3]Sometimes I just know things.
 I didn't realize until now\nI've stopped wondering why.
 => END
