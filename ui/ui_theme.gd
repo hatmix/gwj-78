@@ -100,12 +100,19 @@ func define_theme() -> void:
 	var sb_dialogue_button = inherit(
 		sb_dialogue,
 		{
+			bg_color = Global.COLOR_DARK,
 			expand_margins_ = expand_margins(0, 2, 0, 2),
-			border_ = border_width(0, 2, 0, 2),
+			border_ = border_width(1, 2, 1, 2),
 			border_color = Color.TRANSPARENT,
 		}
 	)
-	var sb_dialogue_button_focus = inherit(sb_dialogue_button, {bg_color = Global.COLOR_DARK})
+	var sb_dialogue_button_focus = inherit(
+		sb_dialogue_button, 
+		{
+			bg_color = Global.COLOR_BLACK,
+			border_color = Color.WHITE,
+		}
+	)
 
 	define_style("Panel", {panel = sb_dialogue})  # replace with stylebox_texture
 	define_variant_style(
@@ -114,10 +121,10 @@ func define_theme() -> void:
 		{
 			font = load("res://assets/fonts/pixelFont-2-5x5-sproutLands.ttf"),
 			font_size = 8,
-			font_color = Global.COLOR_BRIGHT,
-			font_focus_color = Global.COLOR_SHADOW,
-			font_pressed_color = Global.COLOR_SHADOW,
-			font_hover_color = Global.COLOR_SHADOW,
+			font_color = Global.COLOR_SHADOW,
+			font_focus_color = Global.COLOR_BRIGHT,
+			font_pressed_color = Global.COLOR_BRIGHT,
+			font_hover_color = Global.COLOR_BRIGHT,
 			font_outline_color = Global.COLOR_BLACK,
 			outline_size = 0,
 			normal = sb_dialogue_button,

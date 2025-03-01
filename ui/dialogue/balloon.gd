@@ -56,6 +56,9 @@ var mutation_cooldown: Timer = Timer.new()
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
+@onready var skip_prompt: InputPrompt = $Balloon/Panel/Dialogue/VBoxContainer/SkipPrompt
+@onready var next_prompt: InputPrompt = $Balloon/Panel/Dialogue/VBoxContainer/NextPrompt
+
 
 func _ready() -> void:
 	print("popup balloon instantiated")
@@ -125,7 +128,10 @@ func apply_dialogue_line() -> void:
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
 		dialogue_label.type_out()
+		next_prompt.visible = false
+		skip_prompt.visible = true
 		await dialogue_label.finished_typing
+		skip_prompt.visible = false
 
 	# Wait for input
 	if dialogue_line.responses.size() > 0:
@@ -137,10 +143,13 @@ func apply_dialogue_line() -> void:
 			if dialogue_line.time == "auto"
 			else dialogue_line.time.to_float()
 		)
+		is_waiting_for_input = true
+		next_prompt.visible = true
 		await get_tree().create_timer(time).timeout
 		next(dialogue_line.next_id)
 	else:
 		is_waiting_for_input = true
+		next_prompt.visible = true
 
 
 ## Go to the next line
@@ -163,7 +172,7 @@ func _on_mutated(_mutation: Dictionary) -> void:
 func _process(_delta: float) -> void:
 	# See if we need to skip typing of the dialogue
 	if dialogue_label.is_typing:
-		if skip_action.is_triggered() or Input.is_action_just_pressed("ui_accept"):
+		if skip_action.is_triggered() or Input.is_action_just_pressed("ui_select"):
 			dialogue_label.skip_typing()
 			return
 

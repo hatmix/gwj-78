@@ -17,7 +17,11 @@ var resource: DialogueResource
 var temporary_game_states: Array = []
 
 ## See if we are waiting for the player
-var is_waiting_for_input: bool = false
+var is_waiting_for_input: bool = false:
+	set(v):
+		is_waiting_for_input = v
+		if is_waiting_for_input:
+			_input_prompt_countdown = input_prompt_delay
 
 ## See if we are running a long mutation and should hide the balloon
 var will_hide_balloon: bool = false
@@ -43,6 +47,8 @@ var dialogue_line: DialogueLine:
 
 ## A cooldown timer for delaying the balloon hide when encountering a mutation.
 var mutation_cooldown: Timer = Timer.new()
+var input_prompt_delay: float = 4.0
+var _input_prompt_countdown: float
 
 ## The base balloon anchor
 @onready var balloon: Control = %Balloon
@@ -56,10 +62,16 @@ var mutation_cooldown: Timer = Timer.new()
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
+@onready var panel: Panel = %Panel
+@onready var skip_prompt: InputPrompt = $Balloon/SkipPrompt
+@onready var next_prompt: InputPrompt = $Balloon/NextPrompt
+
 
 func _ready() -> void:
 	print("popup balloon instantiated")
 	balloon.hide()
+	skip_prompt.visible = false
+	next_prompt.visible = false
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 	#%Balloon.gui_input.connect(_on_balloon_gui_input)
 	%ResponsesMenu.response_selected.connect(_on_responses_menu_response_selected)
@@ -120,7 +132,12 @@ func apply_dialogue_line() -> void:
 	#print(%TestLabel.size)
 	#dialogue_label.custom_minimum_size = %TestLabel.size
 	dialogue_label.size = %TestLabel.size
-	%Panel.size = %TestLabel.size + MARGINS
+	panel.size = %TestLabel.size + MARGINS
+	skip_prompt.position.y = panel.size.y + MARGIN
+	skip_prompt.position.x = panel.size.x - skip_prompt.size.x
+	next_prompt.position.y = panel.size.y + MARGIN
+	next_prompt.position.x = panel.size.x - next_prompt.size.x
+	panel.size.y += 16
 	await get_tree().process_frame
 	if _first_line:
 		balloon.pivot_offset = Vector2(balloon.size.x / 2, balloon.size.y)
@@ -144,7 +161,10 @@ func apply_dialogue_line() -> void:
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
 		dialogue_label.type_out()
+		next_prompt.visible = false
+		#skip_prompt.visible = true
 		await dialogue_label.finished_typing
+		#skip_prompt.visible = false
 
 	# Wait for input
 	if dialogue_line.responses.size() > 0:
@@ -156,10 +176,12 @@ func apply_dialogue_line() -> void:
 			if dialogue_line.time == "auto"
 			else dialogue_line.time.to_float()
 		)
+		is_waiting_for_input = true
 		await get_tree().create_timer(time).timeout
 		next(dialogue_line.next_id)
 	else:
 		is_waiting_for_input = true
+
 
 
 func reset_bubble() -> void:
@@ -170,8 +192,10 @@ func move_bubble_to_player() -> void:
 	# Position balloon to player -- do we need the canvas transforms here?
 	balloon.global_position = Global.game.player.global_position
 	# Offset for proper position
-	balloon.global_position += Vector2(16, -(20 + balloon.size.y))
-	print("balloon positioned at %.1v" % balloon.position)
+	balloon.global_position += Vector2(0, -(30 + balloon.size.y))
+	balloon.global_position.x = max(balloon.pivot_offset.x + MARGIN, balloon.global_position.x)
+	balloon.global_position.x = min(320 - balloon.pivot_offset.x - MARGIN, balloon.global_position.x)
+	print("balloon positioned at %.1v" % balloon.global_position)
 
 
 ## Go to the next line
@@ -191,12 +215,17 @@ func _on_mutated(_mutation: Dictionary) -> void:
 	mutation_cooldown.start(0.1)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	# See if we need to skip typing of the dialogue
 	if dialogue_label.is_typing:
 		if skip_action.is_triggered():
 			dialogue_label.skip_typing()
 			return
+
+	if is_waiting_for_input and not next_prompt.visible:
+		_input_prompt_countdown -= delta
+		if _input_prompt_countdown <= 0:
+			next_prompt.visible = true
 
 	if not is_waiting_for_input:
 		return

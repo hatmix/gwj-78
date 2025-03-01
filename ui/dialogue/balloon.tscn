@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb12xw8ggv12a"]
+[gd_scene load_steps=9 format=3 uid="uid://bb12xw8ggv12a"]
 
 [ext_resource type="Script" path="res://ui/dialogue/balloon.gd" id="1_s2gbs"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_hfvdi"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_1j1j0"]
 [ext_resource type="Resource" uid="uid://e42yndmbyef6" path="res://input/skip_dialogue.tres" id="3_xaowp"]
 [ext_resource type="AudioStream" uid="uid://bum8pxr0exorw" path="res://ui/assets/audio/hit2.wav" id="4_po3rq"]
+[ext_resource type="Script" path="res://ui/controls/input_prompt.gd" id="5_abl7p"]
+[ext_resource type="Script" path="res://addons/guide/guide_action.gd" id="6_xagnc"]
 
 [node name="Balloon" type="CanvasLayer"]
 process_mode = 3
@@ -40,7 +42,7 @@ offset_right = -4.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
-mouse_filter = 1
+mouse_filter = 2
 
 [node name="Dialogue" type="MarginContainer" parent="Balloon/Panel"]
 layout_mode = 1
@@ -49,19 +51,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/Dialogue"]
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Panel/Dialogue/VBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
-mouse_filter = 1
+mouse_filter = 2
 theme_type_variation = &"DialogueRichTextLabel"
 bbcode_enabled = true
 text = "Character"
@@ -72,8 +77,31 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_type_variation = &"DialogueRichTextLabel"
 text = "Dialogue..."
+
+[node name="SkipPrompt" type="RichTextLabel" parent="Balloon/Panel/Dialogue/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+theme_type_variation = &"DialogueRichTextLabel"
+script = ExtResource("5_abl7p")
+prompt_text = "%s"
+actions = Array[ExtResource("6_xagnc")]([ExtResource("3_xaowp")])
+icon_size = 16
+
+[node name="NextPrompt" type="RichTextLabel" parent="Balloon/Panel/Dialogue/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+theme_type_variation = &"DialogueRichTextLabel"
+script = ExtResource("5_abl7p")
+prompt_text = "%s"
+actions = Array[ExtResource("6_xagnc")]([ExtResource("2_sj7yn")])
+icon_size = 16
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 layout_mode = 1
